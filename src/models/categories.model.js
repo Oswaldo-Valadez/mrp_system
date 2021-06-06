@@ -2,6 +2,11 @@
 
 const { pool } = require("../utils/database/query");
 
+exports.getCategoriesCount = async () => {
+    const count = (await pool.query(`SELECT COUNT(*) AS count FROM ??`, ["categories"]))[0].count;
+    return count;
+};
+
 exports.getAllCategories = async () => {
     const categories = await pool.query(`SELECT * FROM ??`, ["categories"]);
     return categories;
