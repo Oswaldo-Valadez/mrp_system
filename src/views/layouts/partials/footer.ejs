@@ -1,0 +1,47 @@
+<footer class="main-footer">
+  <div class="float-right d-none d-sm-inline"><b>v</b>0.0.0</div>
+
+  <strong
+    >Copyright &copy; {{%= new Date().getFullYear() %}}
+    <a target="_blank" href="https://github.com/Oswaldo-Valadez">ODVL</a>.</strong
+  >
+
+  <div class="float-right d-none d-sm-inline pr-3">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link p-0" href="/toggle-mode" role="button">
+          {{% if (dark_mode) { %}}
+          <i class="fas fa-moon"></i>
+          {{% } else { %}}
+          <i class="fas fa-sun"></i>
+          {{% } %}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="float-right d-none d-sm-inline pr-3">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        {{% if (false) { %}}
+        <a class="nav-link p-0" data-toggle="dropdown" href="#">
+          <i class="flag-icon flag-icon-us"></i>
+        </a>
+        {{% } else { %}}
+        <a class="nav-link p-0" data-toggle="dropdown" href="#">
+          <i class="flag-icon flag-icon-es"></i>
+        </a>
+        {{% } %}}
+        <div class="dropdown-menu dropdown-menu-right p-0">
+          <a href="#" class="dropdown-item">
+            <i class="flag-icon flag-icon-us mr-2"></i> English
+          </a>
+          <a href="#" class="dropdown-item active">
+            <i class="flag-icon flag-icon-es mr-2"></i> Español
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+  {{%= __('All rights reserved') %}}.
+</footer>

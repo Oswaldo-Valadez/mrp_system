@@ -1,0 +1,33 @@
+{
+  "name": "stest",
+  "version": "1.0.0",
+  "description": "Startup System",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Oswaldo V.",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^9.0.2",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "admin-lte": "^3.1.0",
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "damerau-levenshtein": "^1.0.7",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-fileupload": "^1.2.1",
+    "express-mysql-session": "^2.1.6",
+    "express-session": "^1.17.1",
+    "i18n": "^0.13.3",
+    "moment": "^2.29.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  }
+}

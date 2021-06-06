@@ -1,0 +1,36 @@
+{{% if (success) { %}}
+<script>
+  $(document).Toasts("create", {
+    class: "bg-success",
+    title: "{{%= __('Success') %}}!",
+    body: "{{%= __(success) %}}",
+    icon: "fas fa-check fa-lg",
+    autohide: true,
+    delay: 5000,
+  });
+</script>
+{{% } else if (error) { %}}
+<script>
+  $(document).Toasts("create", {
+    class: "bg-danger",
+    title: "{{%= __('Error') %}}!",
+    body: "{{%= __(error) %}}",
+    icon: "fas fa-ban",
+    autohide: true,
+    delay: 5000,
+  });
+</script>
+{{% } else if (successSignin) { %}}
+<script>
+  $(document).Toasts("create", {
+    class: "bg-success",
+    subtitle: "{{%= __(successSignin) %}}",
+    title: "{{%= user.fullname %}}",
+    body: "{{%= __('Welcome') %}}!",
+    image: "/adminlte/dist/img/user3-128x128.jpg",
+    imageAlt: "User Picture",
+    autohide: true,
+    delay: 5000,
+  });
+</script>
+{{% } %}}

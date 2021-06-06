@@ -1,0 +1,33 @@
+{{%
+  var
+    idModal = idModal || "modalCreate",
+    route = route || "",
+    title = title || "Item",
+    form = form || [],
+    size = size || "",
+    color = color || "";
+%}}
+
+<div class="modal fade" id="{{%= idModal %}}">
+  <div class="modal-dialog {{%= size %}}">
+    <div class="modal-content {{%= color %}}">
+      <form action="{{%= route %}}" method="POST">
+        <div class="modal-header">
+          <h4 class="modal-title">{{%= __('New') %}} {{%= title %}}</h4>
+        </div>
+        <div class="modal-body">
+          {{%- include('./Form', { form }) %}}
+        </div>
+        <div class="modal-footer justify-content-between">
+          <input
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            value="Cancel"
+          />
+          <button class="btn btn-success">{{%= __('Add') %}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

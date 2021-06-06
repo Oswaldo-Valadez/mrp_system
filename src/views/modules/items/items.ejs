@@ -1,0 +1,117 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>
+          {{%= __('Items') %}}
+          <small>{{%= __('Items') %}}</small>
+        </h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <a href="/">{{%= __('Dashboard') %}}</a>
+          </li>
+          <li class="breadcrumb-item active">{{%= __('Items') %}}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-edit"></i>
+              {{%= __('Item') %}}
+            </h3>
+            <div class="card-tools">
+              <a
+                href="#"
+                data-target="#modalCreate"
+                data-toggle="modal"
+                data-toggle="tooltip"
+                data-placement="top"
+                class="btn btn-success"
+                title="{{%= __('New Item') %}}"
+              >
+                <i class="fas fa-plus"></i> &nbsp; {{%= __('New Item') %}}
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <table
+              class="
+                table table-bordered table-striped
+                dataTable
+                dataTableConfig
+                dtr-inline
+              "
+              aria-describedby="dataTableConfig_info"
+            >
+              <thead>
+                <tr role="row">
+                  <th>#</th>
+                  <th>{{%= __('Name') %}}</th>
+                  <th>{{%= __('Description') %}}</th>
+                  <th>{{%= __('Price') %}}</th>
+                  <th>{{%= __('Status') %}}</th>
+                  <th>{{%= __('Category') %}}</th>
+                  <th>{{%= __('Actions') %}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{% items.forEach((row, i) => { %}}
+                <tr class="odd">
+                  <td>{{%= i + 1 %}}</td>
+                  <td>{{%= row.items_name %}}</td>
+                  <td>{{%= row.items_description %}}</td>
+                  <td>{{%= row.items_price %}}</td>
+                  <td>
+                    <span
+                      class="badge badge-{{%= row.items_status ? "success" : "danger" %}}"
+                      >{{%= row.items_status ? __('Active') : __('Inactive') %}}</span
+                    >
+                  </td>
+                  <td>{{%= row.categories_name %}}</td>
+                  <td>
+                    <div class="column-actions">
+                      <a
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#modalDelete"
+                        data-id="{{%= row.items_id_item %}}"
+                        class="btn btn-danger btn-xs"
+                      >
+                        <i class="fas fa-trash-alt"></i>
+                      </a>
+                      <a
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#modalEdit"
+                        data-row="{{%= JSON.stringify(row) %}}"
+                        data-id="{{%= row.items_id_items %}}"
+                        class="btn btn-warning btn-xs"
+                      >
+                        <i class="fas fa-pen"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                {{% }) %}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{%- include('../../components/ModalCreate', { route:'/dashboard/items', title: "Item", form: newItemForm, size: "modal-lg" })  %}}
+{{%- include('../../components/ModalDelete', { route:['/dashboard/items/','/delete'], title: "Item" })  %}}
+{{%- include('../../components/ModalEdit', { route: '/dashboard/items/', title: "Item", form: newItemForm, size: "modal-lg", aux_nested: "items_" })  %}}

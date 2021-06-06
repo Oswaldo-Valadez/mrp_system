@@ -1,0 +1,54 @@
+{{%
+    var
+      idModal = idModal || "modalEdit",
+      route = route || '',
+      title = title || "Item",
+      form = form || [],
+      size = size || "",
+      color = color || "",
+      aux_nested = aux_nested || "";
+  %}}
+
+<div class="modal fade" id="{{%= idModal %}}">
+  <div class="modal-dialog {{%= size %}}">
+    <div class="modal-content {{%= color %}}">
+      <form action="{{%= route %}}" method="POST">
+        <div class="modal-header">
+          <h4 class="modal-title">{{%= __('Edit') %}} {{%= title %}}</h4>
+        </div>
+        <div class="modal-body">
+          {{%- include('./Form', { form }) %}}
+        </div>
+        <div class="modal-footer justify-content-between">
+          <input
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            value="Cancel"
+          />
+          <button class="btn btn-success">{{%= __('Edit') %}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $("#{{%= idModal %}}").on("show.bs.modal", function (event) {
+    var button = $(event.relatedTarget);
+
+    var id = button.data("id");
+    var row = button.data("row");
+
+    row = Object.entries(row);
+
+    $.each(row, function (index, element) {
+      const input = $(
+        `#{{%= idModal %}} [name=${element[0].split("{{%= aux_nested %}}")[1]}]`
+      );
+      input.val(element[1]);
+    });
+
+    $(".select2").trigger("change");
+  });
+</script>

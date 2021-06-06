@@ -1,0 +1,22 @@
+{{%
+    var
+        name = name || "",
+        label = label || "",
+        type = type || "",
+        isRequired = isRequired || false,
+        variant = variant || "normal";
+%}}
+
+{{% if (variant == "normal") { %}}
+<div class="form-group">
+  <label for="{{%= name %}}">
+    {{%= __(label) %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
+  </label>
+  <input
+    type="{{%= type %}}"
+    class="form-control"
+    name="{{%= name %}}"
+    {{%= isRequired ? 'required' : null %}}
+  />
+</div>
+{{% } %}}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{%- include('./partials/head') %}}
+  </head>
+
+  <body class="hold-transition {{%= dark_mode ? null : "dark-mode" %}} login-page">
+    <!-- Preloader -->
+    <div
+      class="preloader flex-column justify-content-center align-items-center"
+    >
+      <img
+        class="animation__shake"
+        src="/public/assets/imgs/logo.png"
+        alt="Logo"
+        height="60"
+        width="60"
+      />
+    </div>
+
+    {{%- body %}}
+
+    {{%- include('./partials/alerts') %}}
+
+    {{%- include('./partials/js') %}}
+  </body>
+</html>

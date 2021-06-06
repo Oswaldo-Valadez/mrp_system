@@ -1,0 +1,71 @@
+{{% 
+    var
+        name = name || "",
+        label = label || "",
+        options = options || { arr:[], value: "", label: "" },
+        isRequired = isRequired || false,
+        variant = variant || "normal";
+%}}
+
+{{% if (variant == "normal") { %}}
+<div class="form-group">
+  <label for="{{%= name %}}">
+    {{%= label %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
+  </label>
+  <select
+    class="form-control select2"
+    name="{{%= name %}}"
+    {{%= isRequired ? 'required' : null %}}
+  >
+    <option value="" selected disabled hidden>{{%= __('Select here') %}}</option>
+    {{% options.arr.forEach(option => { %}}
+    <option value="{{%= option[options.value] %}}">
+      {{%= option[options.label] %}}
+    </option>
+    {{% }) %}}
+  </select>
+</div>
+{{% } else if (variant == "with-add-button") { %}}
+<label for="{{%= name %}}">
+  {{%= label %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
+</label>
+<div class="input-group">
+  <span class="input-group-prepend btn-flat">
+    <button
+      type="button"
+      class="btn btn-success"
+      data-toggle="collapse"
+      data-target="#collapseExample{{%= name %}}"
+      aria-expanded="false"
+      aria-controls="collapseExample{{%= name %}}"
+    >
+      <i class="fas fa-plus-circle"></i>
+    </button>
+  </span>
+  <select
+    class="form-control select2"
+    name="{{%= name %}}" 
+    {{%= isRequired ? 'required' : null %}}
+  >
+    {{% options.arr.forEach(option => { %}}
+    <option value="{{%= option[options.value] %}}">
+      {{%= option[options.label] %}}
+    </option>
+    {{% }) %}}
+  </select>
+  <!-- <div
+    style="width: 100%"
+    class="collapse pt-2"
+    id="collapseExample{{%# name %}}"
+  >
+    <div class="card card-body bg-success">
+      <div class="form-group">
+        <label for="">
+          {{%# label %}}{{%# if (isRequired) { %}}<span class="is-required">*</span>{{%# } %}}
+        </label>
+        <input class="form-control" />
+      </div>
+    </div>
+  </div> -->
+</div>
+{{% } %}}
