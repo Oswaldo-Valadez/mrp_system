@@ -1,7 +1,7 @@
 {
-  "name": "stest",
+  "name": "mrp_system",
   "version": "1.0.0",
-  "description": "Startup System",
+  "description": "MRP System",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"

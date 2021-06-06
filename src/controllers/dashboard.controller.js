@@ -1,5 +1,11 @@
 "use strict";
 
+const ErrorHandler = require("../utils/helpers/error-handler");
+
 exports.renderDashboard = async (req, res, next) => {
-  res.render("starter", { items: [1, 2, 3, 4] });
+  try {
+    res.render("dashboard");
+  } catch (error) {
+    ErrorHandler.handleError(req, res, error);
+  }
 };
