@@ -61,5 +61,8 @@
 	"The measurementunit has been created successfully": "The measurementunit has been created successfully",
 	"The measurementunit has been updated successfully": "The measurementunit has been updated successfully",
 	"The measurementunit has been deleted successfully": "The measurementunit has been deleted successfully",
-	"The subcategory has been deleted successfully": "The subcategory has been deleted successfully"
+	"The subcategory has been deleted successfully": "The subcategory has been deleted successfully",
+	"Materials": "Materials",
+	"New Material": "New Material",
+	"Stock": "Stock"
 }

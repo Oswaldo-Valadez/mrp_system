@@ -229,9 +229,9 @@
                 data-target="#modalCreateSubcategory"
                 data-toggle="modal"
                 class="btn btn-success"
-                title="{{%= __('New Category') %}}"
+                title="{{%= __('New Subcategory') %}}"
               >
-                <i class="fas fa-plus"></i> &nbsp; {{%= __('New Category') %}}
+                <i class="fas fa-plus"></i> &nbsp; {{%= __('New Subcategory') %}}
               </a>
             </div>
           </div>
@@ -354,18 +354,18 @@
   </div>
 </section>
 
-{{%- include('../../components/ModalCreate', { idModal: "modalCreateBrand", route:'/dashboard/catalogs/brands', title: "Brand", form: newBrandForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateBrand", route:'/dashboard/catalogs/brands', title: "Brand", form: newBrandForm, size: "modal-md" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteBrand", route:['/dashboard/catalogs/brands/','/delete'], title: "Brand" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditBrand", route: '/dashboard/catalogs/brands/', title: "Item", form: newBrandForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditBrand", route: '/dashboard/catalogs/brands/', title: "Item", form: newBrandForm, size: "modal-md" }) %}}
 
-{{%- include('../../components/ModalCreate', { idModal: "modalCreateCategory", route:'/dashboard/catalogs/categories', title: "Category", form: newCategoryForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateCategory", route:'/dashboard/catalogs/categories', title: "Category", form: newCategoryForm, size: "modal-md" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteCategory", route:['/dashboard/catalogs/categories/','/delete'], title: "Category" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditCategory", route: '/dashboard/catalogs/categories/', title: "Item", form: newCategoryForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditCategory", route: '/dashboard/catalogs/categories/', title: "Item", form: newCategoryForm, size: "modal-md" }) %}}
 
-{{%- include('../../components/ModalCreate', { idModal: "modalCreateSubcategory", route:'/dashboard/catalogs/subcategories', title: "Subcategory", form: newSubcategoryForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateSubcategory", route:'/dashboard/catalogs/subcategories', title: "Subcategory", form: newSubcategoryForm, size: "modal-md" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteSubcategory", route:['/dashboard/catalogs/subcategories/','/delete'], title: "Subcategory" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditSubcategory", route: '/dashboard/catalogs/subcategories/', title: "Item", form: newSubcategoryForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditSubcategory", route: '/dashboard/catalogs/subcategories/', title: "Item", form: newSubcategoryForm, size: "modal-md" }) %}}
 
-{{%- include('../../components/ModalCreate', { idModal: "modalCreateMeasurementunit", route:'/dashboard/catalogs/measurement-units', title: "Measurement Unit", form: newMeasurementunitForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateMeasurementunit", route:'/dashboard/catalogs/measurement-units', title: "Measurement Unit", form: newMeasurementunitForm, size: "modal-md" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteMeasurementunit", route:['/dashboard/catalogs/measurement-units/','/delete'], title: "Measurement Unit" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditMeasurementunit", route: '/dashboard/catalogs/measurement-units/', title: "Item", form: newMeasurementunitForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditMeasurementunit", route: '/dashboard/catalogs/measurement-units/', title: "Item", form: newMeasurementunitForm, size: "modal-md" }) %}}
