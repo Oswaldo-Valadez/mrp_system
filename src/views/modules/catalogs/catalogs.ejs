@@ -22,6 +22,65 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box">
+          <span class="info-box-icon bg-primary elevation-1"
+            ><i class="fas fa-book"></i
+          ></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">{{%= __('Categories') %}}</span>
+            <span class="info-box-number">
+              {{%= categories.length %}}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-primary elevation-1"
+            ><i class="fas fa-book"></i
+          ></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">{{%= __('Subcategories') %}}</span>
+            <span class="info-box-number">{{%= categories.length %}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix hidden-md-up"></div>
+
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-primary elevation-1"
+            ><i class="fas fa-book"></i
+          ></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">{{%= __('Measurement units') %}}</span>
+            <span
+              class="info-box-number"
+              >{{%= measurement_units.length %}}</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-3">
+        <div class="info-box mb-3">
+          <span class="info-box-icon bg-primary elevation-1"
+            ><i class="far fa-copyright"></i
+          ></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">Brands</span>
+            <span class="info-box-number">{{%= brands.length %}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-md-6">
         <div class="card card-primary card-outline">
           <div class="card-header">
@@ -43,12 +102,7 @@
           </div>
           <div class="card-body">
             <table
-              class="
-                table table-bordered table-striped
-                dataTable
-                dataTableConfig
-                dtr-inline
-              "
+              class="table dataTable dataTableConfig dtr-inline"
               aria-describedby="dataTableConfig_info"
             >
               <thead>
@@ -94,6 +148,73 @@
             </table>
           </div>
         </div>
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-book"></i>
+              {{%= __('Measurement units') %}}
+            </h3>
+            <div class="card-tools">
+              <a
+                href="#"
+                data-target="#modalCreateMeasurementunit"
+                data-toggle="modal"
+                class="btn btn-success"
+                title="{{%= __('New Measurement Unit') %}}"
+              >
+                <i class="fas fa-plus"></i> &nbsp;
+                {{%= __('New Measurement Unit') %}}
+              </a>
+            </div>
+          </div>
+          <div class="card-body">
+            <table
+              class="table dataTable dataTableConfig dtr-inline"
+              aria-describedby="dataTableConfig_info"
+            >
+              <thead>
+                <tr role="row">
+                  <th>#</th>
+                  <th>{{%= __('Name') %}}</th>
+                  <th>{{%= __('Code') %}}</th>
+                  <th>{{%= __('Actions') %}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{% measurement_units.forEach((row, i) => { %}}
+                <tr class="odd">
+                  <td>{{%= i + 1 %}}</td>
+                  <td>{{%= row.name %}}</td>
+                  <td>{{%= row.code %}}</td>
+                  <td>
+                    <div class="column-actions">
+                      <a
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#modalDeleteMeasurementunit"
+                        data-id="{{%= row.id_measurement_unit %}}"
+                        class="btn btn-danger btn-xs"
+                      >
+                        <i class="fas fa-trash-alt"></i>
+                      </a>
+                      <a
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#modalEditMeasurementunit"
+                        data-row="{{%= JSON.stringify(row) %}}"
+                        data-id="{{%= row.id_measurement_unit %}}"
+                        class="btn btn-warning btn-xs"
+                      >
+                        <i class="fas fa-pen"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                {{% }) %}}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <div class="col-md-6">
         <div class="card card-primary card-outline">
@@ -116,12 +237,7 @@
           </div>
           <div class="card-body">
             <table
-              class="
-                table table-bordered table-striped
-                dataTable
-                dataTableConfig
-                dtr-inline
-              "
+              class="table dataTable dataTableConfig dtr-inline"
               aria-describedby="dataTableConfig_info"
             >
               <thead>
@@ -169,8 +285,6 @@
             </table>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
         <div class="card card-primary card-outline">
           <div class="card-header">
             <h3 class="card-title">
@@ -191,12 +305,7 @@
           </div>
           <div class="card-body">
             <table
-              class="
-                table table-bordered table-striped
-                dataTable
-                dataTableConfig
-                dtr-inline
-              "
+              class="table dataTable dataTableConfig dtr-inline"
               aria-describedby="dataTableConfig_info"
             >
               <thead>
@@ -241,80 +350,6 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h3 class="card-title">
-              <i class="fas fa-book"></i>
-              {{%= __('Measurement units') %}}
-            </h3>
-            <div class="card-tools">
-              <a
-                href="#"
-                data-target="#modalCreateMeasurementunit"
-                data-toggle="modal"
-                class="btn btn-success"
-                title="{{%= __('New Measurement Unit') %}}"
-              >
-                <i class="fas fa-plus"></i> &nbsp;
-                {{%= __('New Measurement Unit') %}}
-              </a>
-            </div>
-          </div>
-          <div class="card-body">
-            <table
-              class="
-                table table-bordered table-striped
-                dataTable
-                dataTableConfig
-                dtr-inline
-              "
-              aria-describedby="dataTableConfig_info"
-            >
-              <thead>
-                <tr role="row">
-                  <th>#</th>
-                  <th>{{%= __('Name') %}}</th>
-                  <th>{{%= __('Code') %}}</th>
-                  <th>{{%= __('Actions') %}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{% measurement_units.forEach((row, i) => { %}}
-                <tr class="odd">
-                  <td>{{%= i + 1 %}}</td>
-                  <td>{{%= row.name %}}</td>
-                  <td>{{%= row.code %}}</td>
-                  <td>
-                    <div class="column-actions">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modalDeleteMeasurementunit"
-                        data-id="{{%= row.id_measurement_unit %}}"
-                        class="btn btn-danger btn-xs"
-                      >
-                        <i class="fas fa-trash-alt"></i>
-                      </a>
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modalEditMeasurementunit"
-                        data-row="{{%= JSON.stringify(row) %}}"
-                        data-id="{{%= row.id_measurement_unit %}}"
-                        class="btn btn-warning btn-xs"
-                      >
-                        <i class="fas fa-pen"></i>
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-                {{% }) %}}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -331,6 +366,6 @@
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteSubcategory", route:['/dashboard/catalogs/subcategories/','/delete'], title: "Subcategory" }) %}}
 {{%- include('../../components/ModalEdit', { idModal: "modalEditSubcategory", route: '/dashboard/catalogs/subcategories/', title: "Item", form: newSubcategoryForm, size: "modal-lg" }) %}}
 
-{{%- include('../../components/ModalCreate', { idModal: "modalCreateMeasurementunit", route:'/dashboard/catalogs/measurement-units', title: "Measurementunit", form: newMeasurementunitForm, size: "modal-lg" }) %}}
-{{%- include('../../components/ModalDelete', { idModal: "modalDeleteMeasurementunit", route:['/dashboard/catalogs/measurement-units/','/delete'], title: "Measurementunit" }) %}}
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateMeasurementunit", route:'/dashboard/catalogs/measurement-units', title: "Measurement Unit", form: newMeasurementunitForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDeleteMeasurementunit", route:['/dashboard/catalogs/measurement-units/','/delete'], title: "Measurement Unit" }) %}}
 {{%- include('../../components/ModalEdit', { idModal: "modalEditMeasurementunit", route: '/dashboard/catalogs/measurement-units/', title: "Item", form: newMeasurementunitForm, size: "modal-lg" }) %}}

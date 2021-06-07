@@ -1,7 +1,5 @@
 "use strict";
 
-const Categories = require("../../models/categories.model");
-
 exports.newBrandForm = () => [
   [
     {
@@ -83,7 +81,7 @@ exports.newSubcategoryForm = ({ categories }) => [
   ],
 ];
 
-exports.newMeasurementunitForm = (categories) => [
+exports.newMeasurementunitForm = () => [
   [
     {
       componentName: "Input",
