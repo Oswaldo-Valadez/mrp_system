@@ -12,9 +12,9 @@
 <div class="modal fade" id="{{%= idModal %}}">
   <div class="modal-dialog {{%= size %}}">
     <div class="modal-content {{%= color %}}">
-      <form action="{{%= route %}}" method="POST">
+      <form method="POST">
         <div class="modal-header">
-          <h4 class="modal-title">{{%= __('Edit') %}} {{%= title %}}</h4>
+          <h4 class="modal-title">{{%= __('Edit' + " " + title) %}}</h4>
         </div>
         <div class="modal-body">
           {{%- include('./Form', { form }) %}}
@@ -33,6 +33,7 @@
   </div>
 </div>
 
+{{% if (aux_nested != "") { %}}
 <script>
   $("#{{%= idModal %}}").on("show.bs.modal", function (event) {
     var button = $(event.relatedTarget);
@@ -49,6 +50,29 @@
       input.val(element[1]);
     });
 
+    $(this).find("form").attr("action", `{{%= route %}}${id}`);
+
     $(".select2").trigger("change");
   });
 </script>
+{{% } else { %}}
+<script>
+  $("#{{%= idModal %}}").on("show.bs.modal", function (event) {
+    var button = $(event.relatedTarget);
+
+    var id = button.data("id");
+    var row = button.data("row");
+
+    row = Object.entries(row);
+
+    $.each(row, function (index, element) {
+      const input = $(`#{{%= idModal %}} [name=${element[0]}]`);
+      input.val(element[1]);
+    });
+
+    $(this).find("form").attr("action", `{{%= route %}}${id}`);
+
+    $(".select2").trigger("change");
+  });
+</script>
+{{% } %}}

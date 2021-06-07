@@ -48,5 +48,18 @@
 	"New Category": "New Category",
 	"Catalog": "Catalog",
 	"New Brand": "New Brand",
-	"New Measurement Unit": "New Measurement Unit"
+	"New Measurement Unit": "New Measurement Unit",
+	"The brand has been created successfully": "The brand has been created successfully",
+	"The brand has been deleted successfully": "The brand has been deleted successfully",
+	"The brand has been updated successfully": "The brand has been updated successfully",
+	"Edit Item": "Edit Item",
+	"The category has been created successfully": "The category has been created successfully",
+	"The category has been updated successfully": "The category has been updated successfully",
+	"The category has been deleted successfully": "The category has been deleted successfully",
+	"New Subcategory": "New Subcategory",
+	"New Measurementunit": "New Measurementunit",
+	"The measurementunit has been created successfully": "The measurementunit has been created successfully",
+	"The measurementunit has been updated successfully": "The measurementunit has been updated successfully",
+	"The measurementunit has been deleted successfully": "The measurementunit has been deleted successfully",
+	"The subcategory has been deleted successfully": "The subcategory has been deleted successfully"
 }

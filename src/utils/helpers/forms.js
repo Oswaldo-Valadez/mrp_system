@@ -1,6 +1,8 @@
 "use strict";
 
-exports.newItemForm = ({ categories }) => [
+const Categories = require("../../models/categories.model");
+
+exports.newBrandForm = () => [
   [
     {
       componentName: "Input",
@@ -11,12 +13,43 @@ exports.newItemForm = ({ categories }) => [
         isRequired: true,
       },
     },
+  ],
+];
+
+exports.newCategoryForm = () => [
+  [
     {
       componentName: "Input",
       options: {
-        label: "Price",
-        name: "price",
-        type: "number",
+        label: "Name",
+        name: "name",
+        type: "text",
+        isRequired: true,
+      },
+    },
+  ],
+  [
+    {
+      componentName: "Textarea",
+      options: {
+        label: "Description",
+        name: "description",
+        type: "text",
+        rows: 2,
+        isRequired: true,
+      },
+    },
+  ],
+];
+
+exports.newSubcategoryForm = ({ categories }) => [
+  [
+    {
+      componentName: "Input",
+      options: {
+        label: "Name",
+        name: "name",
+        type: "text",
         isRequired: true,
       },
     },
@@ -50,7 +83,7 @@ exports.newItemForm = ({ categories }) => [
   ],
 ];
 
-exports.newCategoryForm = () => [
+exports.newMeasurementunitForm = (categories) => [
   [
     {
       componentName: "Input",
@@ -64,12 +97,11 @@ exports.newCategoryForm = () => [
   ],
   [
     {
-      componentName: "Textarea",
+      componentName: "Input",
       options: {
-        label: "Description",
-        name: "description",
+        label: "Code",
+        name: "code",
         type: "text",
-        rows: 2,
         isRequired: true,
       },
     },

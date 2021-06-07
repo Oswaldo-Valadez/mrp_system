@@ -70,8 +70,8 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalDelete"
-                        data-id="{{%= row.id_catalog %}}"
+                        data-target="#modalDeleteCategory"
+                        data-id="{{%= row.id_category %}}"
                         class="btn btn-danger btn-xs"
                       >
                         <i class="fas fa-trash-alt"></i>
@@ -79,9 +79,9 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalEdit"
+                        data-target="#modalEditCategory"
                         data-row="{{%= JSON.stringify(row) %}}"
-                        data-id="{{%= row.id_catalog %}}"
+                        data-id="{{%= row.id_category %}}"
                         class="btn btn-warning btn-xs"
                       >
                         <i class="fas fa-pen"></i>
@@ -145,8 +145,8 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalDelete"
-                        data-id="{{%= row.id_catalog %}}"
+                        data-target="#modalDeleteSubcategory"
+                        data-id="{{%= row.id_subcategory %}}"
                         class="btn btn-danger btn-xs"
                       >
                         <i class="fas fa-trash-alt"></i>
@@ -154,9 +154,9 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalEdit"
+                        data-target="#modalEditSubcategory"
                         data-row="{{%= JSON.stringify(row) %}}"
-                        data-id="{{%= row.id_catalog %}}"
+                        data-id="{{%= row.id_subcategory %}}"
                         class="btn btn-warning btn-xs"
                       >
                         <i class="fas fa-pen"></i>
@@ -216,8 +216,8 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalDelete"
-                        data-id="{{%= row.id_catalog %}}"
+                        data-target="#modalDeleteBrand"
+                        data-id="{{%= row.id_brand %}}"
                         class="btn btn-danger btn-xs"
                       >
                         <i class="fas fa-trash-alt"></i>
@@ -225,9 +225,9 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalEdit"
+                        data-target="#modalEditBrand"
                         data-row="{{%= JSON.stringify(row) %}}"
-                        data-id="{{%= row.id_catalog %}}"
+                        data-id="{{%= row.id_brand %}}"
                         class="btn btn-warning btn-xs"
                       >
                         <i class="fas fa-pen"></i>
@@ -251,7 +251,7 @@
             <div class="card-tools">
               <a
                 href="#"
-                data-target="#modalCreateMeasurementunits"
+                data-target="#modalCreateMeasurementunit"
                 data-toggle="modal"
                 class="btn btn-success"
                 title="{{%= __('New Measurement Unit') %}}"
@@ -290,8 +290,8 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalDelete"
-                        data-id="{{%= row.id_catalog %}}"
+                        data-target="#modalDeleteMeasurementunit"
+                        data-id="{{%= row.id_measurement_unit %}}"
                         class="btn btn-danger btn-xs"
                       >
                         <i class="fas fa-trash-alt"></i>
@@ -299,9 +299,9 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalEdit"
+                        data-target="#modalEditMeasurementunit"
                         data-row="{{%= JSON.stringify(row) %}}"
-                        data-id="{{%= row.id_catalog %}}"
+                        data-id="{{%= row.id_measurement_unit %}}"
                         class="btn btn-warning btn-xs"
                       >
                         <i class="fas fa-pen"></i>
@@ -318,3 +318,19 @@
     </div>
   </div>
 </section>
+
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateBrand", route:'/dashboard/catalogs/brands', title: "Brand", form: newBrandForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDeleteBrand", route:['/dashboard/catalogs/brands/','/delete'], title: "Brand" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditBrand", route: '/dashboard/catalogs/brands/', title: "Item", form: newBrandForm, size: "modal-lg" }) %}}
+
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateCategory", route:'/dashboard/catalogs/categories', title: "Category", form: newCategoryForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDeleteCategory", route:['/dashboard/catalogs/categories/','/delete'], title: "Category" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditCategory", route: '/dashboard/catalogs/categories/', title: "Item", form: newCategoryForm, size: "modal-lg" }) %}}
+
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateSubcategory", route:'/dashboard/catalogs/subcategories', title: "Subcategory", form: newSubcategoryForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDeleteSubcategory", route:['/dashboard/catalogs/subcategories/','/delete'], title: "Subcategory" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditSubcategory", route: '/dashboard/catalogs/subcategories/', title: "Item", form: newSubcategoryForm, size: "modal-lg" }) %}}
+
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateMeasurementunit", route:'/dashboard/catalogs/measurement-units', title: "Measurementunit", form: newMeasurementunitForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDeleteMeasurementunit", route:['/dashboard/catalogs/measurement-units/','/delete'], title: "Measurementunit" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditMeasurementunit", route: '/dashboard/catalogs/measurement-units/', title: "Item", form: newMeasurementunitForm, size: "modal-lg" }) %}}

@@ -1,6 +1,12 @@
 "use strict";
 
 const ErrorHandler = require("../utils/helpers/error-handler");
+const {
+  newBrandForm,
+  newCategoryForm,
+  newSubcategoryForm,
+  newMeasurementunitForm,
+} = require("../utils/helpers/forms");
 
 const Brands = require("../models/brands.model");
 const Categories = require("../models/categories.model");
@@ -19,6 +25,10 @@ exports.renderCatalogs = async (req, res, next) => {
       categories,
       subcategories,
       measurement_units,
+      newBrandForm: newBrandForm(),
+      newCategoryForm: newCategoryForm(),
+      newSubcategoryForm: newSubcategoryForm({ categories }),
+      newMeasurementunitForm: newMeasurementunitForm(),
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
