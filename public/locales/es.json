@@ -37,5 +37,16 @@
 	"": "",
 	"The item has not been deleted: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DEETE FROM `items` WHERE `id_item` = '56'' at line 1": "The item has not been deleted: Error: ER_PARSE_ERROR: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DEETE FROM `items` WHERE `id_item` = '56'' at line 1",
 	"Something went wrong": "Something went wrong",
-	"Oops! Something went wrong": "Oops! Something went wrong"
+	"Oops! Something went wrong": "Oops! Something went wrong",
+	"Catalogs": "Catalogs",
+	"Categories": "Categories",
+	"Subcategories": "Subcategories",
+	"Brands": "Brands",
+	"Measurement units": "Measurement units",
+	"Category Name": "Category Name",
+	"Code": "Code",
+	"New Category": "New Category",
+	"Catalog": "Catalog",
+	"New Brand": "New Brand",
+	"New Measurement Unit": "New Measurement Unit"
 }

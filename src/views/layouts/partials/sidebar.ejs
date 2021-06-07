@@ -6,7 +6,7 @@
       class="brand-image img-circle elevation-3"
       style="opacity: 0.8"
     />
-    <span class="brand-text font-weight-light">Startup System</span>
+    <span class="brand-text font-weight-light">MRP System</span>
   </a>
 
   <div class="sidebar">
@@ -19,7 +19,9 @@
         />
       </div>
       <div class="info">
-        <a href="#" class="d-block"><span class="capitalize">{{%= user.username %}}</span></a>
+        <a href="#" class="d-block"
+          ><span class="capitalize">{{%= user.username %}}</span></a
+        >
       </div>
     </div>
 
@@ -51,15 +53,22 @@
             <i class="nav-icon fas fa-th"></i>
             <p>
               {{%= __('Dashboard') %}}
-              <!-- <span class="right badge badge-danger">New</span> -->
             </p>
           </a>
         </li>
         <li class="nav-item">
+          <a href="/dashboard/catalogs" class="nav-link">
+            <i class="nav-icon fas fa-th"></i>
+            <p>
+              {{%= __('Catalogs') %}}
+            </p>
+          </a>
+        </li>
+        <!-- <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
-              {{%= __('Catalogues') %}}
+              {{%# __('Catalogues') %}}
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
@@ -67,13 +76,13 @@
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>{{%= __('Items') %}}</p>
+                <p>{{%# __('Items') %}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>{{%= __('Items') %}}</p>
+                <p>{{%# __('Items') %}}</p>
               </a>
             </li>
           </ul>
@@ -82,11 +91,11 @@
           <a href="/dashboard/items" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
-              {{%= __('Items') %}}
-              <!-- <span class="right badge badge-danger">New</span> -->
+              {{%# __('Items') %}}
+              <span class="right badge badge-danger">New</span>
             </p>
           </a>
-        </li>
+        </li> -->
       </ul>
     </nav>
   </div>

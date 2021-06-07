@@ -6,9 +6,12 @@ const { requiresAuthentication } = require("../utils/middlewares/auth");
 
 const authRoutes = require("./auth.routes");
 const dashboardRoutes = require("./dashboard.routes");
+const catalogsRoutes = require("./catalogs.routes");
 
 router.use("/", authRoutes);
 
 router.use("/dashboard", requiresAuthentication, dashboardRoutes);
+
+router.use("/dashboard/catalogs", catalogsRoutes);
 
 module.exports = router;
