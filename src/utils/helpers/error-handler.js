@@ -1,5 +1,6 @@
 exports.handleError = (req, res, error) => {
   if (process.env.SHOW_DETAILED_ERROR !== "Y") {
+    console.log(error);
     req.flash("error", "Something went wrong");
     res.redirect("back");
   } else {
