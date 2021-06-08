@@ -50,6 +50,7 @@
     {{%= isRequired ? 'required' : null %}}
     {{%= isDisabled ? 'disabled' : null %}}
   >
+    <option value="" selected disabled hidden>{{%= __('Select here') %}}</option>
     {{% options.arr.forEach(option => { %}}
     <option value="{{%= option[options.value] %}}">
       {{%= option[options.label] %}}

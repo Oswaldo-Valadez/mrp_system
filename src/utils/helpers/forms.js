@@ -105,7 +105,12 @@ exports.newMeasurementunitForm = () => [
   ],
 ];
 
-exports.newMaterialForm = ({ brands, categories, measurement_units }) => [
+exports.newMaterialForm = ({
+  brands,
+  categories,
+  subcategories,
+  measurement_units,
+}) => [
   [
     {
       componentName: "Input",
@@ -172,8 +177,9 @@ exports.newMaterialForm = ({ brands, categories, measurement_units }) => [
         label: "Subcategory",
         name: "id_subcategory",
         isRequired: true,
+        isDisabled: true,
         options: {
-          arr: [],
+          arr: subcategories,
           value: "id_subcategory",
           label: "name",
         },

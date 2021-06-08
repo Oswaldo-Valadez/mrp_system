@@ -64,5 +64,10 @@
 	"The subcategory has been deleted successfully": "The subcategory has been deleted successfully",
 	"Materials": "Materials",
 	"New Material": "New Material",
-	"Stock": "Stock"
+	"Stock": "Stock",
+	"The material has been created successfully": "The material has been created successfully",
+	"Brand": "Brand",
+	"Measurement unit": "Measurement unit",
+	"Subcategory": "Subcategory",
+	"The material has been deleted successfully": "The material has been deleted successfully"
 }

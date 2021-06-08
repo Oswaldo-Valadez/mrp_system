@@ -8,3 +8,9 @@ exports.handleError = (req, res, error) => {
     res.render("error500", { error500: error });
   }
 };
+
+exports.handleJSONError = (req, res, error) => {
+  console.log(error);
+
+  res.status(500).send();
+};

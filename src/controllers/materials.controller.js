@@ -7,6 +7,7 @@ const Materials = require("../models/materials.model");
 
 const Brands = require("../models/brands.model");
 const Categories = require("../models/categories.model");
+const Subcategories = require("../models/subcategories.model");
 const Measurementunits = require("../models/measurementunits.model");
 
 exports.renderMaterials = async (req, res, next) => {
@@ -14,6 +15,7 @@ exports.renderMaterials = async (req, res, next) => {
     const materials = await Materials.getAllMaterials();
     const brands = await Brands.getAllBrands();
     const categories = await Categories.getAllCategories();
+    const subcategories = await Subcategories.getAllSubcategories();
     const measurement_units = await Measurementunits.getAllMeasurementunits();
 
     res.render("modules/materials/materials", {
@@ -21,6 +23,7 @@ exports.renderMaterials = async (req, res, next) => {
       newMaterialForm: newMaterialForm({
         brands,
         categories,
+        subcategories,
         measurement_units,
       }),
     });

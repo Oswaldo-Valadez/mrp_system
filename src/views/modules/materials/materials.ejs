@@ -54,15 +54,25 @@
               <thead>
                 <tr role="row">
                   <th>#</th>
-                  <th>Head Material</th>
-                  <th>Actions</th>
+                  <th>{{%= __('Name') %}}</th>
+                  <th>{{%= __('Description') %}}</th>
+                  <th>{{%= __('Stock') %}}</th>
+                  <th>{{%= __('Brand') %}}</th>
+                  <th>{{%= __('Measurement unit') %}}</th>
+                  <th>{{%= __('Subcategory') %}}</th>
+                  <th>{{%= __('Actions') %}}</th>
                 </tr>
               </thead>
               <tbody>
                 {{% materials.forEach((row, i) => { %}}
                 <tr class="odd">
                   <td>{{%= i + 1 %}}</td>
-                  <td>Row Material</td>
+                  <td>{{%= row.name %}}</td>
+                  <td>{{%= row.description %}}</td>
+                  <td>{{%= row.stock %}}</td>
+                  <td>{{%= row.id_brand %}}</td>
+                  <td>{{%= row.id_measurement_unit %}}</td>
+                  <td>{{%= row.id_subcategory %}}</td>
                   <td>
                     <div class="column-actions">
                       <a
@@ -97,24 +107,32 @@
   </div>
 </section>
 
-{{%- include('../../components/ModalCreate', { idModal: "modalCreate", route:'/dashboard/dashboard/materials', title: "Material", form: newMaterialForm, size: "modal-lg" }) %}}
-{{%- include('../../components/ModalDelete', { idModal: "modalDelete", route:['/dashboard/dashboard/materials/','/delete'], title: "Material" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEdit", route: '/dashboard/dashboard/materials/', title: "Item", form: newMaterialForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalCreate', { idModal: "modalCreate", route:'/dashboard/materials', title: "Material", form: newMaterialForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDelete", route:['/dashboard/materials/','/delete'], title: "Material" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEdit", route: '/dashboard/materials/', title: "Item", form: newMaterialForm, size: "modal-lg" }) %}}
 
 <script>
   $("[name='id_category']").on("change", function (event) {
     var id_category = $(this).val();
-    console.log(id_category);
+
     $.ajax({
       method: "get",
       url: "/dashboard/catalogs/subcategories/json/categories/" + id_category,
-      success: function ({ subcategories }) {
+    })
+      .done(function ({ subcategories }) {
+        $("#modalCreate [name='id_subcategory']").html(
+          `<option value="" selected disabled hidden>{{%= __('Select here') %}}</option>`
+        );
         subcategories.forEach((row) => {
-          $("[name='id_subcategory']").append(
-            `<option selected value=${row.id_subcategory}>${row.name}</option>`
+          $("#modalCreate [name='id_subcategory']").removeAttr("disabled");
+          $("#modalCreate [name='id_subcategory']").append(
+            `<option value=${row.id_subcategory}>${row.name}</option>`
           );
         });
-      },
-    });
+      })
+      .fail(function (error) {
+        console.log(error);
+        location.reload(true);
+      });
   });
 </script>

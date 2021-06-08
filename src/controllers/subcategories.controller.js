@@ -45,6 +45,6 @@ exports.getJSONSubcategoriesByCategory = async (req, res, next) => {
 
     res.json({ subcategories });
   } catch (error) {
-    ErrorHandler.handleError(req, res, error);
+    ErrorHandler.handleJSONError(req, res, error);
   }
 };

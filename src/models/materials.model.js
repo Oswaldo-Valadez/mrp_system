@@ -23,6 +23,8 @@ exports.getOneMaterial = async (id_material) => {
 };
 
 exports.createMaterial = async (values) => {
+  delete values.id_category;
+  
   const res = await pool.query(`INSERT INTO ?? SET ?`, ["materials", values]);
   return res;
 };
