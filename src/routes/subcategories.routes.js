@@ -10,4 +10,8 @@ router.route("/:id").post(subcategoriesController.updateSubcategory);
 
 router.route("/:id/delete").get(subcategoriesController.deleteSubcategory);
 
+router
+  .route("/json/categories/:id")
+  .get(subcategoriesController.getJSONSubcategoriesByCategory);
+
 module.exports = router;

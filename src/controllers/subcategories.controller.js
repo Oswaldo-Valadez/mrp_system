@@ -36,3 +36,15 @@ exports.deleteSubcategory = async (req, res, next) => {
     ErrorHandler.handleError(req, res, error);
   }
 };
+
+exports.getJSONSubcategoriesByCategory = async (req, res, next) => {
+  try {
+    const subcategories = await Subcategories.getSubcategoriesByCategory(
+      req.params.id
+    );
+
+    res.json({ subcategories });
+  } catch (error) {
+    ErrorHandler.handleError(req, res, error);
+  }
+};

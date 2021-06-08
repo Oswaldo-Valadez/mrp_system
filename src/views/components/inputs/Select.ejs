@@ -4,6 +4,7 @@
         label = label || "",
         options = options || { arr:[], value: "", label: "" },
         isRequired = isRequired || false,
+        isDisabled = isDisabled || false,
         variant = variant || "normal";
 %}}
 
@@ -16,6 +17,7 @@
     class="form-control select2"
     name="{{%= name %}}"
     {{%= isRequired ? 'required' : null %}}
+    {{%= isDisabled ? 'disabled' : null %}}
   >
     <option value="" selected disabled hidden>{{%= __('Select here') %}}</option>
     {{% options.arr.forEach(option => { %}}
@@ -46,6 +48,7 @@
     class="form-control select2"
     name="{{%= name %}}" 
     {{%= isRequired ? 'required' : null %}}
+    {{%= isDisabled ? 'disabled' : null %}}
   >
     {{% options.arr.forEach(option => { %}}
     <option value="{{%= option[options.value] %}}">

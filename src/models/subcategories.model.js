@@ -49,3 +49,12 @@ exports.deleteSubcategory = async (id_subcategory) => {
   ]);
   return res;
 };
+
+exports.getSubcategoriesByCategory = async (id_category) => {
+  const res = await pool.query(`SELECT * FROM ?? INNER JOIN ?? USING(id_category) WHERE ?`, [
+    "subcategories",
+    "categories",
+    { id_category },
+  ]);
+  return res;
+};
