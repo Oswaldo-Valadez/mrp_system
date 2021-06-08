@@ -23,6 +23,11 @@ exports.renderMaterials = async (req, res, next) => {
       newMaterialForm: newMaterialForm({
         brands,
         categories,
+        measurement_units,
+      }),
+      editMaterialForm: newMaterialForm({
+        brands,
+        categories,
         subcategories,
         measurement_units,
       }),

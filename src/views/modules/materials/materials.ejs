@@ -109,10 +109,10 @@
 
 {{%- include('../../components/ModalCreate', { idModal: "modalCreate", route:'/dashboard/materials', title: "Material", form: newMaterialForm, size: "modal-lg" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDelete", route:['/dashboard/materials/','/delete'], title: "Material" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEdit", route: '/dashboard/materials/', title: "Item", form: newMaterialForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEdit", route: '/dashboard/materials/', title: "Item", form: editMaterialForm, size: "modal-lg" }) %}}
 
 <script>
-  $("[name='id_category']").on("change", function (event) {
+  $("#modalCreate [name='id_category']").on("change", function (event) {
     var id_category = $(this).val();
 
     $.ajax({
@@ -128,6 +128,7 @@
           $("#modalCreate [name='id_subcategory']").append(
             `<option value=${row.id_subcategory}>${row.name}</option>`
           );
+          console.log(row)
         });
       })
       .fail(function (error) {
@@ -136,3 +137,29 @@
       });
   });
 </script>
+<!-- 
+<script>
+  $("#modalEdit [name='id_category']").on("change", function (event) {
+    var id_category = $(this).val();
+
+    $.ajax({
+      method: "get",
+      url: "/dashboard/catalogs/subcategories/json/categories/" + id_category,
+    })
+      .done(function ({ subcategories }) {
+        $("#modalEdit [name='id_subcategory']").html(
+          `<option value="" selected disabled hidden>{{%= __('Select here') %}}</option>`
+        );
+        subcategories.forEach((row) => {
+          $("#modalEdit [name='id_subcategory']").removeAttr("disabled");
+          $("#modalEdit [name='id_subcategory']").append(
+            `<option value=${row.id_subcategory}>${row.name}</option>`
+          );
+        });
+      })
+      .fail(function (error) {
+        console.log(error);
+        location.reload(true);
+      });
+  });
+</script> -->

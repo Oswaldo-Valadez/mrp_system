@@ -108,7 +108,7 @@ exports.newMeasurementunitForm = () => [
 exports.newMaterialForm = ({
   brands,
   categories,
-  subcategories,
+  subcategories = [],
   measurement_units,
 }) => [
   [
