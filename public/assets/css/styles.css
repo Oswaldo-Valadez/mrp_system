@@ -10,7 +10,7 @@ span.is-required {
   color: var(--danger);
 }
 
-.select2-container--default .select2-results__option[aria-disabled="true"] {
+.select2-results__option[aria-disabled="true"] {
   display: none !important;
 }
 

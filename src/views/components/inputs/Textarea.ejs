@@ -3,6 +3,7 @@
         name = name || "",
         label = label || "",
         isRequired = isRequired || false,
+        isDisabled = isDisabled || false,
         variant = variant || "normal",
         cols = cols || 30,
         rows = rows || 10;
@@ -11,8 +12,16 @@
 {{% if (variant == "normal") { %}}
 <div class="form-group">
   <label for="{{%= name %}}">
-    {{%= label %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
+    {{%= label %}}{{% if (isRequired) { %}}<span class="is-required">*</span
+    >{{% } %}}
   </label>
-  <textarea {{%= isRequired ? 'required' : null %}} class="form-control" name="{{%= name %}}" cols="{{%= cols %}}" rows="{{%= rows %}}"></textarea>
+  <textarea
+    class="form-control"
+    name="{{%= name %}}"
+    cols="{{%= cols %}}"
+    rows="{{%= rows %}}"
+    {{%= isRequired ? 'required' : null %}}
+    {{%= isDisabled ? 'disabled' : null %}}
+  ></textarea>
 </div>
 {{% } %}}
