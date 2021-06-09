@@ -33,6 +33,8 @@ exports.createMaterial = async (values) => {
 };
 
 exports.updateMaterial = async (id_material, values) => {
+  delete values.id_category;
+
   const res = await pool.query(`UPDATE ?? SET ? WHERE ?`, [
     "materials",
     values,

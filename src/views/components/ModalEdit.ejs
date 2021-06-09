@@ -72,7 +72,7 @@
 
     $(this).find("form").attr("action", `{{%= route %}}${id}`);
 
-    $(".select2").trigger("change");
+    $("#{{%= idModal %}} .select2").trigger("change");
   });
 </script>
 {{% } %}}

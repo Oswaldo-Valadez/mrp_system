@@ -114,7 +114,6 @@
 <script>
   $("#modalCreate [name='id_category']").on("change", function (event) {
     var id_category = $(this).val();
-
     $.ajax({
       method: "get",
       url: "/dashboard/catalogs/subcategories/json/categories/" + id_category,
@@ -128,7 +127,6 @@
           $("#modalCreate [name='id_subcategory']").append(
             `<option value=${row.id_subcategory}>${row.name}</option>`
           );
-          console.log(row)
         });
       })
       .fail(function (error) {
@@ -136,12 +134,9 @@
         location.reload(true);
       });
   });
-</script>
-<!-- 
-<script>
+
   $("#modalEdit [name='id_category']").on("change", function (event) {
     var id_category = $(this).val();
-
     $.ajax({
       method: "get",
       url: "/dashboard/catalogs/subcategories/json/categories/" + id_category,
@@ -162,4 +157,34 @@
         location.reload(true);
       });
   });
-</script> -->
+
+  $("#modalEdit").on("show.bs.modal", function (event) {
+    var button = $(event.relatedTarget);
+
+    var row = button.data("row");
+
+    $.ajax({
+      method: "get",
+      url:
+        "/dashboard/catalogs/subcategories/json/categories/" + row.id_category,
+    })
+      .done(function ({ subcategories }) {
+        $("#modalEdit [name='id_subcategory']").html(
+          `<option value="" selected disabled hidden>{{%= __('Select here') %}}</option>`
+        );
+        subcategories.forEach((row) => {
+          $("#modalEdit [name='id_subcategory']").attr("disabled", true);
+          $("#modalEdit [name='id_subcategory']").append(
+            `<option value=${row.id_subcategory}>${row.name}</option>`
+          );
+          $("#modalEdit [name='id_subcategory']")
+            .val(row.id_subcategory)
+            .trigger("change");
+        });
+      })
+      .fail(function (error) {
+        console.log(error);
+        location.reload(true);
+      });
+  });
+</script>
