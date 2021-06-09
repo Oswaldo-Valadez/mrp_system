@@ -10,7 +10,10 @@ exports.getMaterialsCount = async () => {
 };
 
 exports.getAllMaterials = async () => {
-  const materials = await pool.query(`SELECT * FROM ??`, ["materials"]);
+  const materials = await pool.query(`SELECT m.*, sc.id_category FROM ?? m INNER JOIN ?? sc USING(id_subcategory)`, [
+    "materials",
+    "subcategories",
+  ]);
   return materials;
 };
 
@@ -24,7 +27,7 @@ exports.getOneMaterial = async (id_material) => {
 
 exports.createMaterial = async (values) => {
   delete values.id_category;
-  
+
   const res = await pool.query(`INSERT INTO ?? SET ?`, ["materials", values]);
   return res;
 };

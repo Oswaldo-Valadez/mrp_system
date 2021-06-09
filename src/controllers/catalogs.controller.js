@@ -2,10 +2,10 @@
 
 const ErrorHandler = require("../utils/helpers/error-handler");
 const {
-  newBrandForm,
-  newCategoryForm,
-  newSubcategoryForm,
-  newMeasurementunitForm,
+  formBrand,
+  formCategory,
+  formSubcategory,
+  formMeasurementunit,
 } = require("../utils/helpers/forms");
 
 const Brands = require("../models/brands.model");
@@ -25,10 +25,10 @@ exports.renderCatalogs = async (req, res, next) => {
       categories,
       subcategories,
       measurement_units,
-      newBrandForm: newBrandForm(),
-      newCategoryForm: newCategoryForm(),
-      newSubcategoryForm: newSubcategoryForm({ categories }),
-      newMeasurementunitForm: newMeasurementunitForm(),
+      newBrandForm: formBrand(),
+      newCategoryForm: formCategory(),
+      newSubcategoryForm: formSubcategory({ categories }),
+      newMeasurementunitForm: formMeasurementunit(),
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);

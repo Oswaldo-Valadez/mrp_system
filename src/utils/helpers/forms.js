@@ -1,6 +1,6 @@
 "use strict";
 
-exports.newBrandForm = () => [
+exports.formBrand = () => [
   [
     {
       componentName: "Input",
@@ -14,7 +14,7 @@ exports.newBrandForm = () => [
   ],
 ];
 
-exports.newCategoryForm = () => [
+exports.formCategory = () => [
   [
     {
       componentName: "Input",
@@ -40,7 +40,7 @@ exports.newCategoryForm = () => [
   ],
 ];
 
-exports.newSubcategoryForm = ({ categories }) => [
+exports.formSubcategory = ({ categories = [] }) => [
   [
     {
       componentName: "Input",
@@ -80,7 +80,7 @@ exports.newSubcategoryForm = ({ categories }) => [
   ],
 ];
 
-exports.newMeasurementunitForm = () => [
+exports.formMeasurementunit = () => [
   [
     {
       componentName: "Input",
@@ -105,11 +105,11 @@ exports.newMeasurementunitForm = () => [
   ],
 ];
 
-exports.newMaterialForm = ({
-  brands,
-  categories,
+exports.formMaterial = ({
+  brands = [],
+  categories = [],
   subcategories = [],
-  measurement_units,
+  measurement_units = [],
 }) => [
   [
     {

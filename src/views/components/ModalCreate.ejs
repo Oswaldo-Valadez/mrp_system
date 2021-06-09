@@ -31,3 +31,10 @@
     </div>
   </div>
 </div>
+
+<script>
+  $("#{{%= idModal %}}").on("hidden.bs.modal", function (event) {
+    $("#{{%= idModal %}} form").trigger("reset");
+    $("#{{%= idModal %}} .select2").val("").trigger("change");
+  });
+</script>

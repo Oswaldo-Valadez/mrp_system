@@ -1,7 +1,7 @@
 "use strict";
 
 const ErrorHandler = require("../utils/helpers/error-handler");
-const { newMaterialForm } = require("../utils/helpers/forms");
+const { formMaterial } = require("../utils/helpers/forms");
 
 const Materials = require("../models/materials.model");
 
@@ -20,12 +20,12 @@ exports.renderMaterials = async (req, res, next) => {
 
     res.render("modules/materials/materials", {
       materials,
-      newMaterialForm: newMaterialForm({
+      newMaterialForm: formMaterial({
         brands,
         categories,
         measurement_units,
       }),
-      editMaterialForm: newMaterialForm({
+      editMaterialForm: formMaterial({
         brands,
         categories,
         subcategories,
