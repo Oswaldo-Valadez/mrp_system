@@ -9,7 +9,7 @@
 
       <form action="/signin" method="POST">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="username" placeholder="Username" />
+          <input type="text" class="form-control" name="username" placeholder="{{%= __('Username') %}}" />
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password" placeholder="Password" />
+          <input type="password" class="form-control" name="password" placeholder="{{%= __('Password') %}}" />
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
