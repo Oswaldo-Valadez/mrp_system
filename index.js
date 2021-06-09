@@ -22,9 +22,9 @@ const app = express();
 
 // Init i18n
 i18n.configure({
-  locales: ["es"],
+  locales: ["en"],
   directory: path.join(__dirname, "/public/locales"),
-  defaultLocale: "es",
+  defaultLocale: "en",
 });
 app.use(i18n.init);
 
