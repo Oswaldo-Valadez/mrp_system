@@ -125,7 +125,7 @@
 
 {{%- include('../../components/ModalCreate', { idModal: "modalCreate", route:'/dashboard/materials', title: "Material", form: newMaterialForm, size: "modal-lg" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDelete", route:['/dashboard/materials/','/delete'], title: "Material" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEdit", route: '/dashboard/materials/', title: "Item", form: editMaterialForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEdit", route: '/dashboard/materials/', title: "Material", form: editMaterialForm, size: "modal-lg" }) %}}
 
 <script>
   $("#modalCreate [name='id_category']").on("change", function (event) {

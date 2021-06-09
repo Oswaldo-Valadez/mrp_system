@@ -22,9 +22,9 @@ const app = express();
 
 // Init i18n
 i18n.configure({
-  locales: ["es"],
+  locales: ["en", "es"],
   directory: path.join(__dirname, "/public/locales"),
-  defaultLocale: "es",
+  defaultLocale: "en",
 });
 app.use(i18n.init);
 
@@ -52,19 +52,31 @@ app.use(flash());
 
 // Set global variables
 app.use((req, res, next) => {
-  app.locals.success = req.flash('success')[0];
-  app.locals.error = req.flash('error')[0];
-  app.locals.successSignin = req.flash('successSignin')[0];
+  app.locals.success = req.flash("success")[0];
+  app.locals.error = req.flash("error")[0];
+  app.locals.successSignin = req.flash("successSignin")[0];
 
   app.locals.user = req.user;
- 
+
   if (app.locals.dark_mode === undefined) {
     app.locals.dark_mode = true;
   } else if (req.path == "/toggle-mode") {
     app.locals.dark_mode = !app.locals.dark_mode;
   }
- 
+
+  if (app.locals.lang) {
+    req.setLocale(app.locals.lang);
+  } else {
+    req.setLocale("en");
+    app.locals.lang = "en";
+  }
+
   next();
+});
+
+app.get("/lang/:lang", (req, res) => {
+  app.locals.lang = req.params.lang;
+  res.redirect("back");
 });
 
 // Toggle mode route
