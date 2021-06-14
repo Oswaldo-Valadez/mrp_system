@@ -74,7 +74,7 @@
                   <th>{{%= __('Description') %}}</th>
                   <th>{{%= __('Stock') %}}</th>
                   <th>{{%= __('Brand') %}}</th>
-                  <th>{{%= __('Measurement unit') %}}</th>
+                  <th>{{%= __('Category') %}}</th>
                   <th>{{%= __('Subcategory') %}}</th>
                   <th>{{%= __('Actions') %}}</th>
                 </tr>
@@ -86,9 +86,9 @@
                   <td>{{%= row.name %}}</td>
                   <td>{{%= row.description %}}</td>
                   <td>{{%= row.stock %}}</td>
-                  <td>{{%= row.id_brand %}}</td>
-                  <td>{{%= row.id_measurement_unit %}}</td>
-                  <td>{{%= row.id_subcategory %}}</td>
+                  <td>{{%= row.brand_name %}}</td>
+                  <td>{{%= row.category_name %}}</td>
+                  <td>{{%= row.subcategory_name %}}</td>
                   <td>
                     <div class="column-actions">
                       <a

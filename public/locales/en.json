@@ -56,5 +56,9 @@
 	"Wrong credentials": "Wrong credentials",
 	"Yes": "Yes",
 	"Page not found": "Page not found",
-	"Oops! Page not found": "Oops! Page not found"
+	"Oops! Page not found": "Oops! Page not found",
+	"Username": "Username",
+	"Password": "Password",
+	"Welcome": "Welcome",
+	"Category": "Category"
 }

@@ -10,10 +10,18 @@ exports.getMaterialsCount = async () => {
 };
 
 exports.getAllMaterials = async () => {
-  const materials = await pool.query(`SELECT m.*, sc.id_category FROM ?? m INNER JOIN ?? sc USING(id_subcategory)`, [
-    "materials",
-    "subcategories",
-  ]);
+  const materials = await pool.query(
+    `SELECT
+      m.*,
+      sc.name AS subcategory_name,
+      c.name AS category_name,
+      b.name AS brand_name
+    FROM ?? m
+      INNER JOIN ?? sc USING(id_subcategory)
+      INNER JOIN ?? c USING(id_category)
+      INNER JOIN ?? b USING(id_brand)`,
+    ["materials", "subcategories", "categories", "brands"]
+  );
   return materials;
 };
 
