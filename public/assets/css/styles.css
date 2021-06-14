@@ -18,6 +18,10 @@ span.is-required {
   line-height: 2.375rem;
 }
 
+.table.dtr-inline tr td:first-child {
+  vertical-align: middle;
+}
+
 .column-actions {
   display: flex;
   flex-direction: row;
@@ -58,4 +62,8 @@ span.is-required {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.dtr-title::after {
+  content: ":";
 }

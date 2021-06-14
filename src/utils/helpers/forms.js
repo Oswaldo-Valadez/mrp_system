@@ -149,6 +149,8 @@ exports.formMaterial = ({
         label: "Brand",
         name: "id_brand",
         isRequired: true,
+        variant: "with-add-button",
+        route: "/dashboard/catalogs?openModal=brand",
         options: {
           arr: brands,
           value: "id_brand",
@@ -164,6 +166,9 @@ exports.formMaterial = ({
         label: "Category",
         name: "id_category",
         isRequired: true,
+        variant: "with-add-button",
+        route: "/dashboard/catalogs",
+        route: "/dashboard/catalogs?openModal=category",
         options: {
           arr: categories,
           value: "id_category",
@@ -176,6 +181,9 @@ exports.formMaterial = ({
       options: {
         label: "Subcategory",
         name: "id_subcategory",
+        variant: "with-add-button",
+        route: "/dashboard/catalogs",
+        route: "/dashboard/catalogs?openModal=subcategory",
         isRequired: true,
         isDisabled: true,
         options: {
@@ -193,6 +201,9 @@ exports.formMaterial = ({
         label: "Measurement unit",
         name: "id_measurement_unit",
         isRequired: true,
+        variant: "with-add-button",
+        route: "/dashboard/catalogs",
+        route: "/dashboard/catalogs?openModal=measurementUnit",
         options: {
           arr: measurement_units,
           value: "id_measurement_unit",

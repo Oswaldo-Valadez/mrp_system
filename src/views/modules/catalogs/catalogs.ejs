@@ -231,7 +231,8 @@
                 class="btn btn-success"
                 title="{{%= __('New Subcategory') %}}"
               >
-                <i class="fas fa-plus"></i> &nbsp; {{%= __('New Subcategory') %}}
+                <i class="fas fa-plus"></i> &nbsp;
+                {{%= __('New Subcategory') %}}
               </a>
             </div>
           </div>
@@ -369,3 +370,23 @@
 {{%- include('../../components/ModalCreate', { idModal: "modalCreateMeasurementunit", route:'/dashboard/catalogs/measurement-units', title: "Measurement Unit", form: newMeasurementunitForm, size: "modal-md" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteMeasurementunit", route:['/dashboard/catalogs/measurement-units/','/delete'], title: "Measurement Unit" }) %}}
 {{%- include('../../components/ModalEdit', { idModal: "modalEditMeasurementunit", route: '/dashboard/catalogs/measurement-units/', title: "Measurement Unit", form: newMeasurementunitForm, size: "modal-md" }) %}}
+
+<script>
+  const openModal = getURLQuery()["openModal"];
+  switch (openModal) {
+    case "brand":
+      $("#modalCreateBrand").modal("toggle");
+      break;
+    case "category":
+      $("#modalCreateCategory").modal("toggle");
+      break;
+    case "subcategory":
+      $("#modalCreateSubcategory").modal("toggle");
+      break;
+    case "measurementUnit":
+      $("#modalCreateMeasurementunit").modal("toggle");
+      break;
+    default:
+      break;
+  }
+</script>
