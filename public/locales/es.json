@@ -56,5 +56,7 @@
 	"Wrong credentials": "Credenciales incorrectas",
 	"Yes": "Sí",
 	"Welcome": "Welcome",
-	"Category": "Category"
+	"Category": "Category",
+	"Username": "Username",
+	"Password": "Password"
 }

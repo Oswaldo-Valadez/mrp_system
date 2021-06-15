@@ -18,10 +18,14 @@ span.is-required {
   line-height: 2.375rem;
 }
 
-.table.dtr-inline tr td:first-child {
+.table.dtr-inline tr td {
   vertical-align: middle;
 }
 
+table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
+  padding-left: 40px;
+}
 .column-actions {
   display: flex;
   flex-direction: row;
