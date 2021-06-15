@@ -140,6 +140,12 @@
                       >
                         <i class="fas fa-pen"></i>
                       </a>
+                      <a
+                        href="/dashboard/catalogs/categories/{{%= row.id_category %}}/pin-up?toggle={{%= row.pin_up ? "off" : "on" %}}"
+                        class="btn {{%= row.pin_up ? "btn-info" : "btn-outline-info" %}} btn-xs"
+                      >
+                        <i class="fas fa-thumbtack"></i>
+                      </a>
                     </div>
                   </td>
                 </tr>
@@ -206,6 +212,12 @@
                         class="btn btn-warning btn-xs"
                       >
                         <i class="fas fa-pen"></i>
+                      </a>
+                      <a
+                        href="/dashboard/catalogs/measurement-units/{{%= row.id_measurement_unit %}}/pin-up?toggle={{%= row.pin_up ? "off" : "on" %}}"
+                        class="btn {{%= row.pin_up ? "btn-info" : "btn-outline-info" %}} btn-xs"
+                      >
+                        <i class="fas fa-thumbtack"></i>
                       </a>
                     </div>
                   </td>
@@ -278,6 +290,12 @@
                       >
                         <i class="fas fa-pen"></i>
                       </a>
+                      <a
+                        href="/dashboard/catalogs/subcategories/{{%= row.id_subcategory %}}/pin-up?toggle={{%= row.pin_up ? "off" : "on" %}}"
+                        class="btn {{%= row.pin_up ? "btn-info" : "btn-outline-info" %}} btn-xs"
+                      >
+                        <i class="fas fa-thumbtack"></i>
+                      </a>
                     </div>
                   </td>
                 </tr>
@@ -341,6 +359,12 @@
                         class="btn btn-warning btn-xs"
                       >
                         <i class="fas fa-pen"></i>
+                      </a>
+                      <a
+                        href="/dashboard/catalogs/brands/{{%= row.brand %}}/pin-up?toggle={{%= row.pin_up ? "off" : "on" %}}"
+                        class="btn {{%= row.pin_up ? "btn-info" : "btn-outline-info" %}} btn-xs"
+                      >
+                        <i class="fas fa-thumbtack"></i>
                       </a>
                     </div>
                   </td>

@@ -61,5 +61,8 @@
 	"Password": "Password",
 	"Welcome": "Welcome",
 	"Category": "Category",
-	"More info": "More info"
+	"More info": "More info",
+	"The category has been deleted successfully": "The category has been deleted successfully",
+	"Pin-Up ON": "Pin-Up ON",
+	"Pin-Up OFF": "Pin-Up OFF"
 }
