@@ -48,3 +48,23 @@ exports.getJSONSubcategoriesByCategory = async (req, res, next) => {
     ErrorHandler.handleJSONError(req, res, error);
   }
 };
+
+exports.pinupSubcategory = async (req, res, next) => {
+  try {
+    switch (req.query.toggle) {
+      case "on":
+        await Subcategories.pinupSubcategory(req.params.id, 1);
+        req.flash("success", "Pin-Up ON");
+        break;
+      case "off":
+        await Subcategories.pinupSubcategory(req.params.id, 0);
+        req.flash("success", "Pin-Up OFF");
+        break;
+      default:
+        req.flash("error", "You can't perform this action");
+    }
+    res.redirect("back");
+  } catch (error) {
+    ErrorHandler.handleError(req, res, error);
+  }
+};

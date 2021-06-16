@@ -12,4 +12,6 @@ router
   .route("/:id/delete")
   .get(measurementunitsController.deleteMeasurementunit);
 
+router.route("/:id/pin-up").get(measurementunitsController.pinupMeasurementunit);
+
 module.exports = router;

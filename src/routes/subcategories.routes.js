@@ -14,4 +14,6 @@ router
   .route("/json/categories/:id")
   .get(subcategoriesController.getJSONSubcategoriesByCategory);
 
+router.route("/:id/pin-up").get(subcategoriesController.pinupSubcategory);
+
 module.exports = router;

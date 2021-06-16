@@ -36,3 +36,23 @@ exports.deleteMeasurementunit = async (req, res, next) => {
     ErrorHandler.handleError(req, res, error);
   }
 };
+
+exports.pinupMeasurementunit = async (req, res, next) => {
+  try {
+    switch (req.query.toggle) {
+      case "on":
+        await Measurementunits.pinupMeasurementunit(req.params.id, 1);
+        req.flash("success", "Pin-Up ON");
+        break;
+      case "off":
+        await Measurementunits.pinupMeasurementunit(req.params.id, 0);
+        req.flash("success", "Pin-Up OFF");
+        break;
+      default:
+        req.flash("error", "You can't perform this action");
+    }
+    res.redirect("back");
+  } catch (error) {
+    ErrorHandler.handleError(req, res, error);
+  }
+};

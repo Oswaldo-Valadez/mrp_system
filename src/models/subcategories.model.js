@@ -11,7 +11,9 @@ exports.getSubcategoriesCount = async () => {
 
 exports.getAllSubcategories = async () => {
   const subcategories = await pool.query(
-    `SELECT sc.*, c.name AS category_name FROM ?? sc INNER JOIN ?? c USING(id_category)`,
+    `SELECT sc.*, c.name AS category_name FROM ?? sc
+      INNER JOIN ?? c USING(id_category)
+    ORDER BY pin_up DESC`,
     ["subcategories", "categories"]
   );
   return subcategories;
@@ -55,6 +57,15 @@ exports.getSubcategoriesByCategory = async (id_category) => {
     "subcategories",
     "categories",
     { id_category },
+  ]);
+  return res;
+};
+
+exports.pinupSubcategory = async (id_subcategory, pin_up) => {
+  const res = await pool.query(`UPDATE ?? SET ? WHERE ?`, [
+    "subcategories",
+    { pin_up },
+    { id_subcategory },
   ]);
   return res;
 };
