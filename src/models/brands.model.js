@@ -50,6 +50,5 @@ exports.pinupBrand = async (id_brand, pin_up) => {
     { pin_up },
     { id_brand },
   ]);
-  console.log(res);
   return res;
 };

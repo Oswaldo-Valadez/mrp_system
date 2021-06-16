@@ -52,6 +52,5 @@ exports.pinupCategory = async (id_category, pin_up) => {
     { pin_up },
     { id_category },
   ]);
-  console.log(res)
   return res;
 };

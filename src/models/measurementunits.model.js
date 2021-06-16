@@ -55,6 +55,5 @@ exports.pinupMeasurementunit = async (id_measurement_unit, pin_up) => {
     { pin_up },
     { id_measurement_unit },
   ]);
-  console.log(res);
   return res;
 };
