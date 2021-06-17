@@ -20,6 +20,28 @@
     delay: 5000,
   });
 </script>
+{{% } else if (warning) { %}}
+<script>
+  $(document).Toasts("create", {
+    class: "bg-warning",
+    title: "{{%= __('Warning') %}}!",
+    body: "{{%= __(warning) %}}",
+    icon: "fas fa-exclamation fa-lg",
+    autohide: true,
+    delay: 5000,
+  });
+</script>
+{{% } else if (info) { %}}
+<script>
+  $(document).Toasts("create", {
+    class: "bg-info",
+    title: "{{%= __('Info') %}}!",
+    body: "{{%= __(info) %}}",
+    icon: "fas fa-info fa-lg",
+    autohide: true,
+    delay: 5000,
+  });
+</script>
 {{% } else if (successSignin) { %}}
 <script>
   $(document).Toasts("create", {

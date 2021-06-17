@@ -54,6 +54,8 @@ app.use(flash());
 app.use((req, res, next) => {
   app.locals.success = req.flash("success")[0];
   app.locals.error = req.flash("error")[0];
+  app.locals.warning = req.flash("warning")[0];
+  app.locals.info = req.flash("info")[0];
   app.locals.successSignin = req.flash("successSignin")[0];
 
   app.locals.user = req.user;
