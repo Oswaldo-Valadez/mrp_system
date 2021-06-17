@@ -10,7 +10,7 @@ exports.getBrandsCount = async () => {
 };
 
 exports.getAllBrands = async () => {
-  const brands = await pool.query(`SELECT * FROM ?? ORDER BY pin_up DESC`, ["brands"]);
+  const brands = await pool.query(`SELECT * FROM ?? ORDER BY pin_up DESC, name ASC`, ["brands"]);
   return brands;
 };
 

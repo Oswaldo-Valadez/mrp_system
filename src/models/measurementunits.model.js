@@ -10,7 +10,7 @@ exports.getMeasurementunitsCount = async () => {
 };
 
 exports.getAllMeasurementunits = async () => {
-  const measurementunits = await pool.query(`SELECT * FROM ?? ORDER BY pin_up DESC`, [
+  const measurementunits = await pool.query(`SELECT * FROM ?? ORDER BY pin_up DESC, name ASC`, [
     "measurement_units",
   ]);
   return measurementunits;

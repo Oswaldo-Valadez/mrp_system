@@ -10,7 +10,7 @@ exports.getCategoriesCount = async () => {
 };
 
 exports.getAllCategories = async () => {
-  const categories = await pool.query(`SELECT * FROM ?? ORDER BY pin_up DESC`, [
+  const categories = await pool.query(`SELECT * FROM ?? ORDER BY pin_up DESC, name ASC`, [
     "categories",
   ]);
   return categories;

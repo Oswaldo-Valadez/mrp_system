@@ -1,0 +1,14 @@
+-- TRUNCATE ALL TABLES
+-- ¡¡¡ DISABLE FOREIGN KEY CHECKS !!!
+TRUNCATE TABLE brands;
+TRUNCATE TABLE categories;
+TRUNCATE TABLE materials;
+TRUNCATE TABLE materials_services;
+TRUNCATE TABLE measurement_units;
+TRUNCATE TABLE mrp;
+TRUNCATE TABLE mrp_months;
+TRUNCATE TABLE orders;
+TRUNCATE TABLE services;
+TRUNCATE TABLE `sessions`;
+TRUNCATE TABLE subcategories;
+TRUNCATE TABLE users;

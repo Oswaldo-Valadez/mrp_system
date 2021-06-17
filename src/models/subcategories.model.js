@@ -13,7 +13,7 @@ exports.getAllSubcategories = async () => {
   const subcategories = await pool.query(
     `SELECT sc.*, c.name AS category_name FROM ?? sc
       INNER JOIN ?? c USING(id_category)
-    ORDER BY pin_up DESC`,
+    ORDER BY pin_up DESC, name ASC`,
     ["subcategories", "categories"]
   );
   return subcategories;
