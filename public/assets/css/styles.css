@@ -71,3 +71,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
 .dtr-title::after {
   content: ":";
 }
+
+.http-status-code.content {
+  padding-top: 4rem;
+}

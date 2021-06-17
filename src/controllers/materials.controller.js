@@ -18,7 +18,7 @@ exports.renderMaterials = async (req, res, next) => {
     const subcategories = await Subcategories.getAllSubcategories();
     const measurement_units = await Measurementunits.getAllMeasurementunits();
 
-    res.render("modules/materials/materials", {
+    ErrorHandler.handleRender(req, res, "modules/materials/materials", {
       materials,
       newMaterialForm: formMaterial({
         brands,
@@ -41,7 +41,9 @@ exports.renderMaterial = async (req, res, next) => {
   try {
     const material = await Materials.getOneMaterial(req.params.id);
 
-    res.render("modules/materials/material", { material });
+    ErrorHandler.handleRender(req, res, "modules/materials/material", {
+      material,
+    });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }

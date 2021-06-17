@@ -1,24 +1,4 @@
-<section class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1>{{%= __('Something went wrong') %}}</h1>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item">
-            <a href="/">{{%= __('Dashboard') %}}</a>
-          </li>
-          <li class="breadcrumb-item active">
-            {{%= __('Something went wrong') %}}
-          </li>
-        </ol>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="content">
+<section class="http-status-code content">
   <div class="error-page">
     <h2 class="headline text-danger">500</h2>
 
@@ -33,6 +13,7 @@
         <a href="/">return to dashboard</a>.
       </p>
 
+      {{% if (error500) { %}}
       <div class="alert alert-danger alert-dismissible">
         <button
           type="button"
@@ -43,10 +24,9 @@
           ×
         </button>
         <h5><i class="icon fas fa-ban"></i> {{%= __('Error') %}}!</h5>
-        {{% if (error500) { %}}
         {{%= error500 %}}
-        {{% } %}}
       </div>
+      {{% } %}}
 
       <!-- <form class="search-form">
         <div class="input-group">

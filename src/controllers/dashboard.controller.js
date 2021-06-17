@@ -20,7 +20,10 @@ exports.renderDashboard = async (req, res, next) => {
     const total_catalogs =
       brands + categories + subcategories + measurementunits;
 
-    res.render("dashboard", { total_catalogs, total_materials });
+    ErrorHandler.handleRender(req, res, "dashboard", {
+      total_catalogs,
+      total_materials,
+    });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }
