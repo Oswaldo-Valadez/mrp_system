@@ -18,7 +18,7 @@ exports.handleJSONError = (req, res, error) => {
 exports.handleRender = (req, res, view_route, data) => {
   res.render(view_route, data, (err, html) => {
     if (err) {
-      res.render("error404");
+      res.render("error400");
     } else {
       res.send(html);
     }

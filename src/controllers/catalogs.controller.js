@@ -20,7 +20,7 @@ exports.renderCatalogs = async (req, res, next) => {
     const subcategories = await Subcategories.getAllSubcategories();
     const measurement_units = await Measurementunits.getAllMeasurementunits();
 
-    res.render("modules/catalogs/catalogs", {
+    ErrorHandler.handleRender(req, res, "modules/catalogs/catalogs", {
       brands,
       categories,
       subcategories,
