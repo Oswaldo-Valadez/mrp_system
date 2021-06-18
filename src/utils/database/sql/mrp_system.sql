@@ -2,10 +2,10 @@
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2021 a las 19:17:42
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Host: 127.0.0.1
+-- Generation Time: Jun 18, 2021 at 08:05 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `mrp_system`
+-- Database: `mrp_system`
 --
 CREATE DATABASE IF NOT EXISTS `mrp_system` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `mrp_system`;
@@ -26,7 +26,7 @@ USE `mrp_system`;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `brands`
+-- Table structure for table `brands`
 --
 
 DROP TABLE IF EXISTS `brands`;
@@ -39,7 +39,7 @@ CREATE TABLE `brands` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categories`
+-- Table structure for table `categories`
 --
 
 DROP TABLE IF EXISTS `categories`;
@@ -53,7 +53,7 @@ CREATE TABLE `categories` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materials`
+-- Table structure for table `materials`
 --
 
 DROP TABLE IF EXISTS `materials`;
@@ -70,7 +70,7 @@ CREATE TABLE `materials` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materials_services`
+-- Table structure for table `materials_services`
 --
 
 DROP TABLE IF EXISTS `materials_services`;
@@ -82,7 +82,7 @@ CREATE TABLE `materials_services` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `measurement_units`
+-- Table structure for table `measurement_units`
 --
 
 DROP TABLE IF EXISTS `measurement_units`;
@@ -96,7 +96,7 @@ CREATE TABLE `measurement_units` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrp`
+-- Table structure for table `mrp`
 --
 
 DROP TABLE IF EXISTS `mrp`;
@@ -108,7 +108,7 @@ CREATE TABLE `mrp` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mrp_months`
+-- Table structure for table `mrp_months`
 --
 
 DROP TABLE IF EXISTS `mrp_months`;
@@ -125,7 +125,7 @@ CREATE TABLE `mrp_months` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `orders`
+-- Table structure for table `orders`
 --
 
 DROP TABLE IF EXISTS `orders`;
@@ -137,7 +137,20 @@ CREATE TABLE `orders` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `services`
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE `products` (
+  `id_product` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `services`
 --
 
 DROP TABLE IF EXISTS `services`;
@@ -150,7 +163,7 @@ CREATE TABLE `services` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `subcategories`
+-- Table structure for table `subcategories`
 --
 
 DROP TABLE IF EXISTS `subcategories`;
@@ -165,7 +178,7 @@ CREATE TABLE `subcategories` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -177,23 +190,23 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `brands`
+-- Indexes for table `brands`
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`id_brand`);
 
 --
--- Indices de la tabla `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id_category`);
 
 --
--- Indices de la tabla `materials`
+-- Indexes for table `materials`
 --
 ALTER TABLE `materials`
   ADD PRIMARY KEY (`id_material`),
@@ -202,101 +215,113 @@ ALTER TABLE `materials`
   ADD KEY `id_measurement_unit` (`id_measurement_unit`);
 
 --
--- Indices de la tabla `measurement_units`
+-- Indexes for table `measurement_units`
 --
 ALTER TABLE `measurement_units`
   ADD PRIMARY KEY (`id_measurement_unit`);
 
 --
--- Indices de la tabla `mrp`
+-- Indexes for table `mrp`
 --
 ALTER TABLE `mrp`
   ADD PRIMARY KEY (`id_mrp`),
   ADD KEY `id_material` (`id_material`);
 
 --
--- Indices de la tabla `mrp_months`
+-- Indexes for table `mrp_months`
 --
 ALTER TABLE `mrp_months`
   ADD KEY `id_mrp` (`id_mrp`);
 
 --
--- Indices de la tabla `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id_order`);
 
 --
--- Indices de la tabla `subcategories`
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id_product`);
+
+--
+-- Indexes for table `subcategories`
 --
 ALTER TABLE `subcategories`
   ADD PRIMARY KEY (`id_subcategory`),
   ADD KEY `id_category` (`id_category`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `brands`
+-- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
   MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `materials`
+-- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
   MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `measurement_units`
+-- AUTO_INCREMENT for table `measurement_units`
 --
 ALTER TABLE `measurement_units`
   MODIFY `id_measurement_unit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `mrp`
+-- AUTO_INCREMENT for table `mrp`
 --
 ALTER TABLE `mrp`
   MODIFY `id_mrp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `subcategories`
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `subcategories`
 --
 ALTER TABLE `subcategories`
   MODIFY `id_subcategory` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `materials`
+-- Constraints for table `materials`
 --
 ALTER TABLE `materials`
   ADD CONSTRAINT `materials_ibfk_1` FOREIGN KEY (`id_subcategory`) REFERENCES `subcategories` (`id_subcategory`),
@@ -304,13 +329,13 @@ ALTER TABLE `materials`
   ADD CONSTRAINT `materials_ibfk_3` FOREIGN KEY (`id_measurement_unit`) REFERENCES `measurement_units` (`id_measurement_unit`);
 
 --
--- Filtros para la tabla `mrp_months`
+-- Constraints for table `mrp_months`
 --
 ALTER TABLE `mrp_months`
   ADD CONSTRAINT `mrp_months_ibfk_1` FOREIGN KEY (`id_mrp`) REFERENCES `mrp` (`id_mrp`);
 
 --
--- Filtros para la tabla `subcategories`
+-- Constraints for table `subcategories`
 --
 ALTER TABLE `subcategories`
   ADD CONSTRAINT `subcategories_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
