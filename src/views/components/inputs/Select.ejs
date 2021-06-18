@@ -5,6 +5,7 @@
         options = options || { arr:[], value: "", label: "" },
         isRequired = isRequired || false,
         isDisabled = isDisabled || false,
+        isMultiple = isMultiple || false,
         route = route || "",
         variant = variant || "normal";
 %}}
@@ -19,8 +20,11 @@
     name="{{%= name %}}"
     {{%= isRequired ? 'required' : null %}}
     {{%= isDisabled ? 'disabled' : null %}}
+    {{%= isMultiple ? `multiple="multiple"` : null %}}
   >
+    {{% if (!isMultiple) { %}}
     <option value="" selected disabled hidden>{{%= __('Select here') %}}</option>
+    {{% } %}}
     {{% options.arr.forEach(option => { %}}
     <option value="{{%= option[options.value] %}}">
       {{%= option[options.label] %}}
@@ -48,8 +52,11 @@
       name="{{%= name %}}" 
       {{%= isRequired ? 'required' : null %}}
       {{%= isDisabled ? 'disabled' : null %}}
+      {{%= isMultiple ? `multiple="multiple"` : null %}}
     >
+      {{% if (!isMultiple) { %}}
       <option value="" selected disabled hidden>{{%= __('Select here') %}}</option>
+      {{% } %}}
       {{% options.arr.forEach(option => { %}}
       <option value="{{%= option[options.value] %}}">
         {{%= option[options.label] %}}

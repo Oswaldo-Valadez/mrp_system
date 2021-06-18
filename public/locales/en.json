@@ -71,5 +71,7 @@
 	"Products": "Products",
 	"Product": "Product",
 	"New Product": "New Product",
-	"Edit Product": "Edit Product"
+	"Edit Product": "Edit Product",
+	"The measurementunit has been created successfully": "The measurementunit has been created successfully",
+	"The brand has been created successfully": "The brand has been created successfully"
 }
