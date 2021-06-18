@@ -79,3 +79,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
 .navbar-primary.navbar-dark {
   border-bottom: 1px solid #dee2e6;
 }
+
+.error-page {
+  padding-bottom: 20px;
+}
