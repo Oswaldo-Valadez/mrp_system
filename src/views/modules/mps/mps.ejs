@@ -1,0 +1,73 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>
+            {{%= __('MPS') %}}
+            <small>{{%= __('Master Production Schedule') %}}</small>
+          </h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item">
+              <a href="/">{{%= __('Dashboard') %}}</a>
+            </li>
+            <li class="breadcrumb-item active">{{%= __('MPS') %}}</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+                {{%= __('Master Production Schedule') %}}
+              </h3>
+              <div class="card-tools">
+                <!-- Poner un select del producto -->
+              </div>
+            </div>
+            <div class="card-body">
+              <table
+                class="
+                  table table-bordered table-striped
+                  dataTable
+                  dataTableConfig
+                  dtr-inline
+                "
+                aria-describedby="dataTableConfig_info"
+              >
+                <thead>
+                  <tr role="row">
+                    <th>{{%= __('Product') %}}</th>
+                    <th>{{%= __('Gross requirement') %}}</th>
+                    <th>{{%= __('Scheduled receptions') %}}</th>
+                    <th>{{%= __('Availability projection') %}}</th>
+                    <th>{{%= __('Net requirements') %}}</th>
+                    <th>{{%= __('Planned order release') %}}</th>                    
+                  </tr>
+                </thead>
+                <tbody>
+                    {{% mps.forEach((row, i) => { %}}
+                  <tr class="odd">
+                    <td>{{%= row.gross_requirement %}}</td>
+                    <td>{{%= row.scheduled_receptions %}}</td>
+                    <td>{{%= row.availability_projection %}}</td>
+                    <td>{{%= row.net_requirements %}}</td>
+                    <td>{{%= row.planned_order_release %}}</td>
+                  </tr>
+                  {{% }) %}}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -58,5 +58,14 @@
 	"Welcome": "Welcome",
 	"Category": "Category",
 	"Username": "Username",
-	"Password": "Password"
+	"Password": "Password",
+	"MPS": "MPS",
+	"Master Production Schedule": "Plan Maestro de Producción",
+	"Gross requirement": "Requerimiento bruto",
+	"Scheduled receptions": "Recepciones programadas",
+	"Availability projection": "Proyección de disponibilidad",
+	"Net requirements": "Requerimientos netos",
+	"Planned order release": "Liberación planificada del pedido",
+	"Products": "Products",
+	"Product": "Producto"
 }

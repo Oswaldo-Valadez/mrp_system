@@ -73,5 +73,12 @@
 	"New Product": "New Product",
 	"Edit Product": "Edit Product",
 	"The measurementunit has been created successfully": "The measurementunit has been created successfully",
-	"The brand has been created successfully": "The brand has been created successfully"
+	"The brand has been created successfully": "The brand has been created successfully",
+	"MPS": "MPS",
+	"Master Production Schedule" : "Master Production Schedule",
+	"Gross requirement" : "Goss requirement",
+	"Scheduled receptions" : "Scheduled receptions",
+	"Availability projection" : "Availability projection",
+	"Net requirements" : "Net requirements",
+	"Planned order release" : "Planned order release"
 }
