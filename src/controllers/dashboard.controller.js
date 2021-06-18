@@ -7,6 +7,7 @@ const Categories = require("../models/categories.model");
 const Subcategories = require("../models/subcategories.model");
 const Measurementunits = require("../models/measurementunits.model");
 const Materials = require("../models/materials.model");
+const Products = require("../models/products.model");
 
 exports.renderDashboard = async (req, res, next) => {
   try {
@@ -14,6 +15,7 @@ exports.renderDashboard = async (req, res, next) => {
     const categories = await Categories.getCategoriesCount();
     const subcategories = await Subcategories.getSubcategoriesCount();
     const measurementunits = await Measurementunits.getMeasurementunitsCount();
+    const total_products = await Products.getProductsCount();
 
     const total_materials = await Materials.getMaterialsCount();
 
@@ -23,6 +25,7 @@ exports.renderDashboard = async (req, res, next) => {
     ErrorHandler.handleRender(req, res, "dashboard", {
       total_catalogs,
       total_materials,
+      total_products,
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
