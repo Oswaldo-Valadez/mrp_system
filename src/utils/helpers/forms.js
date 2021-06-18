@@ -213,3 +213,46 @@ exports.formMaterial = ({
     },
   ],
 ];
+
+exports.formProduct = ({ materials }) => [
+  [
+    {
+      componentName: "Input",
+      options: {
+        label: "Name",
+        name: "name",
+        type: "text",
+        isRequired: true,
+      },
+    },
+  ],
+  [
+    {
+      componentName: "Textarea",
+      options: {
+        label: "Description",
+        name: "description",
+        rows: 2,
+        isRequired: true,
+      },
+    },
+  ],
+  [
+    {
+      componentName: "Select",
+      options: {
+        label: "Materials",
+        name: "id_material[]",
+        isRequired: true,
+        isMultiple: true,
+        variant: "with-add-button",
+        route: "/dashboard/materials?openModal=material",
+        options: {
+          arr: materials,
+          value: "id_material",
+          label: "name",
+        },
+      },
+    },
+  ],
+];

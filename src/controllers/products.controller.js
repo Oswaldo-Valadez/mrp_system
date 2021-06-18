@@ -1,15 +1,20 @@
 "use strict";
 
 const ErrorHandler = require("../utils/helpers/error-handler");
+const { formProduct } = require("../utils/helpers/forms");
 
 const Products = require("../models/products.model");
+
+const Materials = require("../models/materials.model");
 
 exports.renderProducts = async (req, res, next) => {
   try {
     const products = await Products.getAllProducts();
+    const materials = await Materials.getAllMaterials();
 
     ErrorHandler.handleRender(req, res, "modules/products/products", {
       products,
+      newProductForm: formProduct({materials}),
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);

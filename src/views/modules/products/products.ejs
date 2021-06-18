@@ -99,6 +99,8 @@
   </div>
 </section>
 
-{{%- include('../../components/ModalCreate', { idModal: "modalCreateProduct", route:'/dashboard/products', title: "Product", form: [], size: "modal-xl" }) %}}
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateProduct", route:'/dashboard/products', title: "Product", form: newProductForm, size: "modal-xl" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteProduct", route:['/dashboard/products/','/delete'], title: "Product" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditProduct", route: '/dashboard/products/', title: "Product", form: [], size: "modal-xl" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditProduct", route: '/dashboard/products/', title: "Product", form: newProductForm, size: "modal-xl" }) %}}
+
+<script src="/public/assets/js/modules/products/products.js"></script>
