@@ -75,3 +75,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
 .http-status-code.content {
   padding-top: 4rem;
 }
+
+.navbar-primary.navbar-dark {
+  border-bottom: 1px solid #dee2e6;
+}
