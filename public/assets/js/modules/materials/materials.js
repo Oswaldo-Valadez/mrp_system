@@ -72,3 +72,12 @@ $("#modalEdit").on("show.bs.modal", function (event) {
       location.reload(true);
     });
 });
+
+const openModal = getURLQuery()["openModal"];
+switch (openModal) {
+  case "material":
+    $("#modalCreate").modal("toggle");
+    break;
+  default:
+    break;
+}
