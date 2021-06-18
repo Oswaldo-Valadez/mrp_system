@@ -1,0 +1,19 @@
+{{% 
+    var
+        name = name || "",
+        label = label || "",
+        isDisabled = isDisabled || false,
+        route = route || "",
+        color = color || "",
+        icon = icon || "fas fa-plus",
+        variant = variant || "normal";
+%}}
+
+{{% if (variant == "normal") { %}}
+
+{{% } else if (variant == "app-button") { %}}
+<a class="btn btn-app {{%= color %}}" id="{{%= name %}}">
+  <!-- <span class="badge bg-teal">67</span> -->
+  <i class="{{%= icon %}}"></i> {{%= __(label) %}}
+</a>
+{{% } %}}
