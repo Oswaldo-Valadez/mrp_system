@@ -40,46 +40,6 @@ exports.formCategory = () => [
   ],
 ];
 
-exports.formSubcategory = ({ categories = [] }) => [
-  [
-    {
-      componentName: "Input",
-      options: {
-        label: "Name",
-        name: "name",
-        type: "text",
-        isRequired: true,
-      },
-    },
-  ],
-  [
-    {
-      componentName: "Textarea",
-      options: {
-        label: "Description",
-        name: "description",
-        rows: 2,
-        isRequired: true,
-      },
-    },
-  ],
-  [
-    {
-      componentName: "Select",
-      options: {
-        label: "Category",
-        name: "id_category",
-        isRequired: true,
-        options: {
-          arr: categories,
-          value: "id_category",
-          label: "name",
-        },
-      },
-    },
-  ],
-];
-
 exports.formMeasurementunit = () => [
   [
     {
@@ -172,23 +132,6 @@ exports.formMaterial = ({
         options: {
           arr: categories,
           value: "id_category",
-          label: "name",
-        },
-      },
-    },
-    {
-      componentName: "Select",
-      options: {
-        label: "Subcategory",
-        name: "id_subcategory",
-        variant: "with-add-button",
-        route: "/dashboard/catalogs",
-        route: "/dashboard/catalogs?openModal=subcategory",
-        isRequired: true,
-        isDisabled: true,
-        options: {
-          arr: subcategories,
-          value: "id_subcategory",
           label: "name",
         },
       },

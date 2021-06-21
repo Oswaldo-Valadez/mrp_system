@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2021 at 08:05 PM
+-- Generation Time: Jun 21, 2021 at 04:34 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -64,7 +64,7 @@ CREATE TABLE `materials` (
   `stock` int(11) NOT NULL,
   `id_brand` int(11) NOT NULL,
   `id_measurement_unit` int(11) NOT NULL,
-  `id_subcategory` int(11) NOT NULL
+  `id_category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -163,21 +163,6 @@ CREATE TABLE `services` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subcategories`
---
-
-DROP TABLE IF EXISTS `subcategories`;
-CREATE TABLE `subcategories` (
-  `id_subcategory` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `description` text NOT NULL,
-  `pin_up` tinyint(1) NOT NULL DEFAULT 0,
-  `id_category` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -210,9 +195,9 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `materials`
   ADD PRIMARY KEY (`id_material`),
-  ADD KEY `id_subcategory` (`id_subcategory`),
   ADD KEY `id_brand` (`id_brand`),
-  ADD KEY `id_measurement_unit` (`id_measurement_unit`);
+  ADD KEY `id_measurement_unit` (`id_measurement_unit`),
+  ADD KEY `id_category` (`id_category`);
 
 --
 -- Indexes for table `measurement_units`
@@ -244,13 +229,6 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id_product`);
-
---
--- Indexes for table `subcategories`
---
-ALTER TABLE `subcategories`
-  ADD PRIMARY KEY (`id_subcategory`),
-  ADD KEY `id_category` (`id_category`);
 
 --
 -- Indexes for table `users`
@@ -305,12 +283,6 @@ ALTER TABLE `products`
   MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `subcategories`
---
-ALTER TABLE `subcategories`
-  MODIFY `id_subcategory` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -324,21 +296,15 @@ ALTER TABLE `users`
 -- Constraints for table `materials`
 --
 ALTER TABLE `materials`
-  ADD CONSTRAINT `materials_ibfk_1` FOREIGN KEY (`id_subcategory`) REFERENCES `subcategories` (`id_subcategory`),
-  ADD CONSTRAINT `materials_ibfk_2` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id_brand`),
-  ADD CONSTRAINT `materials_ibfk_3` FOREIGN KEY (`id_measurement_unit`) REFERENCES `measurement_units` (`id_measurement_unit`);
+  ADD CONSTRAINT `materials_ibfk_1` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id_brand`),
+  ADD CONSTRAINT `materials_ibfk_2` FOREIGN KEY (`id_measurement_unit`) REFERENCES `measurement_units` (`id_measurement_unit`),
+  ADD CONSTRAINT `materials_ibfk_3` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
 
 --
 -- Constraints for table `mrp_months`
 --
 ALTER TABLE `mrp_months`
   ADD CONSTRAINT `mrp_months_ibfk_1` FOREIGN KEY (`id_mrp`) REFERENCES `mrp` (`id_mrp`);
-
---
--- Constraints for table `subcategories`
---
-ALTER TABLE `subcategories`
-  ADD CONSTRAINT `subcategories_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

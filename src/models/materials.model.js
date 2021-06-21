@@ -13,14 +13,12 @@ exports.getAllMaterials = async () => {
   const materials = await pool.query(
     `SELECT
       m.*,
-      sc.name AS subcategory_name,
       c.name AS category_name,
       b.name AS brand_name
     FROM ?? m
-      INNER JOIN ?? sc USING(id_subcategory)
       INNER JOIN ?? c USING(id_category)
-      INNER JOIN ?? b USING(id_brand)`,
-    ["materials", "subcategories", "categories", "brands"]
+      LEFT JOIN ?? b USING(id_brand)`,
+    ["materials", "categories", "brands"]
   );
   return materials;
 };
@@ -34,8 +32,6 @@ exports.getOneMaterial = async (id_material) => {
 };
 
 exports.createMaterial = async (values) => {
-  delete values.id_category;
-
   const res = await pool.query(`INSERT INTO ?? SET ?`, ["materials", values]);
   return res;
 };
