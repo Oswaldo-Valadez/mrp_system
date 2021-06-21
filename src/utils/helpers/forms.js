@@ -183,8 +183,8 @@ exports.formProduct = ({ components }) => [
     {
       componentName: "Select",
       options: {
-        label: "Materials",
-        name: "id_material[]",
+        label: "Components",
+        name: "id_component[]",
         isRequired: true,
         isMultiple: true,
         variant: "with-add-button",
