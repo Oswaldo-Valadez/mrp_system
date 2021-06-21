@@ -1,6 +1,6 @@
 const openModal = getURLQuery()["openModal"];
 switch (openModal) {
-  case "material":
+  case "component":
     $("#modalCreate").modal("toggle");
     break;
   default:

@@ -5,7 +5,7 @@ const ErrorHandler = require("../utils/helpers/error-handler");
 const Brands = require("../models/brands.model");
 const Categories = require("../models/categories.model");
 const Measurementunits = require("../models/measurementunits.model");
-const Materials = require("../models/materials.model");
+const Components = require("../models/components.model");
 const Products = require("../models/products.model");
 
 exports.renderDashboard = async (req, res, next) => {
@@ -16,14 +16,14 @@ exports.renderDashboard = async (req, res, next) => {
       await Measurementunits.getMeasurementunitsCount();
     const count_products = await Products.getProductsCount();
 
-    const count_materials = await Materials.getMaterialsCount();
+    const count_components = await Components.getComponentsCount();
 
     const count_catalogs =
       count_brands + count_categories + count_measurementunits;
 
     ErrorHandler.handleRender(req, res, "dashboard", {
       count_catalogs,
-      count_materials,
+      count_components,
       count_products,
     });
   } catch (error) {

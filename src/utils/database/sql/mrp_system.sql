@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2021 at 04:34 PM
+-- Generation Time: Jun 21, 2021 at 05:33 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -53,30 +53,18 @@ CREATE TABLE `categories` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `materials`
+-- Table structure for table `components`
 --
 
-DROP TABLE IF EXISTS `materials`;
-CREATE TABLE `materials` (
-  `id_material` int(11) NOT NULL,
+DROP TABLE IF EXISTS `components`;
+CREATE TABLE `components` (
+  `id_component` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `stock` int(11) NOT NULL,
   `id_brand` int(11) NOT NULL,
   `id_measurement_unit` int(11) NOT NULL,
   `id_category` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `materials_services`
---
-
-DROP TABLE IF EXISTS `materials_services`;
-CREATE TABLE `materials_services` (
-  `id_material` int(11) NOT NULL,
-  `id_service` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -96,30 +84,28 @@ CREATE TABLE `measurement_units` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mrp`
+-- Table structure for table `mps`
 --
 
-DROP TABLE IF EXISTS `mrp`;
-CREATE TABLE `mrp` (
-  `id_mrp` int(11) NOT NULL,
-  `id_material` int(11) NOT NULL
+DROP TABLE IF EXISTS `mps`;
+CREATE TABLE `mps` (
+  `id_component` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mrp_months`
+-- Table structure for table `mps_periods`
 --
 
-DROP TABLE IF EXISTS `mrp_months`;
-CREATE TABLE `mrp_months` (
-  `id_mrp_month` int(11) NOT NULL,
+DROP TABLE IF EXISTS `mps_periods`;
+CREATE TABLE `mps_periods` (
+  `id_mps_period` int(11) NOT NULL,
   `gross_requirement` int(11) NOT NULL,
   `scheduled_receptions` int(11) NOT NULL,
   `availability_projection` int(11) NOT NULL,
   `net_requirements` int(11) NOT NULL,
-  `planned_order_release` int(11) NOT NULL,
-  `id_mrp` int(11) NOT NULL
+  `planned_order_release` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -150,14 +136,14 @@ CREATE TABLE `products` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `services`
+-- Table structure for table `spreadsheet`
 --
 
-DROP TABLE IF EXISTS `services`;
-CREATE TABLE `services` (
-  `id_service` int(11) NOT NULL,
-  `name` int(11) NOT NULL,
-  `description` int(11) NOT NULL
+DROP TABLE IF EXISTS `spreadsheet`;
+CREATE TABLE `spreadsheet` (
+  `id_component` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -191,10 +177,10 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id_category`);
 
 --
--- Indexes for table `materials`
+-- Indexes for table `components`
 --
-ALTER TABLE `materials`
-  ADD PRIMARY KEY (`id_material`),
+ALTER TABLE `components`
+  ADD PRIMARY KEY (`id_component`),
   ADD KEY `id_brand` (`id_brand`),
   ADD KEY `id_measurement_unit` (`id_measurement_unit`),
   ADD KEY `id_category` (`id_category`);
@@ -206,17 +192,10 @@ ALTER TABLE `measurement_units`
   ADD PRIMARY KEY (`id_measurement_unit`);
 
 --
--- Indexes for table `mrp`
+-- Indexes for table `mps_periods`
 --
-ALTER TABLE `mrp`
-  ADD PRIMARY KEY (`id_mrp`),
-  ADD KEY `id_material` (`id_material`);
-
---
--- Indexes for table `mrp_months`
---
-ALTER TABLE `mrp_months`
-  ADD KEY `id_mrp` (`id_mrp`);
+ALTER TABLE `mps_periods`
+  ADD PRIMARY KEY (`id_mps_period`);
 
 --
 -- Indexes for table `orders`
@@ -253,10 +232,10 @@ ALTER TABLE `categories`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `materials`
+-- AUTO_INCREMENT for table `components`
 --
-ALTER TABLE `materials`
-  MODIFY `id_material` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `components`
+  MODIFY `id_component` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `measurement_units`
@@ -265,10 +244,10 @@ ALTER TABLE `measurement_units`
   MODIFY `id_measurement_unit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `mrp`
+-- AUTO_INCREMENT for table `mps_periods`
 --
-ALTER TABLE `mrp`
-  MODIFY `id_mrp` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `mps_periods`
+  MODIFY `id_mps_period` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -293,18 +272,12 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `materials`
+-- Constraints for table `components`
 --
-ALTER TABLE `materials`
-  ADD CONSTRAINT `materials_ibfk_1` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id_brand`),
-  ADD CONSTRAINT `materials_ibfk_2` FOREIGN KEY (`id_measurement_unit`) REFERENCES `measurement_units` (`id_measurement_unit`),
-  ADD CONSTRAINT `materials_ibfk_3` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
-
---
--- Constraints for table `mrp_months`
---
-ALTER TABLE `mrp_months`
-  ADD CONSTRAINT `mrp_months_ibfk_1` FOREIGN KEY (`id_mrp`) REFERENCES `mrp` (`id_mrp`);
+ALTER TABLE `components`
+  ADD CONSTRAINT `components_ibfk_1` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id_brand`),
+  ADD CONSTRAINT `components_ibfk_2` FOREIGN KEY (`id_measurement_unit`) REFERENCES `measurement_units` (`id_measurement_unit`),
+  ADD CONSTRAINT `components_ibfk_3` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

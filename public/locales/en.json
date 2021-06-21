@@ -83,5 +83,11 @@
 	"Planned order release": "Planned order release",
 	"Quantity": "Quantity",
 	"Add Material": "Add Material",
-	"Remove Last": "Remove Last"
+	"Remove Last": "Remove Last",
+	"Components": "Components",
+	"New Component": "New Component",
+	"Edit Component": "Edit Component",
+	"Inventory": "Inventory",
+	"All inventory": "All inventory",
+	"components": "components"
 }

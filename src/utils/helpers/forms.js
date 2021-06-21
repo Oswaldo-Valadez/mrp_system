@@ -65,10 +65,9 @@ exports.formMeasurementunit = () => [
   ],
 ];
 
-exports.formMaterial = ({
+exports.formComponent = ({
   brands = [],
   categories = [],
-  subcategories = [],
   measurement_units = [],
 }) => [
   [
@@ -157,7 +156,7 @@ exports.formMaterial = ({
   ],
 ];
 
-exports.formProduct = ({ materials }) => [
+exports.formProduct = ({ components }) => [
   [
     {
       componentName: "Input",
@@ -189,9 +188,9 @@ exports.formProduct = ({ materials }) => [
         isRequired: true,
         isMultiple: true,
         variant: "with-add-button",
-        route: "/dashboard/materials?openModal=material",
+        route: "/dashboard/inventory?openModal=component",
         options: {
-          arr: materials,
+          arr: components,
           value: "id_material",
           label: "name",
         },
