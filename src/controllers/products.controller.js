@@ -65,3 +65,11 @@ exports.deleteProduct = async (req, res, next) => {
     ErrorHandler.handleError(req, res, error);
   }
 };
+
+exports.renderCreateProduct = async (req, res, next) => {
+  try {
+    ErrorHandler.handleRender(req, res, "modules/products/new-product");
+  } catch (error) {
+    ErrorHandler.handleError(req, res, error);
+  }
+};

@@ -23,6 +23,8 @@
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- BS-Stepper -->
+<script src="/adminlte/plugins/bs-stepper/js/bs-stepper.min.js"></script>
 
 <!-- Active Tab in Menú -->
 <script src="/public/assets/js/activeMenu.js"></script>
@@ -39,5 +41,9 @@
     $(".select2").select2({
       theme: "bootstrap4",
     });
+  });
+  // BS-Stepper Init
+  document.addEventListener("DOMContentLoaded", function () {
+    window.stepper = new Stepper(document.querySelector(".bs-stepper"));
   });
 </script>
