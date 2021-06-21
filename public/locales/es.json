@@ -67,5 +67,9 @@
 	"Net requirements": "Requerimientos netos",
 	"Planned order release": "Liberación planificada del pedido",
 	"Products": "Products",
-	"Product": "Producto"
+	"Product": "Producto",
+	"Inventory": "Inventory",
+	"components": "components",
+	"New Component": "New Component",
+	"Edit Component": "Edit Component"
 }
