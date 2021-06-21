@@ -89,5 +89,8 @@
 	"Edit Component": "Edit Component",
 	"Inventory": "Inventory",
 	"All inventory": "All inventory",
-	"components": "components"
+	"components": "components",
+	"The component has been updated successfully": "The component has been updated successfully",
+	"The component has been created successfully": "The component has been created successfully",
+	"The component has been deleted successfully": "The component has been deleted successfully"
 }
