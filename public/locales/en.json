@@ -83,5 +83,6 @@
 	"Planned order release": "Planned order release",
 	"Quantity": "Quantity",
 	"Add Material": "Add Material",
-	"Remove Last": "Remove Last"
+	"Remove Last": "Remove Last",
+	"You can't perform this action": "You can't perform this action"
 }
