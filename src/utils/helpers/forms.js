@@ -40,46 +40,6 @@ exports.formCategory = () => [
   ],
 ];
 
-exports.formSubcategory = ({ categories = [] }) => [
-  [
-    {
-      componentName: "Input",
-      options: {
-        label: "Name",
-        name: "name",
-        type: "text",
-        isRequired: true,
-      },
-    },
-  ],
-  [
-    {
-      componentName: "Textarea",
-      options: {
-        label: "Description",
-        name: "description",
-        rows: 2,
-        isRequired: true,
-      },
-    },
-  ],
-  [
-    {
-      componentName: "Select",
-      options: {
-        label: "Category",
-        name: "id_category",
-        isRequired: true,
-        options: {
-          arr: categories,
-          value: "id_category",
-          label: "name",
-        },
-      },
-    },
-  ],
-];
-
 exports.formMeasurementunit = () => [
   [
     {
@@ -105,10 +65,9 @@ exports.formMeasurementunit = () => [
   ],
 ];
 
-exports.formMaterial = ({
+exports.formComponent = ({
   brands = [],
   categories = [],
-  subcategories = [],
   measurement_units = [],
 }) => [
   [
@@ -176,23 +135,6 @@ exports.formMaterial = ({
         },
       },
     },
-    {
-      componentName: "Select",
-      options: {
-        label: "Subcategory",
-        name: "id_subcategory",
-        variant: "with-add-button",
-        route: "/dashboard/catalogs",
-        route: "/dashboard/catalogs?openModal=subcategory",
-        isRequired: true,
-        isDisabled: true,
-        options: {
-          arr: subcategories,
-          value: "id_subcategory",
-          label: "name",
-        },
-      },
-    },
   ],
   [
     {
@@ -214,7 +156,7 @@ exports.formMaterial = ({
   ],
 ];
 
-exports.formProduct = ({ materials }) => [
+exports.formProduct = ({ components }) => [
   [
     {
       componentName: "Input",
@@ -241,14 +183,14 @@ exports.formProduct = ({ materials }) => [
     {
       componentName: "Select",
       options: {
-        label: "Materials",
-        name: "id_material[]",
+        label: "Components",
+        name: "id_component[]",
         isRequired: true,
         isMultiple: true,
         variant: "with-add-button",
-        route: "/dashboard/materials?openModal=material",
+        route: "/dashboard/inventory?openModal=component",
         options: {
-          arr: materials,
+          arr: components,
           value: "id_material",
           label: "name",
         },

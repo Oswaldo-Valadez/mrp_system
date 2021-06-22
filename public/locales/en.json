@@ -84,5 +84,15 @@
 	"Quantity": "Quantity",
 	"Add Material": "Add Material",
 	"Remove Last": "Remove Last",
-	"You can't perform this action": "You can't perform this action"
+	"Components": "Components",
+	"New Component": "New Component",
+	"Edit Component": "Edit Component",
+	"Inventory": "Inventory",
+	"All inventory": "All inventory",
+	"components": "components",
+	"The component has been updated successfully": "The component has been updated successfully",
+	"The component has been created successfully": "The component has been created successfully",
+	"The component has been deleted successfully": "The component has been deleted successfully",
+	"Product Info": "Product Info",
+	"Quantity per Component": "Quantity per Component"
 }

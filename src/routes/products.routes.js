@@ -5,14 +5,16 @@ const router = require("express").Router();
 const productsController = require("../controllers/products.controller");
 
 router
-    .route("/")
-    .get(productsController.renderProducts)
-    .post(productsController.createProduct);
+  .route("/")
+  .get(productsController.renderProducts)
+  .post(productsController.createProduct);
+
+router.route("/new").get(productsController.renderCreateProduct);
 
 router
-    .route("/:id")
-    .get(productsController.renderProduct)
-    .post(productsController.updateProduct);
+  .route("/:id")
+  .get(productsController.renderProduct)
+  .post(productsController.updateProduct);
 
 router.route("/:id/delete").get(productsController.deleteProduct);
 

@@ -1,31 +1,44 @@
+/* FOR INFO CARDS */
+.justify-content-evenly {
+  justify-content: space-evenly;
+}
+
 .dt-buttons.btn-group.flex-wrap {
   width: 100%;
 }
 
+/* SET BORDER RADIOUS FOR TABLES */
 table.table-bordered.dataTable {
   border-radius: 0.25rem;
 }
 
+/* STYLE FOR THE * WHEN IS REQUIRED */
 span.is-required {
   color: var(--danger);
 }
 
+/* HIDE PLACEHOLDER */
 .select2-results__option[aria-disabled="true"] {
   display: none !important;
 }
 
+/* CENTER CARD TITLE */
 .card-title {
   line-height: 2.375rem;
 }
 
+/* CENTER ELEMENTS IN A TABLE */
 .table.dtr-inline tr td {
   vertical-align: middle;
 }
 
+/* PADDING FOR TABLE RESPONSIVE BUTTON */
 table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control,
 table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
   padding-left: 40px;
 }
+
+/* STYLES FOR ACTION BUTTONS IN TABLES */
 .column-actions {
   display: flex;
   flex-direction: row;
@@ -34,21 +47,23 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
   align-items: auto;
   align-content: space-around;
 }
-
 .column-actions .btn {
   flex: 0 0 auto;
   margin: 0.1rem;
   width: 1.5rem;
 }
 
+/* HOVER IN SIDEBAR LEGACY BUTTON */
 .nav-legacy.nav-sidebar > .nav-item > .nav-link.active {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+/* FIX TOAST IN DARK MODE */
 .dark-mode .toasts-top-right.fixed {
   background-color: #343a40;
 }
 
+/* CONTAINER FOR TOASTS */
 .toasts-top-right.fixed {
   margin-top: 4rem;
   margin-right: 1rem;
@@ -57,6 +72,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
   background-color: #fff;
 }
 
+/* MODIFY TOAST */
 .toast {
   width: 100%;
   max-width: none;
@@ -64,22 +80,27 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
   box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
 }
 
+/* CAPITALIZE WORDS */
 .capitalize {
   text-transform: capitalize;
 }
 
+/* PUT : FOR TITLES WHEN RESPONSIVE TABLE IS ACTIVE */
 .dtr-title::after {
   content: ":";
 }
 
+/* PADDING FOR ERROR PAGES */
 .http-status-code.content {
   padding-top: 4rem;
 }
 
+/* FIX BORDER BOTTOM BOR HEADER */
 .navbar-primary.navbar-dark {
   border-bottom: 1px solid #dee2e6;
 }
 
+/* FIX PADDING FOR ERROR PAGES */
 .error-page {
   padding-bottom: 20px;
 }

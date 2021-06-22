@@ -4,28 +4,27 @@ const ErrorHandler = require("../utils/helpers/error-handler");
 
 const Brands = require("../models/brands.model");
 const Categories = require("../models/categories.model");
-const Subcategories = require("../models/subcategories.model");
 const Measurementunits = require("../models/measurementunits.model");
-const Materials = require("../models/materials.model");
+const Components = require("../models/components.model");
 const Products = require("../models/products.model");
 
 exports.renderDashboard = async (req, res, next) => {
   try {
-    const brands = await Brands.getBrandsCount();
-    const categories = await Categories.getCategoriesCount();
-    const subcategories = await Subcategories.getSubcategoriesCount();
-    const measurementunits = await Measurementunits.getMeasurementunitsCount();
-    const total_products = await Products.getProductsCount();
+    const count_brands = await Brands.getBrandsCount();
+    const count_categories = await Categories.getCategoriesCount();
+    const count_measurementunits =
+      await Measurementunits.getMeasurementunitsCount();
+    const count_products = await Products.getProductsCount();
 
-    const total_materials = await Materials.getMaterialsCount();
+    const count_components = await Components.getComponentsCount();
 
-    const total_catalogs =
-      brands + categories + subcategories + measurementunits;
+    const count_catalogs =
+      count_brands + count_categories + count_measurementunits;
 
     ErrorHandler.handleRender(req, res, "dashboard", {
-      total_catalogs,
-      total_materials,
-      total_products,
+      count_catalogs,
+      count_components,
+      count_products,
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);

@@ -4,7 +4,6 @@
       <div class="col-sm-6">
         <h1>
           {{%= __('Dashboard') %}}
-          <small>{{%= __('Dashboard') %}}</small>
         </h1>
       </div>
       <div class="col-sm-6">
@@ -22,7 +21,7 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>{{%= total_catalogs %}}</h3>
+            <h3>{{%= count_catalogs %}}</h3>
 
             <p>{{%= __('Catalogs') %}}</p>
           </div>
@@ -37,13 +36,13 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>{{%= total_materials %}}</h3>
-            <p>{{%= __('Materials') %}}</p>
+            <h3>{{%= count_components %}}</h3>
+            <p>{{%= __('Inventory') %}}</p>
           </div>
           <div class="icon">
             <i class="fas fa-box"></i>
           </div>
-          <a href="/dashboard/materials" class="small-box-footer"
+          <a href="/dashboard/inventory" class="small-box-footer"
             >{{%= __('More info') %}} <i class="fas fa-chevron-circle-right"></i
           ></a>
         </div>
@@ -51,7 +50,7 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>{{%= total_products %}}</h3>
+            <h3>{{%= count_products %}}</h3>
 
             <p>{{%= __('Products') %}}</p>
           </div>

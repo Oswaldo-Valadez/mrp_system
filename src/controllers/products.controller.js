@@ -5,16 +5,16 @@ const { formProduct } = require("../utils/helpers/forms");
 
 const Products = require("../models/products.model");
 
-const Materials = require("../models/materials.model");
+const Components = require("../models/components.model");
 
 exports.renderProducts = async (req, res, next) => {
   try {
     const products = await Products.getAllProducts();
-    const materials = await Materials.getAllMaterials();
+    const components = await Components.getAllComponents();
 
     ErrorHandler.handleRender(req, res, "modules/products/products", {
       products,
-      newProductForm: formProduct({materials}),
+      newProductForm: formProduct({ components }),
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
@@ -61,6 +61,14 @@ exports.deleteProduct = async (req, res, next) => {
 
     req.flash("success", "The product has been deleted successfully");
     res.redirect("back");
+  } catch (error) {
+    ErrorHandler.handleError(req, res, error);
+  }
+};
+
+exports.renderCreateProduct = async (req, res, next) => {
+  try {
+    ErrorHandler.handleRender(req, res, "modules/products/new-product");
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }

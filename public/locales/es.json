@@ -68,5 +68,8 @@
 	"Planned order release": "Liberación planificada del pedido",
 	"Products": "Products",
 	"Product": "Producto",
-	"More info": "More info"
+	"Inventory": "Inventory",
+	"components": "components",
+	"New Component": "New Component",
+	"Edit Component": "Edit Component"
 }

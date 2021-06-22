@@ -21,7 +21,7 @@
 
 <section class="content">
   <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-evenly">
       <div class="col-12 col-sm-6 col-md-3">
         <div class="info-box">
           <span class="info-box-icon bg-primary elevation-1"
@@ -36,21 +36,6 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-sm-6 col-md-3">
-        <div class="info-box mb-3">
-          <span class="info-box-icon bg-primary elevation-1"
-            ><i class="fas fa-book"></i
-          ></span>
-
-          <div class="info-box-content">
-            <span class="info-box-text">{{%= __('Subcategories') %}}</span>
-            <span class="info-box-number">{{%= subcategories.length %}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="clearfix hidden-md-up"></div>
-
       <div class="col-12 col-sm-6 col-md-3">
         <div class="info-box mb-3">
           <span class="info-box-icon bg-primary elevation-1"
@@ -232,81 +217,6 @@
         <div class="card card-primary card-outline">
           <div class="card-header">
             <h3 class="card-title">
-              <i class="fas fa-book"></i>
-              {{%= __('Subcategories') %}}
-            </h3>
-            <div class="card-tools">
-              <a
-                href="#"
-                data-target="#modalCreateSubcategory"
-                data-toggle="modal"
-                class="btn btn-success"
-                title="{{%= __('New Subcategory') %}}"
-              >
-                <i class="fas fa-plus"></i> &nbsp;
-                {{%= __('New Subcategory') %}}
-              </a>
-            </div>
-          </div>
-          <div class="card-body">
-            <table
-              class="table dataTable dataTableConfig dtr-inline"
-              aria-describedby="dataTableConfig_info"
-            >
-              <thead>
-                <tr role="row">
-                  <th>#</th>
-                  <th>{{%= __('Name') %}}</th>
-                  <th>{{%= __('Description') %}}</th>
-                  <th>{{%= __('Category') %}}</th>
-                  <th>{{%= __('Actions') %}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{% subcategories.forEach((row, i) => { %}}
-                <tr class="odd">
-                  <td>{{%= i + 1 %}}</td>
-                  <td>{{%= row.name %}}</td>
-                  <td>{{%= row.description %}}</td>
-                  <td>{{%= row.category_name %}}</td>
-                  <td>
-                    <div class="column-actions">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modalDeleteSubcategory"
-                        data-id="{{%= row.id_subcategory %}}"
-                        class="btn btn-danger btn-xs"
-                      >
-                        <i class="fas fa-trash-alt"></i>
-                      </a>
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modalEditSubcategory"
-                        data-row="{{%= JSON.stringify(row) %}}"
-                        data-id="{{%= row.id_subcategory %}}"
-                        class="btn btn-warning btn-xs"
-                      >
-                        <i class="fas fa-pen"></i>
-                      </a>
-                      <a
-                        href="/dashboard/catalogs/subcategories/{{%= row.id_subcategory %}}/pin-up?toggle={{%= row.pin_up ? "off" : "on" %}}"
-                        class="btn {{%= row.pin_up ? "btn-info" : "btn-outline-info" %}} btn-xs"
-                      >
-                        <i class="fas fa-thumbtack"></i>
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-                {{% }) %}}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h3 class="card-title">
               <i class="far fa-copyright"></i>
               {{%= __('Brands') %}}
             </h3>
@@ -386,10 +296,6 @@
 {{%- include('../../components/ModalCreate', { idModal: "modalCreateCategory", route:'/dashboard/catalogs/categories', title: "Category", form: newCategoryForm, size: "modal-md" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteCategory", route:['/dashboard/catalogs/categories/','/delete'], title: "Category" }) %}}
 {{%- include('../../components/ModalEdit', { idModal: "modalEditCategory", route: '/dashboard/catalogs/categories/', title: "Category", form: newCategoryForm, size: "modal-md" }) %}}
-
-{{%- include('../../components/ModalCreate', { idModal: "modalCreateSubcategory", route:'/dashboard/catalogs/subcategories', title: "Subcategory", form: newSubcategoryForm, size: "modal-md" }) %}}
-{{%- include('../../components/ModalDelete', { idModal: "modalDeleteSubcategory", route:['/dashboard/catalogs/subcategories/','/delete'], title: "Subcategory" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditSubcategory", route: '/dashboard/catalogs/subcategories/', title: "Subcategory", form: newSubcategoryForm, size: "modal-md" }) %}}
 
 {{%- include('../../components/ModalCreate', { idModal: "modalCreateMeasurementunit", route:'/dashboard/catalogs/measurement-units', title: "Measurement Unit", form: newMeasurementunitForm, size: "modal-md" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteMeasurementunit", route:['/dashboard/catalogs/measurement-units/','/delete'], title: "Measurement Unit" }) %}}
