@@ -2,6 +2,8 @@
 
 const { pool } = require("../utils/database/query");
 
+const Spreadsheet = require("./spreadsheet.model");
+
 exports.getProductsCount = async () => {
   const count = (
     await pool.query(`SELECT COUNT(*) AS count FROM ??`, ["products"])
@@ -23,7 +25,25 @@ exports.getOneProduct = async (id_product) => {
 };
 
 exports.createProduct = async (values) => {
-  const res = await pool.query(`INSERT INTO ?? SET ?`, ["products", values]);
+  const { name, description, id_component, quantity } = values;
+  const res = await pool.query(`INSERT INTO ?? SET ?`, [
+    "products",
+    { name, description },
+  ]);
+
+  const { insertId } = res;
+
+  if (id_component) {
+    for (let i = 0; i < id_component.length; i++) {
+      const product_component = {
+        id_product: insertId,
+        id_component: id_component[i],
+        quantity: quantity[i],
+      };
+      await Spreadsheet.createSpreadsheet(product_component);
+    }
+  }
+
   return res;
 };
 
@@ -41,5 +61,14 @@ exports.deleteProduct = async (id_product) => {
     "products",
     { id_product },
   ]);
+  return res;
+};
+
+exports.createProductComponent = async (values) => {
+  const res = await pool.query(`INSERT INTO ?? SET ?`, [
+    "product_components",
+    values,
+  ]);
+
   return res;
 };
