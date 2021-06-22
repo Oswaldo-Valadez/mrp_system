@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2021 at 05:33 PM
+-- Generation Time: Jun 22, 2021 at 08:00 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -210,6 +210,13 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id_product`);
 
 --
+-- Indexes for table `spreadsheet`
+--
+ALTER TABLE `spreadsheet`
+  ADD KEY `id_component` (`id_component`),
+  ADD KEY `id_product` (`id_product`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -278,6 +285,13 @@ ALTER TABLE `components`
   ADD CONSTRAINT `components_ibfk_1` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id_brand`),
   ADD CONSTRAINT `components_ibfk_2` FOREIGN KEY (`id_measurement_unit`) REFERENCES `measurement_units` (`id_measurement_unit`),
   ADD CONSTRAINT `components_ibfk_3` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
+
+--
+-- Constraints for table `spreadsheet`
+--
+ALTER TABLE `spreadsheet`
+  ADD CONSTRAINT `spreadsheet_ibfk_1` FOREIGN KEY (`id_component`) REFERENCES `components` (`id_component`),
+  ADD CONSTRAINT `spreadsheet_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
