@@ -36,8 +36,8 @@ exports.renderProduct = async (req, res, next) => {
 
 exports.createProduct = async (req, res, next) => {
   try {
-    await Products.createProduct(req.body);
-
+    // await Products.createProduct(req.body);
+    console.log(req.body)
     req.flash("success", "The product has been created successfully");
     res.redirect("back");
   } catch (error) {

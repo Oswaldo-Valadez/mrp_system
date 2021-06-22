@@ -21,7 +21,7 @@
 
 <section class="content">
   <div class="container-fluid">
-    <form action="">
+    <form action="/dashboard/products" method="POST">
       <div class="row">
         <div class="col-md-12">
           <div class="card card-primary card-outline">
@@ -62,15 +62,21 @@
               <table class="table table-bordered table-striped">
                 <thead>
                   <tr role="row">
-                    <th>Head New-product</th>
+                    <th>{{%= __('ID') %}}</th>
+                    <th>{{%= __('Component') %}}</th>
+                    <th>{{%= __('Quantity') %}}</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr class="odd">
-                    <td>Row New-product</td>
-                  </tr>
-                </tbody>
+                <tbody id="tb-product-components"></tbody>
               </table>
+            </div>
+            <div class="card-footer clearfix">
+              <button
+                type="submit"
+                class="btn btn-sm btn-success float-right"
+              >
+                {{%= __('Submit') %}}
+              </button>
             </div>
           </div>
         </div>
@@ -82,3 +88,5 @@
 {{%- include('../../components/ModalCreate', { idModal: "modalAddProductComponent", title: "Component", form: addProductComponentForm, size: "modal-lg" }) %}}
 {{%- include('../../components/ModalDelete', { idModal: "modalDeleteProductComponent", title: "Component" }) %}}
 {{%- include('../../components/ModalEdit', { idModal: "modalEditProductComponent", title: "Component", form: addProductComponentForm, size: "modal-lg" }) %}}
+
+<script src="/public/assets/js/modules/products/new-product.js"></script>
