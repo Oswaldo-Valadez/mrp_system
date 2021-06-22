@@ -1,7 +1,10 @@
 "use strict";
 
 const ErrorHandler = require("../utils/helpers/error-handler");
-const { formProduct } = require("../utils/helpers/forms");
+const {
+  formProduct,
+  formAddProductComponent,
+} = require("../utils/helpers/forms");
 
 const Products = require("../models/products.model");
 
@@ -10,11 +13,9 @@ const Components = require("../models/components.model");
 exports.renderProducts = async (req, res, next) => {
   try {
     const products = await Products.getAllProducts();
-    const components = await Components.getAllComponents();
 
     ErrorHandler.handleRender(req, res, "modules/products/products", {
       products,
-      newProductForm: formProduct({ components }),
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
@@ -68,7 +69,12 @@ exports.deleteProduct = async (req, res, next) => {
 
 exports.renderCreateProduct = async (req, res, next) => {
   try {
-    ErrorHandler.handleRender(req, res, "modules/products/new-product");
+    const components = await Components.getAllComponents();
+
+    ErrorHandler.handleRender(req, res, "modules/products/new-product", {
+      newProductForm: formProduct(),
+      addProductComponentForm: formAddProductComponent({ components }),
+    });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }

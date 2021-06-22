@@ -156,7 +156,7 @@ exports.formComponent = ({
   ],
 ];
 
-exports.formProduct = ({ components }) => [
+exports.formProduct = () => [
   [
     {
       componentName: "Input",
@@ -179,21 +179,33 @@ exports.formProduct = ({ components }) => [
       },
     },
   ],
+];
+
+exports.formAddProductComponent = ({ components }) => [
   [
     {
       componentName: "Select",
       options: {
-        label: "Components",
-        name: "id_component[]",
+        label: "Component",
+        name: "id_component",
         isRequired: true,
-        isMultiple: true,
         variant: "with-add-button",
+        route: "/dashboard/inventory",
         route: "/dashboard/inventory?openModal=component",
         options: {
           arr: components,
-          value: "id_material",
+          value: "id_component",
           label: "name",
         },
+      },
+    },
+    {
+      componentName: "Input",
+      options: {
+        label: "Quantity",
+        name: "quantity",
+        type: "text",
+        isRequired: true,
       },
     },
   ],
