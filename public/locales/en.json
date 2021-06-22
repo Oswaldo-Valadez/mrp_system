@@ -100,5 +100,6 @@
 	"ID": "ID",
 	"Submit": "Submit",
 	"The product has been updated successfully": "The product has been updated successfully",
-	"The product has been created successfully": "The product has been created successfully"
+	"The product has been created successfully": "The product has been created successfully",
+	"The product has been deleted successfully": "The product has been deleted successfully"
 }

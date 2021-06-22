@@ -43,7 +43,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > th.dtr-control {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: auto;
   align-content: space-around;
 }
