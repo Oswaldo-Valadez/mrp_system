@@ -17,11 +17,16 @@ exports.getAllProducts = async () => {
 };
 
 exports.getOneProduct = async (id_product) => {
-  const product = await pool.query(`SELECT * FROM ?? WHERE ?`, [
+  const product = (await pool.query(`SELECT * FROM ?? WHERE ?`, [
     "products",
     { id_product },
-  ])[0];
-  return product;
+  ]))[0];
+
+  console.log(product)
+
+  const spreadsheet = await Spreadsheet.getAllSpreadsheetByProduct(id_product);
+
+  return { product, spreadsheet };
 };
 
 exports.createProduct = async (values) => {

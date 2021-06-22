@@ -61,7 +61,12 @@
                 {{% products.forEach((row, i) => { %}}
                 <tr class="odd">
                   <td>{{%= i + 1 %}}</td>
-                  <td>{{%= row.name %}}</td>
+                  <td>
+                    <a
+                      href="/dashboard/products/{{%= row.id_product %}}"
+                      >{{%= row.name %}}</a
+                    >
+                  </td>
                   <td>{{%= row.description %}}</td>
                   <td>
                     <div class="column-actions">
@@ -74,16 +79,16 @@
                       >
                         <i class="fas fa-trash-alt"></i>
                       </a>
-                      <a
+                      <!-- <a
                         href="#"
                         data-toggle="modal"
                         data-target="#modalEditProduct"
-                        data-row="{{%= JSON.stringify(row) %}}"
-                        data-id="{{%= row.id_product %}}"
+                        data-row="{{%# JSON.stringify(row) %}}"
+                        data-id="{{%# row.id_product %}}"
                         class="btn btn-warning btn-xs"
                       >
                         <i class="fas fa-pen"></i>
-                      </a>
+                      </a> -->
                     </div>
                   </td>
                 </tr>

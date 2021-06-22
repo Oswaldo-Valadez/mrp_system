@@ -1,0 +1,129 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>
+          {{%= __('Products') %}}
+          <small class="text-muted">{{%= __('Product') %}}</small>
+        </h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <a href="/">{{%= __('Dashboard') %}}</a>
+          </li>
+          <li class="breadcrumb-item active">{{%= __('Product') %}}</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-edit"></i>
+              {{%= __('Product Info') %}}
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="name">
+                    {{%= __('Name') %}}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{%= product.name %}}"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label for="description">
+                    {{%= __('Description') %}}
+                  </label>
+                  <textarea
+                    class="form-control"
+                    cols="30"
+                    rows="2"
+                    readonly
+                  >{{%= product.description %}}</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-microchip"></i>
+              {{%= __('Product Components') %}}
+            </h3>
+            <!-- none -->
+          </div>
+          <div class="card-body">
+            <table
+              class="table table-bordered table-striped"
+              aria-describedby="dataTableConfig_info"
+            >
+              <thead>
+                <tr role="row">
+                  <th>#</th>
+                  <th>{{%= __('Component') %}}</th>
+                  <th>{{%= __('Quantity') %}}</th>
+                  <!-- <th>{{%# __('Actions') %}}</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                {{% spreadsheet.forEach((row, i) => { %}}
+                <tr class="odd">
+                  <td>{{%= i + 1 %}}</td>
+                  <td>{{%= row.name %}}</td>
+                  <td>{{%= row.quantity %}}</td>
+                  <!-- <td>
+                    <div class="column-actions">
+                      <a
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#modalDelete"
+                        data-id="{{%# row.id_product %}}"
+                        class="btn btn-danger btn-xs"
+                      >
+                        <i class="fas fa-trash-alt"></i>
+                      </a>
+                      <a
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#modalEdit"
+                        data-row="{{%# JSON.stringify(row) %}}"
+                        data-id="{{%# row.id_product %}}"
+                        class="btn btn-warning btn-xs"
+                      >
+                        <i class="fas fa-pen"></i>
+                      </a>
+                    </div>
+                  </td> -->
+                </tr>
+                {{% }) %}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

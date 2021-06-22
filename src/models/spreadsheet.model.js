@@ -48,11 +48,10 @@ exports.getAllSpreadsheetByProduct = async (id_product) => {
   const spreadsheet = await pool.query(
     `
     SELECT * FROM ??
-        INNER JOIN ?? p USING(id_product)
         INNER JOIN ?? c USING(id_component)
     WHERE ?
     `,
-    ["spreadsheet", "products", "components", { id_product }]
+    ["spreadsheet", "components", { id_product }]
   );
   return spreadsheet;
 };

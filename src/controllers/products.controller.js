@@ -24,10 +24,15 @@ exports.renderProducts = async (req, res, next) => {
 
 exports.renderProduct = async (req, res, next) => {
   try {
-    const product = await Products.getOneProduct(req.params.id);
+    const { product, spreadsheet } = await Products.getOneProduct(
+      req.params.id
+    );
+
+    console.log(product, spreadsheet);
 
     ErrorHandler.handleRender(req, res, "modules/products/product", {
       product,
+      spreadsheet,
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
