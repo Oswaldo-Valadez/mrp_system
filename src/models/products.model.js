@@ -22,8 +22,6 @@ exports.getOneProduct = async (id_product) => {
     { id_product },
   ]))[0];
 
-  console.log(product)
-
   const spreadsheet = await Spreadsheet.getAllSpreadsheetByProduct(id_product);
 
   return { product, spreadsheet };

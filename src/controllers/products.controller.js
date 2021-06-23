@@ -28,8 +28,6 @@ exports.renderProduct = async (req, res, next) => {
       req.params.id
     );
 
-    console.log(product, spreadsheet);
-
     ErrorHandler.handleRender(req, res, "modules/products/product", {
       product,
       spreadsheet,
