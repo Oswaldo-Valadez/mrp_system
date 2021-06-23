@@ -5,27 +5,27 @@
   </head>
 
   <body class="hold-transition sidebar-mini {{%= dark_mode ? null : "dark-mode" %}} layout-fixed layout-navbar-fixed">
-    <!-- Preloader -->
-    <div
-      class="preloader flex-column justify-content-center align-items-center"
-    >
-      <img
-        src="/public/assets/imgs/logo.png"
-        alt="Logo"
-        class="animation__wobble"
-        style="
-          position: absolute;
-          top: calc(50% - 30px);
-          left: calc(50% - 30px);
-          z-index: 10000;
-        "
-        height="60"
-        width="60"
-      />
-      <div id="burst-12" class="animation__wobble"></div>
-    </div>
-
     <div class="wrapper">
+      <!-- Preloader -->
+      <div
+        class="preloader flex-column justify-content-center align-items-center"
+      >
+        <img
+          src="/public/assets/imgs/logo.png"
+          alt="Logo"
+          class="animation__wobble"
+          style="
+            position: absolute;
+            top: calc(50% - 30px);
+            left: calc(50% - 30px);
+            z-index: 10000;
+          "
+          height="60"
+          width="60"
+        />
+        <div id="burst-12" class="animation__wobble"></div>
+      </div>
+      
       {{%- include('./partials/header') %}}
       {{%- include('./partials/sidebar') %}}
       <div class="content-wrapper">
