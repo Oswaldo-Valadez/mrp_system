@@ -4,6 +4,7 @@
   height: 60px;
   position: relative;
   text-align: center;
+  border-radius: 8px;
 }
 #burst-12:before,
 #burst-12:after {
@@ -15,6 +16,7 @@
   width: 60px;
   background: var(--main);
   z-index: 0;
+  border-radius: 8px;
 }
 #burst-12:before {
   transform: rotate(30deg);
