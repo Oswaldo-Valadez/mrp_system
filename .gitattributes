@@ -1,0 +1,2 @@
+# Ignores for analysis is used to produce the language stats bar which displays the languages percentages
+*.css linguist-vendored=true
