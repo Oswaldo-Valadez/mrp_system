@@ -80,11 +80,31 @@ exports.formComponent = ({
         isRequired: true,
       },
     },
+  ],
+  [
     {
       componentName: "Input",
       options: {
         label: "Stock",
         name: "stock",
+        type: "number",
+        isRequired: true,
+      },
+    },
+    {
+      componentName: "Input",
+      options: {
+        label: "Security Stock",
+        name: "security_stock",
+        type: "number",
+        isRequired: true,
+      },
+    },
+    {
+      componentName: "Input",
+      options: {
+        label: "Wait Time",
+        name: "wait_time",
         type: "number",
         isRequired: true,
       },
@@ -170,6 +190,26 @@ exports.formProduct = () => [
   ],
   [
     {
+      componentName: "Input",
+      options: {
+        label: "Production Time",
+        name: "production_time",
+        type: "number",
+        isRequired: true,
+      },
+    },
+    {
+      componentName: "Input",
+      options: {
+        label: "Stock",
+        name: "stock",
+        type: "number",
+        isRequired: true,
+      },
+    },
+  ],
+  [
+    {
       componentName: "Textarea",
       options: {
         label: "Description",
@@ -204,7 +244,7 @@ exports.formAddProductComponent = ({ components }) => [
       options: {
         label: "Quantity",
         name: "quantity",
-        type: "text",
+        type: "number",
         isRequired: true,
       },
     },

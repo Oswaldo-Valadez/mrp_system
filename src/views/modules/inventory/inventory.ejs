@@ -73,8 +73,11 @@
                     <th>{{%= __('Name') %}}</th>
                     <th>{{%= __('Description') %}}</th>
                     <th>{{%= __('Stock') %}}</th>
+                    <th>{{%= __('Security Stock') %}}</th>
+                    <th>{{%= __('Wait Time') %}}</th>
                     <th>{{%= __('Brand') %}}</th>
                     <th>{{%= __('Category') %}}</th>
+                    <th>{{%= __('Measurement Unit') %}}</th>
                     <th>{{%= __('Actions') %}}</th>
                   </tr>
                 </thead>
@@ -85,11 +88,16 @@
                     <td>{{%= row.name %}}</td>
                     <td>{{%= row.description %}}</td>
                     <td>{{%= row.stock %}}</td>
+                    <td>{{%= row.security_stock %}}</td>
+                    <td>{{%= row.wait_time %}}</td>
                     <td>
                       <span class="badge bg-info">{{%= row.brand_name %}}</span>
                     </td>
                     <td>
                       <span class="badge bg-info">{{%= row.category_name %}}</span>
+                    </td>
+                    <td>
+                      <span class="badge bg-info">{{%= row.measurement_unit_name %}}</span>
                     </td>
                     <td>
                       <div class="column-actions">

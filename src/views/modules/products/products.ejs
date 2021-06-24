@@ -71,6 +71,8 @@
                   <th>#</th>
                   <th>{{%= __('Name') %}}</th>
                   <th>{{%= __('Description') %}}</th>
+                  <th>{{%= __('Production Time') %}}</th>
+                  <th>{{%= __('Stock') %}}</th>
                   <th>{{%= __('Actions') %}}</th>
                 </tr>
               </thead>
@@ -85,6 +87,8 @@
                     >
                   </td>
                   <td>{{%= row.description %}}</td>
+                  <td>{{%= row.production_time %}}</td>
+                  <td>{{%= row.stock %}}</td>
                   <td>
                     <div class="column-actions">
                       <a

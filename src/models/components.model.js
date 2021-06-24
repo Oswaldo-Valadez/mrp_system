@@ -14,12 +14,14 @@ exports.getAllComponents = async () => {
     `SELECT
         m.*,
         c.name AS category_name,
-        b.name AS brand_name
+        b.name AS brand_name,
+        mu.name AS measurement_unit_name
       FROM ?? m
         INNER JOIN ?? c USING(id_category)
         INNER JOIN ?? b USING(id_brand)
+        INNER JOIN ?? mu USING(id_measurement_unit)
       `,
-    ["components", "categories", "brands"]
+    ["components", "categories", "brands", "measurement_units"]
   );
   return components;
 };
