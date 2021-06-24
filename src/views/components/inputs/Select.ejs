@@ -16,7 +16,8 @@
     {{%= label %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
   </label>
   <select
-    class="form-control select2"
+    class="form-control select2 select2-primary"
+    data-dropdown-css-class="select2-primary"
     name="{{%= name %}}"
     {{%= isRequired ? 'required' : null %}}
     {{%= isDisabled ? 'disabled' : null %}}
@@ -48,7 +49,8 @@
       </a>
     </span>
     <select
-      class="form-control select2"
+      class="form-control select2 select2-primary"
+      data-dropdown-css-class="select2-primary"
       name="{{%= name %}}" 
       {{%= isRequired ? 'required' : null %}}
       {{%= isDisabled ? 'disabled' : null %}}
