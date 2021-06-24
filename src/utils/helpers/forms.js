@@ -69,6 +69,7 @@ exports.formComponent = ({
   brands = [],
   categories = [],
   measurement_units = [],
+  fields = {},
 }) => [
   [
     {
@@ -80,15 +81,17 @@ exports.formComponent = ({
         isRequired: true,
       },
     },
-    {
-      componentName: "Input",
-      options: {
-        label: "Stock",
-        name: "stock",
-        type: "number",
-        isRequired: true,
-      },
-    },
+    !fields.stock
+      ? {
+          componentName: "Input",
+          options: {
+            label: "Stock",
+            name: "stock",
+            type: "number",
+            isRequired: true,
+          },
+        }
+      : null,
   ],
   [
     {
