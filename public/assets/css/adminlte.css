@@ -11171,7 +11171,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
-.dark-mode :root {
+.dark-mode {
   --lightblue: #86bad8;
   --navy: #002c59;
   --olive: #74c8a3;
