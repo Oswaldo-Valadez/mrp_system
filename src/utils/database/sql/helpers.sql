@@ -10,4 +10,4 @@ TRUNCATE TABLE orders;
 TRUNCATE TABLE products;
 TRUNCATE TABLE `sessions`;
 TRUNCATE TABLE spreadsheet;
--- TRUNCATE TABLE users;
+TRUNCATE TABLE users;
