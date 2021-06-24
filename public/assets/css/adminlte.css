@@ -11171,6 +11171,20 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 .dark-mode {
   --lightblue: #86bad8;
   --navy: #002c59;
@@ -11203,13 +11217,18 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .animation__shake {
-  -webkit-animation: shake 1500ms;
-          animation: shake 1500ms;
+  -webkit-animation: shake 1500ms infinite;
+          animation: shake 1500ms infinite;
 }
 
 .animation__wobble {
-  -webkit-animation: wobble 1500ms;
-          animation: wobble 1500ms;
+  -webkit-animation: wobble 1500ms infinite;
+          animation: wobble 1500ms infinite;
+}
+
+.animation__spin {
+  -webkit-animation: spin 2000ms linear infinite;
+          animation: spin 2000ms linear infinite;
 }
 
 .preloader {

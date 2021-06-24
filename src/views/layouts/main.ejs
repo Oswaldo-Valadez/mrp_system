@@ -10,19 +10,24 @@
       class="preloader flex-column justify-content-center align-items-center"
     >
       <img
-        class="animation__wobble"
         src="/public/assets/imgs/logo.png"
         style="
           position: absolute;
-          top: calc(50% - 30px);
-          left: calc(50% - 30px);
+          top: calc(50% - 35px);
+          left: calc(50% - 35px);
           z-index: 10000;
         "
         alt="Logo"
-        height="60"
-        width="60"
+        height="70"
+        width="70"
       />
-      <div id="burst-12" class="animation__wobble"></div>
+      <div class="gear animation__spin">
+        <div class="center"></div>
+        <div class="tooth"></div>
+        <div class="tooth"></div>
+        <div class="tooth"></div>
+        <div class="tooth"></div>
+      </div> 
     </div>
 
     {{%- body %}}
