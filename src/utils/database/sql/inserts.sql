@@ -38,19 +38,6 @@ INSERT INTO `categories` (`id_category`, `name`, `description`, `pin_up`) VALUES
 (15, 'Cooling and heatsinks', 'Others: cooling and heatsinks', 1);
 
 --
--- Volcado de datos para la tabla `components`
---
-
-INSERT INTO `components` (`id_component`, `name`, `description`, `stock`, `id_brand`, `id_measurement_unit`, `id_category`) VALUES
-(1, 'B550m Ds3h', 'Motherboard Gigabyte B550m Ds3h Socket Am4, 4x Ddr4-sdram, 4x Sata Iii, 4x Usb 3.0, 4x Usb 2.0, 1x Hdmi, Micro Atx, (b550m Ds3h)', 50, 2, 1, 1),
-(2, 'Ryzen 5 5600x', 'Processor Amd Ryzen 5 5600x, 3.7ghz, Socket Am4, 35mb Cache, 6 Nucleos-12 Hilos, (100-100000065box)\r\n', 50, 3, 1, 2),
-(3, 'Vengeance Lpx', 'RAM Corsair Vengeance Lpx 8gb, Ddr4, 3600 Mhz, Cmk8gx4m1z3600c18\r\n', 50, 9, 1, 3),
-(4, 'Swordfish 500gb', 'SSD M.2 Nvme Adata Swordfish 500gb, Pci-e Gen3x4, Lectura 1800mb/s, Escritura 1200mb/s (aswordfish-500g-c)', 50, 8, 1, 4),
-(5, 'Masterbox Mb530p', 'Cabinet Cooler Master Masterbox Mb530p, Soporta Atx, Micro-atx, Mini-itx, Ventana Lateral, Ventiladores 120mm, Color Negro\r\n', 50, 7, 1, 5),
-(6, 'SPR-0600NHFAW', 'Power supplier Thermaltake Smart Rgb, 600w, 20+4 Pin, 6 Sata, 3 Molex, 2 Pci-e 6+2, Ventilador 120mm Iluminacion Rgb, Certificacion 80 Plus', 50, 12, 1, 11),
-(7, 'Gv-n710d5-2gl', 'Video card Gigabyte NVIDIA Gv-n710d5-2gl, 2gb Gddr5, Resolucion 4096x2160 Pixeles, Pci Express X8 2.0, 1-hdmi, 1-dvi, Color Negro', 50, 2, 1, 12);
-
---
 -- Volcado de datos para la tabla `measurement_units`
 --
 
@@ -58,11 +45,24 @@ INSERT INTO `measurement_units` (`id_measurement_unit`, `name`, `code`, `pin_up`
 (1, 'Piece', 'PC', 0);
 
 --
+-- Volcado de datos para la tabla `components`
+--
+
+INSERT INTO `components` (`id_component`, `name`, `description`, `stock`, `security_stock`, `wait_time`, `id_brand`, `id_measurement_unit`, `id_category`) VALUES
+(1, 'B550m Ds3h', 'Motherboard Gigabyte B550m Ds3h Socket Am4, 4x Ddr4-sdram, 4x Sata Iii, 4x Usb 3.0, 4x Usb 2.0, 1x Hdmi, Micro Atx, (b550m Ds3h)', 50, 50, 2, 2, 1, 1),
+(2, 'Ryzen 5 5600x', 'Processor Amd Ryzen 5 5600x, 3.7ghz, Socket Am4, 35mb Cache, 6 Nucleos-12 Hilos, (100-100000065box)\r\n', 50, 50, 2, 3, 1, 2),
+(3, 'Vengeance Lpx', 'RAM Corsair Vengeance Lpx 8gb, Ddr4, 3600 Mhz, Cmk8gx4m1z3600c18\r\n', 50, 50, 2, 9, 1, 3),
+(4, 'Swordfish 500gb', 'SSD M.2 Nvme Adata Swordfish 500gb, Pci-e Gen3x4, Lectura 1800mb/s, Escritura 1200mb/s (aswordfish-500g-c)', 50, 50, 2, 8, 1, 4),
+(5, 'Masterbox Mb530p', 'Cabinet Cooler Master Masterbox Mb530p, Soporta Atx, Micro-atx, Mini-itx, Ventana Lateral, Ventiladores 120mm, Color Negro\r\n', 50, 50, 2, 7, 1, 5),
+(6, 'SPR-0600NHFAW', 'Power supplier Thermaltake Smart Rgb, 600w, 20+4 Pin, 6 Sata, 3 Molex, 2 Pci-e 6+2, Ventilador 120mm Iluminacion Rgb, Certificacion 80 Plus', 50, 50, 2, 12, 1, 11),
+(7, 'Gv-n710d5-2gl', 'Video card Gigabyte NVIDIA Gv-n710d5-2gl, 2gb Gddr5, Resolucion 4096x2160 Pixeles, Pci Express X8 2.0, 1-hdmi, 1-dvi, Color Negro', 50, 50, 2, 2, 1, 12);
+
+--
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id_product`, `name`, `description`) VALUES
-(1, 'MRP GAMING PC', 'Test product');
+INSERT INTO `products` (`id_product`, `name`, `description`, `production_time`, `stock`) VALUES
+(1, 'MRP GAMING PC', 'Test product', 1, 10);
 
 --
 -- Volcado de datos para la tabla `spreadsheet`

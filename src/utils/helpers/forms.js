@@ -69,6 +69,7 @@ exports.formComponent = ({
   brands = [],
   categories = [],
   measurement_units = [],
+  fields = {},
 }) => [
   [
     {
@@ -82,33 +83,39 @@ exports.formComponent = ({
     },
   ],
   [
-    {
-      componentName: "Input",
-      options: {
-        label: "Stock",
-        name: "stock",
-        type: "number",
-        isRequired: true,
-      },
-    },
-    {
-      componentName: "Input",
-      options: {
-        label: "Security Stock",
-        name: "security_stock",
-        type: "number",
-        isRequired: true,
-      },
-    },
-    {
-      componentName: "Input",
-      options: {
-        label: "Wait Time",
-        name: "wait_time",
-        type: "number",
-        isRequired: true,
-      },
-    },
+    !fields.stock
+      ? {
+          componentName: "Input",
+          options: {
+            label: "Stock",
+            name: "stock",
+            type: "number",
+            isRequired: true,
+          },
+        }
+      : null,
+    !fields.security_stock
+      ? {
+          componentName: "Input",
+          options: {
+            label: "Security Stock",
+            name: "security_stock",
+            type: "number",
+            isRequired: true,
+          },
+        }
+      : null,
+    !fields.wait_time
+      ? {
+          componentName: "Input",
+          options: {
+            label: "Wait Time",
+            name: "wait_time",
+            type: "number",
+            isRequired: true,
+          },
+        }
+      : null,
   ],
   [
     {

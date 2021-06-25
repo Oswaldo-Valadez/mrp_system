@@ -27,6 +27,7 @@ exports.renderComponents = async (req, res, next) => {
         brands,
         categories,
         measurement_units,
+        fields: { stock: true },
       }),
     });
   } catch (error) {

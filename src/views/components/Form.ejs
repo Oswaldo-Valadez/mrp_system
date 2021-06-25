@@ -3,19 +3,13 @@
     form = form || [];
 %}}
 {{% form.forEach((row, i) => { %}}
-{{% if (row.length > 0 && row.length <= 4 || row.length == 6) { %}}
 <div class="row">
   {{% row.forEach((column, j) => { %}}
-  <div class="col-{{%= 12 / row.length %}}">
+  {{% if (column) { %}}
+  <div class="col">
     {{%- include(`./inputs/${column.componentName}`, { ...column.options }) %}}
   </div>
+  {{% } %}}
   {{% }) %}}
 </div>
-{{% } else { %}}
-{{% row.forEach((column, j) => { %}}
-<div class="col-12">
-  {{%- include(`./inputs/${column.componentName}`, { ...column.options }) %}}
-</div>
-{{% }) %}}
-{{% } %}}
 {{% }) %}}

@@ -106,8 +106,15 @@
 	"List": "List",
 	"list": "list",
 	"LIST": "LIST",
+	"Orders": "Orders",
+	"Order": "Order",
+	"New Order": "New Order",
+	"Reference Code": "Reference Code",
 	"Security Stock": "Security Stock",
 	"Wait Time": "Wait Time",
 	"Measurement Unit": "Measurement Unit",
-	"Production Time": "Production Time"
+	"Production Time": "Production Time",
+	"Lists": "Lists",
+	"Customer Orders": "Customer Orders",
+	"Receptions": "Receptions"
 }
