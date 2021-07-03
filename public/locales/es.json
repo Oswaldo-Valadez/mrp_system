@@ -71,5 +71,8 @@
 	"Inventory": "Inventory",
 	"components": "components",
 	"New Component": "New Component",
-	"Edit Component": "Edit Component"
+	"Edit Component": "Edit Component",
+	"Oops! Page not found": "Oops! Page not found",
+	"Orders": "Orders",
+	"Receptions": "Receptions"
 }
