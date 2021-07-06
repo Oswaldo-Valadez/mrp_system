@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 24, 2021 at 07:30 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 06-07-2021 a las 06:38:59
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mrp_system`
+-- Base de datos: `mrp_system`
 --
 CREATE DATABASE IF NOT EXISTS `mrp_system` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `mrp_system`;
@@ -26,7 +26,7 @@ USE `mrp_system`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brands`
+-- Estructura de tabla para la tabla `brands`
 --
 
 DROP TABLE IF EXISTS `brands`;
@@ -39,7 +39,7 @@ CREATE TABLE `brands` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Estructura de tabla para la tabla `categories`
 --
 
 DROP TABLE IF EXISTS `categories`;
@@ -53,7 +53,7 @@ CREATE TABLE `categories` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `components`
+-- Estructura de tabla para la tabla `components`
 --
 
 DROP TABLE IF EXISTS `components`;
@@ -72,7 +72,7 @@ CREATE TABLE `components` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `measurement_units`
+-- Estructura de tabla para la tabla `measurement_units`
 --
 
 DROP TABLE IF EXISTS `measurement_units`;
@@ -86,19 +86,18 @@ CREATE TABLE `measurement_units` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mps`
+-- Estructura de tabla para la tabla `mps`
 --
 
 DROP TABLE IF EXISTS `mps`;
 CREATE TABLE `mps` (
-  `id_mps` int(11) NOT NULL,
   `id_component` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mps_periods`
+-- Estructura de tabla para la tabla `mps_periods`
 --
 
 DROP TABLE IF EXISTS `mps_periods`;
@@ -108,43 +107,13 @@ CREATE TABLE `mps_periods` (
   `scheduled_receptions` int(11) NOT NULL,
   `availability_projection` int(11) NOT NULL,
   `net_requirements` int(11) NOT NULL,
-  `planned_order_release` int(11) NOT NULL,
-  `id_mps` int(11) NOT NULL,
-  `id_last_mps_period` int(11) NOT NULL
+  `planned_order_release` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
---
-
-DROP TABLE IF EXISTS `orders`;
-CREATE TABLE `orders` (
-  `id_order` int(11) NOT NULL,
-  `reference_code` varchar(20) NOT NULL,
-  `creation_date` datetime NOT NULL,
-  `details` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `orders_products`
---
-
-DROP TABLE IF EXISTS `orders_products`;
-CREATE TABLE `orders_products` (
-  `id_order` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
+-- Estructura de tabla para la tabla `products`
 --
 
 DROP TABLE IF EXISTS `products`;
@@ -159,7 +128,46 @@ CREATE TABLE `products` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `spreadsheet`
+-- Estructura de tabla para la tabla `purchases`
+--
+
+DROP TABLE IF EXISTS `purchases`;
+CREATE TABLE `purchases` (
+  `id_purchase` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sales`
+--
+
+DROP TABLE IF EXISTS `sales`;
+CREATE TABLE `sales` (
+  `id_sale` int(11) NOT NULL,
+  `reference_code` varchar(20) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `details` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sales_products`
+--
+
+DROP TABLE IF EXISTS `sales_products`;
+CREATE TABLE `sales_products` (
+  `id_sale` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `spreadsheet`
 --
 
 DROP TABLE IF EXISTS `spreadsheet`;
@@ -172,7 +180,7 @@ CREATE TABLE `spreadsheet` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -184,23 +192,23 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `brands`
+-- Indices de la tabla `brands`
 --
 ALTER TABLE `brands`
   ADD PRIMARY KEY (`id_brand`);
 
 --
--- Indexes for table `categories`
+-- Indices de la tabla `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id_category`);
 
 --
--- Indexes for table `components`
+-- Indices de la tabla `components`
 --
 ALTER TABLE `components`
   ADD PRIMARY KEY (`id_component`),
@@ -209,122 +217,112 @@ ALTER TABLE `components`
   ADD KEY `id_category` (`id_category`);
 
 --
--- Indexes for table `measurement_units`
+-- Indices de la tabla `measurement_units`
 --
 ALTER TABLE `measurement_units`
   ADD PRIMARY KEY (`id_measurement_unit`);
 
 --
--- Indexes for table `mps`
---
-ALTER TABLE `mps`
-  ADD PRIMARY KEY (`id_mps`),
-  ADD KEY `id_component` (`id_component`);
-
---
--- Indexes for table `mps_periods`
+-- Indices de la tabla `mps_periods`
 --
 ALTER TABLE `mps_periods`
-  ADD PRIMARY KEY (`id_mps_period`),
-  ADD KEY `id_last_mps_period` (`id_last_mps_period`),
-  ADD KEY `id_mps` (`id_mps`);
+  ADD PRIMARY KEY (`id_mps_period`);
 
 --
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id_order`);
-
---
--- Indexes for table `orders_products`
---
-ALTER TABLE `orders_products`
-  ADD KEY `id_order` (`id_order`),
-  ADD KEY `id_product` (`id_product`);
-
---
--- Indexes for table `products`
+-- Indices de la tabla `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id_product`);
 
 --
--- Indexes for table `spreadsheet`
+-- Indices de la tabla `purchases`
+--
+ALTER TABLE `purchases`
+  ADD PRIMARY KEY (`id_purchase`);
+
+--
+-- Indices de la tabla `sales`
+--
+ALTER TABLE `sales`
+  ADD PRIMARY KEY (`id_sale`);
+
+--
+-- Indices de la tabla `spreadsheet`
 --
 ALTER TABLE `spreadsheet`
   ADD KEY `id_component` (`id_component`),
   ADD KEY `id_product` (`id_product`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `brands`
+-- AUTO_INCREMENT de la tabla `brands`
 --
 ALTER TABLE `brands`
   MODIFY `id_brand` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT de la tabla `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `components`
+-- AUTO_INCREMENT de la tabla `components`
 --
 ALTER TABLE `components`
   MODIFY `id_component` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `measurement_units`
+-- AUTO_INCREMENT de la tabla `measurement_units`
 --
 ALTER TABLE `measurement_units`
   MODIFY `id_measurement_unit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `mps`
---
-ALTER TABLE `mps`
-  MODIFY `id_mps` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `mps_periods`
+-- AUTO_INCREMENT de la tabla `mps_periods`
 --
 ALTER TABLE `mps_periods`
   MODIFY `id_mps_period` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
   MODIFY `id_product` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `purchases`
+--
+ALTER TABLE `purchases`
+  MODIFY `id_purchase` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `sales`
+--
+ALTER TABLE `sales`
+  MODIFY `id_sale` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `components`
+-- Filtros para la tabla `components`
 --
 ALTER TABLE `components`
   ADD CONSTRAINT `components_ibfk_1` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id_brand`),
@@ -332,27 +330,7 @@ ALTER TABLE `components`
   ADD CONSTRAINT `components_ibfk_3` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
 
 --
--- Constraints for table `mps`
---
-ALTER TABLE `mps`
-  ADD CONSTRAINT `mps_ibfk_1` FOREIGN KEY (`id_component`) REFERENCES `components` (`id_component`);
-
---
--- Constraints for table `mps_periods`
---
-ALTER TABLE `mps_periods`
-  ADD CONSTRAINT `mps_periods_ibfk_1` FOREIGN KEY (`id_last_mps_period`) REFERENCES `mps_periods` (`id_mps_period`),
-  ADD CONSTRAINT `mps_periods_ibfk_2` FOREIGN KEY (`id_mps`) REFERENCES `mps` (`id_mps`);
-
---
--- Constraints for table `orders_products`
---
-ALTER TABLE `orders_products`
-  ADD CONSTRAINT `orders_products_ibfk_1` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`),
-  ADD CONSTRAINT `orders_products_ibfk_2` FOREIGN KEY (`id_order`) REFERENCES `orders` (`id_order`);
-
---
--- Constraints for table `spreadsheet`
+-- Filtros para la tabla `spreadsheet`
 --
 ALTER TABLE `spreadsheet`
   ADD CONSTRAINT `spreadsheet_ibfk_1` FOREIGN KEY (`id_component`) REFERENCES `components` (`id_component`),

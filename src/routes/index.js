@@ -11,6 +11,7 @@ const inventoryRoutes = require("./inventory.routes");
 const productsRoutes = require("./products.routes");
 const mpsRoutes = require("./mps.routes");
 const purchasesRoutes = require("./purchases.routes");
+const salesRoutes = require("./sales.routes");
 
 router.use("/", authRoutes);
 
@@ -21,5 +22,6 @@ router.use("/dashboard/inventory", inventoryRoutes);
 router.use("/dashboard/products", productsRoutes);
 router.use("/dashboard/mps", mpsRoutes);
 router.use("/dashboard/purchases", purchasesRoutes);
+router.use("/dashboard/sales", salesRoutes);
 
 module.exports = router;

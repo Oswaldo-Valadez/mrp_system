@@ -116,5 +116,9 @@
 	"Production Time": "Production Time",
 	"Lists": "Lists",
 	"Customer Orders": "Customer Orders",
-	"Receptions": "Receptions"
+	"Receptions": "Receptions",
+	"Purchases": "Purchases",
+	"Sales": "Sales",
+	"Purchase": "Purchase",
+	"New Purchase": "New Purchase"
 }
