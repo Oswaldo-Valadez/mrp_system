@@ -122,5 +122,12 @@
 	"Purchase": "Purchase",
 	"New Purchase": "New Purchase",
 	"New Sale": "New Sale",
-	"Statistics": "Statistics"
+	"Statistics": "Statistics",
+	"Creation Date": "Creation Date",
+	"Details": "Details",
+	"Edit Purchase": "Edit Purchase",
+	"Edit Sale": "Edit Sale",
+	"New NewPurchase": "New NewPurchase",
+	"Edit NewPurchase": "Edit NewPurchase",
+	"Add Purchase": "Add Purchase"
 }

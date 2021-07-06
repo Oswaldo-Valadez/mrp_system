@@ -1,6 +1,7 @@
 "use strict";
 
 const ErrorHandler = require("../utils/helpers/error-handler");
+const { formPurchase } = require("../utils/helpers/forms");
 
 const Purchases = require("../models/purchases.model");
 
@@ -52,6 +53,18 @@ exports.deletePurchase = async (req, res, next) => {
 
     req.flash("success", "The purchase has been deleted successfully");
     res.redirect("back");
+  } catch (error) {
+    ErrorHandler.handleError(req, res, error);
+  }
+};
+
+exports.renderCreatePurchase = async (req, res, next) => {
+  try {
+    const purchases = await Purchases.getAllPurchases();
+
+    ErrorHandler.handleRender(req, res, "modules/purchases/new-purchase", {
+      newPurchaseForm: formPurchase(),
+    });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }

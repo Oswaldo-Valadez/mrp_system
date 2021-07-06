@@ -49,9 +49,7 @@
             </h3>
             <div class="card-tools">
               <a
-                href="#"
-                data-target="#modalCreatePurchas"
-                data-toggle="modal"
+                href="/dashboard/purchases/new"
                 class="btn btn-success"
                 title="{{%= __('New Purchase') %}}"
               >
@@ -86,7 +84,7 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalDeletePurchas"
+                        data-target="#modalDeletePurchase"
                         data-id="{{%= row.id_purchase %}}"
                         class="btn btn-danger btn-xs"
                       >
@@ -95,7 +93,7 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalEditPurchas"
+                        data-target="#modalEditPurchase"
                         data-row="{{%= JSON.stringify(row) %}}"
                         data-id="{{%= row.id_purchase %}}"
                         class="btn btn-warning btn-xs"
@@ -114,3 +112,5 @@
     </div>
   </div>
 </section>
+
+{{%- include('../../components/ModalDelete', { idModal: "modalDeletePurchase", route:['/dashboard/purchases/','/delete'], title: "Purchase" }) %}}

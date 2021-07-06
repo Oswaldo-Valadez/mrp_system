@@ -4,17 +4,13 @@
       <div class="col-sm-6">
         <h1>
           {{%= __('Sales') %}}
-          <small class="text-muted">{{%= __('List') %}}</small>
+          <small class="text-muted">{{%= __('Sales') %}}</small>
         </h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item">
-            <a href="/">{{%= __('Dashboard') %}}</a>
-          </li>
-          <li class="breadcrumb-item active text-muted">
-            {{%= __('Sales') %}}
-          </li>
+          <li class="breadcrumb-item"><a href="/">{{%= __('Dashboard') %}}</a></li>
+          <li class="breadcrumb-item active text-muted">{{%= __('Sales') %}}</li>
         </ol>
       </div>
     </div>
@@ -27,7 +23,7 @@
       <div class="col-8 col-sm-4 col-md-3">
         <div class="info-box">
           <span class="info-box-icon bg-primary elevation-1"
-            ><i class="fas fa-money-check-alt"></i
+            ><i class="fas fa-edit"></i
           ></span>
           <div class="info-box-content">
             <span class="info-box-text">{{%= __('Sales') %}}</span>
@@ -44,7 +40,7 @@
         <div class="card card-primary card-outline">
           <div class="card-header">
             <h3 class="card-title">
-              <i class="fas fa-money-check-alt"></i>
+              <i class="fas fa-edit"></i>
               {{%= __('Sales') %}}
             </h3>
             <div class="card-tools">
@@ -72,7 +68,9 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Head Sale</th>
+                  <th>{{%= __('Reference Code') %}}</th>
+                  <th>{{%= __('Creation Date') %}}</th>
+                  <th>{{%= __('Details') %}}</th>
                   <th>{{%= __('Actions') %}}</th>
                 </tr>
               </thead>
@@ -80,7 +78,9 @@
                 {{% sales.forEach((row, i) => { %}}
                 <tr>
                   <td>{{%= i + 1 %}}</td>
-                  <td>Row Sale</td>
+                  <td>{{%= row.reference_code %}}</td>
+                  <td>{{%= row.creation_date %}}</td>
+                  <td>{{%= row.details %}}</td>
                   <td>
                     <div class="column-actions">
                       <a
@@ -114,3 +114,7 @@
     </div>
   </div>
 </section>
+
+{{%- include('../../components/ModalCreate', { idModal: "modalCreateSale", route:'/dashboard/sales', title: "Sale", size: "modal-xl" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDeleteSale", route:['/dashboard/sales/','/delete'], title: "Sale" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditSale", route: '/dashboard/sales/', title: "Sale", size: "modal-xl" }) %}}

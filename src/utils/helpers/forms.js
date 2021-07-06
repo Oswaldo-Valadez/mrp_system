@@ -257,3 +257,37 @@ exports.formAddProductComponent = ({ components }) => [
     },
   ],
 ];
+
+exports.formPurchase = () => [
+  [
+    {
+      componentName: "Input",
+      options: {
+        label: "Reference Code",
+        name: "reference_code",
+        type: "text",
+        isRequired: true,
+      },
+    },
+    {
+      componentName: "Input",
+      options: {
+        label: "Creation Date",
+        name: "creation_date",
+        type: "datetime",
+        isRequired: true,
+      },
+    },
+  ],
+  [
+    {
+      componentName: "Textarea",
+      options: {
+        label: "Details",
+        name: "details",
+        rows: 2,
+        isRequired: true,
+      },
+    },
+  ],
+];

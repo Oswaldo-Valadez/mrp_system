@@ -9,6 +9,8 @@ router
   .get(purchasesController.renderPurchases)
   .post(purchasesController.createPurchase);
 
+router.route("/new").get(purchasesController.renderCreatePurchase);
+
 router
   .route("/:id")
   .get(purchasesController.renderPurchase)
