@@ -4,7 +4,7 @@
       <div class="col-sm-6">
         <h1>
           {{%= __('Purchases') %}}
-          <small class="text-muted">{{%= __('List') %}}</small>
+          <small class="text-muted">{{%= __('Purchases') %}}</small>
         </h1>
       </div>
       <div class="col-sm-6">
@@ -12,7 +12,9 @@
           <li class="breadcrumb-item">
             <a href="/">{{%= __('Dashboard') %}}</a>
           </li>
-          <li class="breadcrumb-item active">{{%= __('Purchases') %}}</li>
+          <li class="breadcrumb-item active text-muted">
+            {{%= __('Purchases') %}}
+          </li>
         </ol>
       </div>
     </div>
@@ -22,17 +24,33 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
+      <div class="col-8 col-sm-4 col-md-3">
+        <div class="info-box">
+          <span class="info-box-icon bg-primary elevation-1"
+            ><i class="fas fa-store"></i
+          ></span>
+          <div class="info-box-content">
+            <span class="info-box-text">{{%= __('Purchases') %}}</span>
+            <span class="info-box-number">
+              {{%= purchases.length %}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-md-12">
         <div class="card card-primary card-outline">
           <div class="card-header">
             <h3 class="card-title">
-              <i class="fas fa-edit"></i>
-              {{%= __('Purchase') %}}
+              <i class="fas fa-store"></i>
+              {{%= __('Purchases') %}}
             </h3>
             <div class="card-tools">
               <a
                 href="#"
-                data-target="#modalCreatePurchases"
+                data-target="#modalCreatePurchas"
                 data-toggle="modal"
                 class="btn btn-success"
                 title="{{%= __('New Purchase') %}}"
@@ -52,23 +70,23 @@
               aria-describedby="dataTableConfig_info"
             >
               <thead>
-                <tr role="row">
+                <tr>
                   <th>#</th>
-                  <th>{{%= __('Reference Code') %}}</th>
+                  <th>Head Purchase</th>
                   <th>{{%= __('Actions') %}}</th>
                 </tr>
               </thead>
               <tbody>
                 {{% purchases.forEach((row, i) => { %}}
-                <tr class="odd">
+                <tr>
                   <td>{{%= i + 1 %}}</td>
-                  <td>{{%= reference_code %}}</td>
+                  <td>Row Purchase</td>
                   <td>
                     <div class="column-actions">
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalDelete"
+                        data-target="#modalDeletePurchas"
                         data-id="{{%= row.id_purchase %}}"
                         class="btn btn-danger btn-xs"
                       >
@@ -77,7 +95,7 @@
                       <a
                         href="#"
                         data-toggle="modal"
-                        data-target="#modalEdit"
+                        data-target="#modalEditPurchas"
                         data-row="{{%= JSON.stringify(row) %}}"
                         data-id="{{%= row.id_purchase %}}"
                         class="btn btn-warning btn-xs"

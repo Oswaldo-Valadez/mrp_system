@@ -120,5 +120,7 @@
 	"Purchases": "Purchases",
 	"Sales": "Sales",
 	"Purchase": "Purchase",
-	"New Purchase": "New Purchase"
+	"New Purchase": "New Purchase",
+	"New Sale": "New Sale",
+	"Statistics": "Statistics"
 }
