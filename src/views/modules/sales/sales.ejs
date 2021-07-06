@@ -3,14 +3,14 @@
     <div class="row mb-2">
       <div class="col-sm-6">
         <h1>
-          Sales
-          <small>Sales</small>
+          {{%= __('Sales') %}}
+          <small>{{%= __('Sales') %}}</small>
         </h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-          <li class="breadcrumb-item active text-muted">Sales</li>
+          <li class="breadcrumb-item"><a href="/">{{%= __('Dashboard') %}}</a></li>
+          <li class="breadcrumb-item active text-muted">{{%= __('Sales') %}}</li>
         </ol>
       </div>
     </div>
@@ -25,7 +25,7 @@
           <div class="card-header">
             <h3 class="card-title">
               <i class="fas fa-edit"></i>
-              Sales
+              {{%= __('Sales') %}}
             </h3>
             <div class="card-tools">
               <a
@@ -33,9 +33,9 @@
                 data-target="#modalCreateSale"
                 data-toggle="modal"
                 class="btn btn-success"
-                title="New Sale"
+                title="{{%= __('New Sale') %}}"
               >
-                <i class="fas fa-plus"></i> &nbsp; New Sale
+                <i class="fas fa-plus"></i> &nbsp; {{%= __('New Sale') %}}
               </a>
             </div>
           </div>
@@ -53,7 +53,7 @@
                 <tr role="row">
                   <th>#</th>
                   <th>Head Sale</th>
-                  <th>Actions</th>
+                  <th>{{%= __('Actions') %}}</th>
                 </tr>
               </thead>
               <tbody>
