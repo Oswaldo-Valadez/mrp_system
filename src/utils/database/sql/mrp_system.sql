@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2021 a las 06:38:59
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.2
+-- Tiempo de generación: 07-07-2021 a las 02:56:08
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -72,6 +73,19 @@ CREATE TABLE `components` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `components_purchases`
+--
+
+DROP TABLE IF EXISTS `components_purchases`;
+CREATE TABLE `components_purchases` (
+  `id_component` int(11) NOT NULL,
+  `id_purchase` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `measurement_units`
 --
 
@@ -91,6 +105,8 @@ CREATE TABLE `measurement_units` (
 
 DROP TABLE IF EXISTS `mps`;
 CREATE TABLE `mps` (
+  `id_mps` int(11) NOT NULL,
+  `initial_inventory` int(11) NOT NULL,
   `id_component` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -107,7 +123,9 @@ CREATE TABLE `mps_periods` (
   `scheduled_receptions` int(11) NOT NULL,
   `availability_projection` int(11) NOT NULL,
   `net_requirements` int(11) NOT NULL,
-  `planned_order_release` int(11) NOT NULL
+  `planned_order_release` int(11) NOT NULL,
+  `id_last_mps_period` int(11) NOT NULL,
+  `id_mps` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -133,7 +151,10 @@ CREATE TABLE `products` (
 
 DROP TABLE IF EXISTS `purchases`;
 CREATE TABLE `purchases` (
-  `id_purchase` int(11) NOT NULL
+  `id_purchase` int(11) NOT NULL,
+  `reference_code` varchar(20) NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `details` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -217,16 +238,32 @@ ALTER TABLE `components`
   ADD KEY `id_category` (`id_category`);
 
 --
+-- Indices de la tabla `components_purchases`
+--
+ALTER TABLE `components_purchases`
+  ADD KEY `id_component` (`id_component`),
+  ADD KEY `id_purchase` (`id_purchase`);
+
+--
 -- Indices de la tabla `measurement_units`
 --
 ALTER TABLE `measurement_units`
   ADD PRIMARY KEY (`id_measurement_unit`);
 
 --
+-- Indices de la tabla `mps`
+--
+ALTER TABLE `mps`
+  ADD PRIMARY KEY (`id_mps`),
+  ADD KEY `id_component` (`id_component`);
+
+--
 -- Indices de la tabla `mps_periods`
 --
 ALTER TABLE `mps_periods`
-  ADD PRIMARY KEY (`id_mps_period`);
+  ADD PRIMARY KEY (`id_mps_period`),
+  ADD KEY `id_last_mps` (`id_last_mps_period`),
+  ADD KEY `id_mps` (`id_mps`);
 
 --
 -- Indices de la tabla `products`
@@ -245,6 +282,13 @@ ALTER TABLE `purchases`
 --
 ALTER TABLE `sales`
   ADD PRIMARY KEY (`id_sale`);
+
+--
+-- Indices de la tabla `sales_products`
+--
+ALTER TABLE `sales_products`
+  ADD KEY `id_sale` (`id_sale`),
+  ADD KEY `id_product` (`id_product`);
 
 --
 -- Indices de la tabla `spreadsheet`
@@ -288,6 +332,12 @@ ALTER TABLE `measurement_units`
   MODIFY `id_measurement_unit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `mps`
+--
+ALTER TABLE `mps`
+  MODIFY `id_mps` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `mps_periods`
 --
 ALTER TABLE `mps_periods`
@@ -328,6 +378,33 @@ ALTER TABLE `components`
   ADD CONSTRAINT `components_ibfk_1` FOREIGN KEY (`id_brand`) REFERENCES `brands` (`id_brand`),
   ADD CONSTRAINT `components_ibfk_2` FOREIGN KEY (`id_measurement_unit`) REFERENCES `measurement_units` (`id_measurement_unit`),
   ADD CONSTRAINT `components_ibfk_3` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
+
+--
+-- Filtros para la tabla `components_purchases`
+--
+ALTER TABLE `components_purchases`
+  ADD CONSTRAINT `components_purchases_ibfk_1` FOREIGN KEY (`id_purchase`) REFERENCES `purchases` (`id_purchase`),
+  ADD CONSTRAINT `components_purchases_ibfk_2` FOREIGN KEY (`id_component`) REFERENCES `components` (`id_component`);
+
+--
+-- Filtros para la tabla `mps`
+--
+ALTER TABLE `mps`
+  ADD CONSTRAINT `mps_ibfk_1` FOREIGN KEY (`id_component`) REFERENCES `components` (`id_component`);
+
+--
+-- Filtros para la tabla `mps_periods`
+--
+ALTER TABLE `mps_periods`
+  ADD CONSTRAINT `mps_periods_ibfk_1` FOREIGN KEY (`id_last_mps_period`) REFERENCES `mps_periods` (`id_mps_period`),
+  ADD CONSTRAINT `mps_periods_ibfk_2` FOREIGN KEY (`id_mps`) REFERENCES `mps` (`id_mps`);
+
+--
+-- Filtros para la tabla `sales_products`
+--
+ALTER TABLE `sales_products`
+  ADD CONSTRAINT `sales_products_ibfk_1` FOREIGN KEY (`id_sale`) REFERENCES `sales` (`id_sale`),
+  ADD CONSTRAINT `sales_products_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`);
 
 --
 -- Filtros para la tabla `spreadsheet`

@@ -1,73 +1,81 @@
 <section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>
-                    {{%= __('Purchases') %}}
-                    <small class="text-muted">{{%= __('New Purchase') %}}</small>
-                </h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="/">{{%= __('Dashboard') %}}</a></li>
-                    <li class="breadcrumb-item"><a href="/dashboard/purchases">{{%= __('Purchases') %}}</a></li>
-                    <li class="breadcrumb-item active text-muted">{{%= __('New Purchase') %}}</li>
-                </ol>
-            </div>
-        </div>
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>
+          {{%= __('Purchases') %}}
+          <small class="text-muted">{{%= __('New Purchase') %}}</small>
+        </h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <a href="/">{{%= __('Dashboard') %}}</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="/dashboard/purchases">{{%= __('Purchases') %}}</a>
+          </li>
+          <li class="breadcrumb-item active text-muted">
+            {{%= __('New Purchase') %}}
+          </li>
+        </ol>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="content">
-    <div class="container-fluid">
-        <!-- none -->
+  <div class="container-fluid">
+    <!-- none -->
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-primary card-outline">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <i class="fas fa-edit"></i>
-                            {{%= __('New Purchase') %}}
-                        </h3>
-                        <div class="card-tools">
-                            <a
-                                href="#"
-                                data-target="#modalCreateNewPurchase"
-                                data-toggle="modal"
-                                class="btn btn-success"
-                                title="{{%= __('Add Purchase') %}}"
-                            >
-                                <i class="fas fa-plus"></i> &nbsp; {{%= __('Add Purchase') %}}
-                            </a>
-                        </div>
-                        
-                    </div>
-                    <div class="card-body">
-                        <table
-                            class="table table-bordered table-striped dataTable dataTableConfig dtr-inline"
-                            aria-describedby="dataTableConfig_info"
-                        >
-                            <thead>
-                                <tr>
-                                    <th>Head New Purchase</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Row New Purchase</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-edit"></i>
+              {{%= __('New Purchase') %}}
+            </h3>
+            <div class="card-tools">
+              <a
+                href="#"
+                data-target="#modalAddComponentPurchase"
+                data-toggle="modal"
+                class="btn btn-success"
+                title="{{%= __('Add Component') %}}"
+              >
+                <i class="fas fa-plus"></i> &nbsp; {{%= __('Add Component') %}}
+              </a>
             </div>
+          </div>
+          <div class="card-body">
+            <table
+              class="table table-bordered table-striped"
+              aria-describedby="dataTableConfig_info"
+            >
+              <thead>
+                <tr>
+                  <th>{{%= __('ID') %}}</th>
+                  <th>{{%= __('Component') %}}</th>
+                  <th>{{%= __('Quantity') %}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tbody id="tb-purchase-components"></tbody>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer clearfix">
+            <button type="submit" class="btn btn-sm btn-success float-right">
+              {{%= __('Submit') %}}
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
-{{%- include('../../components/ModalCreate', { idModal: "modalAddComponentPurchase", route:'/dashboard/new-purchase', title: "NewPurchase", form: newPurchaseForm, size: "modal-xl" }) %}}
-{{%- include('../../components/ModalDelete', { idModal: "modalDeleteComponentPurchase", route:['/dashboard/new-purchase/','/delete'], title: "NewPurchase" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditComponentPurchase", route: '/dashboard/new-purchase/', title: "NewPurchase", size: "modal-xl" }) %}}
-
+{{%- include('../../components/ModalCreate', { idModal: "modalAddComponentPurchase", route:'/dashboard/new-purchase', title: "Purchase", form: newPurchaseForm, size: "modal-xl" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDeleteComponentPurchase", route:['/dashboard/new-purchase/','/delete'], title: "Purchase" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditComponentPurchase", route: '/dashboard/new-purchase/', title: "Purchase", size: "modal-xl" }) %}}

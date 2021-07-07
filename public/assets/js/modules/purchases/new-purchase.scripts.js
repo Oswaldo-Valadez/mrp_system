@@ -16,7 +16,7 @@ $("#modalAddComponentPurchaseForm").on("submit", function (e) {
     .text()
     .trim();
 
-  $("#tb-product-components").append(`
+  $("#tb-purchase-components").append(`
       <tr>
           <td>
               <input
