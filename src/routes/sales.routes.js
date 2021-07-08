@@ -9,6 +9,8 @@ router
   .get(salesController.renderSales)
   .post(salesController.createSale);
 
+router.route("/new").get(salesController.renderCreateSale);
+
 router
   .route("/:id")
   .get(salesController.renderSale)

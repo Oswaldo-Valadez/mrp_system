@@ -3,6 +3,7 @@
 const ErrorHandler = require("../utils/helpers/error-handler");
 
 const Sales = require("../models/sales.model");
+const Products = require("../models/products.model");
 
 exports.renderSales = async (req, res, next) => {
   try {
@@ -52,6 +53,16 @@ exports.deleteSale = async (req, res, next) => {
 
     req.flash("success", "The sale has been deleted successfully");
     res.redirect("back");
+  } catch (error) {
+    ErrorHandler.handleError(req, res, error);
+  }
+};
+
+exports.renderCreateSale = async (req, res, next) => {
+  try {
+    const sales = await Products.getAllProducts();
+
+    ErrorHandler.handleRender(req, res, "modules/sales/new-sale", { sales });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }

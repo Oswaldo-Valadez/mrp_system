@@ -9,8 +9,12 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/">{{%= __('Dashboard') %}}</a></li>
-          <li class="breadcrumb-item active text-muted">{{%= __('Sales') %}}</li>
+          <li class="breadcrumb-item">
+            <a href="/">{{%= __('Dashboard') %}}</a>
+          </li>
+          <li class="breadcrumb-item active text-muted">
+            {{%= __('Sales') %}}
+          </li>
         </ol>
       </div>
     </div>
@@ -45,9 +49,7 @@
             </h3>
             <div class="card-tools">
               <a
-                href="#"
-                data-target="#modalCreateSale"
-                data-toggle="modal"
+                href="/dashboard/sales/new"
                 class="btn btn-success"
                 title="{{%= __('New Sale') %}}"
               >
@@ -114,7 +116,3 @@
     </div>
   </div>
 </section>
-
-{{%- include('../../components/ModalCreate', { idModal: "modalCreateSale", route:'/dashboard/sales', title: "Sale", size: "modal-xl" }) %}}
-{{%- include('../../components/ModalDelete', { idModal: "modalDeleteSale", route:['/dashboard/sales/','/delete'], title: "Sale" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditSale", route: '/dashboard/sales/', title: "Sale", size: "modal-xl" }) %}}

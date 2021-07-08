@@ -132,5 +132,9 @@
 	"Add Purchase": "Add Purchase",
 	"Purchase Info": "Purchase Info",
 	"Purchase Components": "Purchase Components",
-	"The purchase has been created successfully": "The purchase has been created successfully"
+	"The purchase has been created successfully": "The purchase has been created successfully",
+	"Sale": "Sale",
+	"Sale Info": "Sale Info",
+	"Add Product": "Add Product",
+	"Sale Products": "Sale Products"
 }
