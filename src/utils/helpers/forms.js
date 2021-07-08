@@ -274,7 +274,7 @@ exports.formPurchase = () => [
       options: {
         label: "Creation Date",
         name: "creation_date",
-        type: "datetime",
+        type: "date",
         isRequired: true,
       },
     },
@@ -286,6 +286,35 @@ exports.formPurchase = () => [
         label: "Details",
         name: "details",
         rows: 2,
+        isRequired: true,
+      },
+    },
+  ],
+];
+
+exports.formAddPurchaseComponent = ({ components }) => [
+  [
+    {
+      componentName: "Select",
+      options: {
+        label: "Component",
+        name: "id_component",
+        isRequired: true,
+        variant: "with-add-button",
+        route: "/dashboard/inventory?openModal=component",
+        options: {
+          arr: components,
+          value: "id_component",
+          label: "name",
+        },
+      },
+    },
+    {
+      componentName: "Input",
+      options: {
+        label: "Quantity",
+        name: "quantity",
+        type: "number",
         isRequired: true,
       },
     },

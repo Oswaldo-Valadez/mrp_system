@@ -26,56 +26,72 @@
 
 <section class="content">
   <div class="container-fluid">
-    <!-- none -->
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h3 class="card-title">
-              <i class="fas fa-edit"></i>
-              {{%= __('New Purchase') %}}
-            </h3>
-            <div class="card-tools">
-              <a
-                href="#"
-                data-target="#modalAddComponentPurchase"
-                data-toggle="modal"
-                class="btn btn-success"
-                title="{{%= __('Add Component') %}}"
-              >
-                <i class="fas fa-plus"></i> &nbsp; {{%= __('Add Component') %}}
-              </a>
+    <form action="/dashboard/purchases" method="POST">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-edit"></i>
+                {{%= __('Purchase Info') %}}
+              </h3>
             </div>
-          </div>
-          <div class="card-body">
-            <table
-              class="table table-bordered table-striped"
-              aria-describedby="dataTableConfig_info"
-            >
-              <thead>
-                <tr>
-                  <th>{{%= __('ID') %}}</th>
-                  <th>{{%= __('Component') %}}</th>
-                  <th>{{%= __('Quantity') %}}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tbody id="tb-purchase-components"></tbody>
-              </tbody>
-            </table>
-          </div>
-          <div class="card-footer clearfix">
-            <button type="submit" class="btn btn-sm btn-success float-right">
-              {{%= __('Submit') %}}
-            </button>
+            <div class="card-body">
+              {{%- include('../../components/Form', { form: newPurchaseForm}) %}}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-boxes"></i>
+                {{%= __('Purchase Components') %}}
+              </h3>
+              <div class="card-tools">
+                <a
+                  href="#"
+                  data-target="#modalAddPurchaseComponent"
+                  data-toggle="modal"
+                  class="btn btn-success"
+                  title="{{%= __('Add Component') %}}"
+                >
+                  <i class="fas fa-plus"></i> &nbsp;
+                  {{%= __('Add Component') %}}
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <table
+                class="table table-bordered table-striped"
+                aria-describedby="dataTableConfig_info"
+              >
+                <thead>
+                  <tr>
+                    <th>{{%= __('ID') %}}</th>
+                    <th>{{%= __('Component') %}}</th>
+                    <th>{{%= __('Quantity') %}}</th>
+                  </tr>
+                </thead>
+                <tbody id="tb-purchase-components"></tbody>
+              </table>
+            </div>
+            <div class="card-footer clearfix">
+              <button type="submit" class="btn btn-sm btn-success float-right">
+                {{%= __('Submit') %}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
 </section>
 
-{{%- include('../../components/ModalCreate', { idModal: "modalAddComponentPurchase", route:'/dashboard/new-purchase', title: "Purchase", form: newPurchaseForm, size: "modal-xl" }) %}}
-{{%- include('../../components/ModalDelete', { idModal: "modalDeleteComponentPurchase", route:['/dashboard/new-purchase/','/delete'], title: "Purchase" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditComponentPurchase", route: '/dashboard/new-purchase/', title: "Purchase", size: "modal-xl" }) %}}
+{{%- include('../../components/ModalCreate', { idModal: "modalAddPurchaseComponent", title: "Purchase", form: addPurchaseComponentForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDeletePurchaseComponent", title: "Purchase" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEditPurchaseComponent", title: "Purchase", form: addPurchaseComponentForm, size: "modal-lg" }) %}}
+
+<script src="/public/assets/js/modules/purchases/new-purchase.scripts.js"></script>

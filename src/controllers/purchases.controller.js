@@ -1,9 +1,13 @@
 "use strict";
 
 const ErrorHandler = require("../utils/helpers/error-handler");
-const { formPurchase } = require("../utils/helpers/forms");
+const {
+  formPurchase,
+  formAddPurchaseComponent,
+} = require("../utils/helpers/forms");
 
 const Purchases = require("../models/purchases.model");
+const Components = require("../models/components.model");
 
 exports.renderPurchases = async (req, res, next) => {
   try {
@@ -60,10 +64,11 @@ exports.deletePurchase = async (req, res, next) => {
 
 exports.renderCreatePurchase = async (req, res, next) => {
   try {
-    const purchases = await Purchases.getAllPurchases();
+    const components = await Components.getAllComponents();
 
     ErrorHandler.handleRender(req, res, "modules/purchases/new-purchase", {
       newPurchaseForm: formPurchase(),
+      addPurchaseComponentForm: formAddPurchaseComponent({ components }),
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);

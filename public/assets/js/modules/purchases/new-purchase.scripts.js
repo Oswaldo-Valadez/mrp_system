@@ -1,9 +1,9 @@
-$("#modalAddComponentPurchaseForm").on("submit", function (e) {
+$("#modalAddPurchaseComponentForm").on("submit", function (e) {
   e.preventDefault();
 
   const component = {};
 
-  const modal = $("#modalAddComponentPurchase");
+  const modal = $("#modalAddPurchaseComponent");
 
   $(this)
     .serializeArray()
