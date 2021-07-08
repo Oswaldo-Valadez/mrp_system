@@ -7,6 +7,7 @@ const Categories = require("../models/categories.model");
 const Measurementunits = require("../models/measurementunits.model");
 const Components = require("../models/components.model");
 const Products = require("../models/products.model");
+const Purchases = require("../models/purchases.model");
 
 exports.renderDashboard = async (req, res, next) => {
   try {
@@ -14,9 +15,10 @@ exports.renderDashboard = async (req, res, next) => {
     const count_categories = await Categories.getCategoriesCount();
     const count_measurementunits =
       await Measurementunits.getMeasurementunitsCount();
+      
     const count_products = await Products.getProductsCount();
-
     const count_components = await Components.getComponentsCount();
+    const count_purchases = await Purchases.getPurchasesCount();
 
     const count_catalogs =
       count_brands + count_categories + count_measurementunits;
@@ -25,6 +27,7 @@ exports.renderDashboard = async (req, res, next) => {
       count_catalogs,
       count_components,
       count_products,
+      count_purchases,
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
