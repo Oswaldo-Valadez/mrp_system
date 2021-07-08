@@ -70,7 +70,9 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Head Purchase</th>
+                  <td>{{%= __('Reference Code') %}}</td>
+                  <td>{{%= __('Creation Date') %}}</td>
+                  <td>{{%= __('Details') %}}</td>
                   <th>{{%= __('Actions') %}}</th>
                 </tr>
               </thead>
@@ -78,7 +80,14 @@
                 {{% purchases.forEach((row, i) => { %}}
                 <tr>
                   <td>{{%= i + 1 %}}</td>
-                  <td>Row Purchase</td>
+                  <td>
+                    <a
+                      href="/dashboard/purchases/{{%= row.id_purchase %}}"
+                      >{{%= row.reference_code %}}</a
+                    >
+                  </td>
+                  <td>{{%= row.creation_date %}}</td>
+                  <td>{{%= row.details %}}</td>
                   <td>
                     <div class="column-actions">
                       <a

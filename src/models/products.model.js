@@ -29,6 +29,7 @@ exports.getOneProduct = async (id_product) => {
 
 exports.createProduct = async (values) => {
   const { name, description, id_component, quantity } = values;
+  
   const res = await pool.query(`INSERT INTO ?? SET ?`, [
     "products",
     { name, description },

@@ -13,7 +13,9 @@ exports.renderPurchases = async (req, res, next) => {
   try {
     const purchases = await Purchases.getAllPurchases();
 
-    res.render("modules/purchases/purchases", { purchases });
+    ErrorHandler.handleRender(req, res, "modules/purchases/purchases", {
+      purchases,
+    });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }
@@ -23,7 +25,9 @@ exports.renderPurchase = async (req, res, next) => {
   try {
     const purchase = await Purchases.getOnePurchase(req.params.id);
 
-    res.render("modules/purchases/purchase", { purchase });
+    ErrorHandler.handleRender(req, res, "modules/purchases/purchase", {
+      purchase,
+    });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }

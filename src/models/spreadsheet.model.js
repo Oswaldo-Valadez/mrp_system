@@ -45,7 +45,7 @@ exports.deleteSpreadsheet = async (id_spreadsheet) => {
 };
 
 exports.getAllSpreadsheetByProduct = async (id_product) => {
-  const spreadsheet = await pool.query(
+  const res = await pool.query(
     `
     SELECT * FROM ??
         INNER JOIN ?? c USING(id_component)
@@ -53,5 +53,5 @@ exports.getAllSpreadsheetByProduct = async (id_product) => {
     `,
     ["spreadsheet", "components", { id_product }]
   );
-  return spreadsheet;
+  return res;
 };
