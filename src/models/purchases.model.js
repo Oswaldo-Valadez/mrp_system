@@ -17,11 +17,15 @@ exports.getAllPurchases = async () => {
 };
 
 exports.getOnePurchase = async (id_purchase) => {
-  const purchase = await pool.query(`SELECT * FROM ?? WHERE ?`, [
+  const purchase = (await pool.query(`SELECT * FROM ?? WHERE ?`, [
     "purchases",
     { id_purchase },
-  ])[0];
-  return purchase;
+  ]))[0];
+
+  const purchase_components =
+    await PurchasesComponents.getAllPurchasesComponentsByPurchase(id_purchase);
+
+  return { purchase, purchase_components };
 };
 
 exports.createPurchase = async (values) => {

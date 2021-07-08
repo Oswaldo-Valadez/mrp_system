@@ -3,14 +3,21 @@
     <div class="row mb-2">
       <div class="col-sm-6">
         <h1>
-          Purchase
-          <small class="text-muted">Purchase</small>
+          {{%= __('Purchases') %}}
+          <small class="text-muted">{{%= __('Purchase') %}}</small>
         </h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-          <li class="breadcrumb-item active text-muted">Purchase</li>
+          <li class="breadcrumb-item">
+            <a href="/">{{%= __('Dashboard') %}}</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="/dashboard/purchases">{{%= __('Purchases') %}}</a>
+          </li>
+          <li class="breadcrumb-item active text-muted">
+            {{%= __('Purchase') %}}
+          </li>
         </ol>
       </div>
     </div>
@@ -25,10 +32,96 @@
           <div class="card-header">
             <h3 class="card-title">
               <i class="fas fa-edit"></i>
-              Purchase
+              {{%= __('Purchase Info') %}}
             </h3>
           </div>
-          <div class="card-body"></div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>
+                    {{%= __('Reference Code') %}}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{%= purchase.reference_code %}}"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label>
+                    {{%= __('Creation Date') %}}
+                  </label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    value="{{%= purchase.creation_date %}}"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="details">
+                    {{%= __('Details') %}}
+                  </label>
+                  <textarea
+                    class="form-control"
+                    cols="30"
+                    rows="2"
+                    readonly
+                    >{{%= purchase.details %}}</textarea
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-boxes"></i>
+              {{%= __('Purchase Components') %}}
+            </h3>
+          </div>
+          <div class="card-body">
+            <table
+              class="
+                table table-bordered table-striped
+                dataTable
+                dataTableConfig
+                dtr-inline
+              "
+              aria-describedby="dataTableConfig_info"
+            >
+              <thead>
+                <tr>
+                  <th>{{%= __('ID') %}}</th>
+                  <th>{{%= __('Component') %}}</th>
+                  <th>{{%= __('Quantity') %}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{% purchase_components.forEach((row, i) => { %}}
+                <tr>
+                  <td>{{%= i + 1 %}}</td>
+                  <td>{{%= row.name %}}</td>
+                  <td>{{%= row.quantity %}}</td>
+                </tr>
+                {{% }) %}}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

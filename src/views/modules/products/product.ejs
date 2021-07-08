@@ -12,6 +12,9 @@
           <li class="breadcrumb-item">
             <a href="/">{{%= __('Dashboard') %}}</a>
           </li>
+          <li class="breadcrumb-item">
+            <a href="/dashboard/products">{{%= __('Products') %}}</a>
+          </li>
           <li class="breadcrumb-item active">{{%= __('Product') %}}</li>
         </ol>
       </div>
@@ -34,7 +37,7 @@
             <div class="row">
               <div class="col-12">
                 <div class="form-group">
-                  <label for="name">
+                  <label>
                     {{%= __('Name') %}}
                   </label>
                   <input
@@ -47,9 +50,37 @@
               </div>
             </div>
             <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label>
+                    {{%= __('Production Time') %}}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{%= product.production_time %}}"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>
+                    {{%= __('Stock') %}}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{%= product.stock %}}"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
               <div class="col-12">
                 <div class="form-group">
-                  <label for="description">
+                  <label>
                     {{%= __('Description') %}}
                   </label>
                   <textarea
@@ -57,7 +88,8 @@
                     cols="30"
                     rows="2"
                     readonly
-                  >{{%= product.description %}}</textarea>
+                    >{{%= product.description %}}</textarea
+                  >
                 </div>
               </div>
             </div>
@@ -73,7 +105,6 @@
               <i class="fas fa-desktop"></i>
               {{%= __('Product Components') %}}
             </h3>
-            <!-- none -->
           </div>
           <div class="card-body">
             <table
@@ -85,7 +116,6 @@
                   <th>#</th>
                   <th>{{%= __('Component') %}}</th>
                   <th>{{%= __('Quantity') %}}</th>
-                  <!-- <th>{{%# __('Actions') %}}</th> -->
                 </tr>
               </thead>
               <tbody>
@@ -94,29 +124,6 @@
                   <td>{{%= i + 1 %}}</td>
                   <td>{{%= row.name %}}</td>
                   <td>{{%= row.quantity %}}</td>
-                  <!-- <td>
-                    <div class="column-actions">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modalDelete"
-                        data-id="{{%# row.id_product %}}"
-                        class="btn btn-danger btn-xs"
-                      >
-                        <i class="fas fa-trash-alt"></i>
-                      </a>
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modalEdit"
-                        data-row="{{%# JSON.stringify(row) %}}"
-                        data-id="{{%# row.id_product %}}"
-                        class="btn btn-warning btn-xs"
-                      >
-                        <i class="fas fa-pen"></i>
-                      </a>
-                    </div>
-                  </td> -->
                 </tr>
                 {{% }) %}}
               </tbody>

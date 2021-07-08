@@ -23,10 +23,13 @@ exports.renderPurchases = async (req, res, next) => {
 
 exports.renderPurchase = async (req, res, next) => {
   try {
-    const purchase = await Purchases.getOnePurchase(req.params.id);
+    const { purchase, purchase_components } = await Purchases.getOnePurchase(
+      req.params.id
+    );
 
     ErrorHandler.handleRender(req, res, "modules/purchases/purchase", {
       purchase,
+      purchase_components,
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
