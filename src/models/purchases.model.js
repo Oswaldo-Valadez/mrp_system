@@ -12,15 +12,24 @@ exports.getPurchasesCount = async () => {
 };
 
 exports.getAllPurchases = async () => {
-  const purchases = await pool.query(`SELECT * FROM ??`, ["purchases"]);
+  const purchases = await pool.query(
+    `SELECT *,
+      DATE_FORMAT(purchases.creation_date, "%Y-%m-%d") AS creation_date
+    FROM ??`,
+    ["purchases"]
+  );
   return purchases;
 };
 
 exports.getOnePurchase = async (id_purchase) => {
-  const purchase = (await pool.query(`SELECT * FROM ?? WHERE ?`, [
-    "purchases",
-    { id_purchase },
-  ]))[0];
+  const purchase = (
+    await pool.query(
+      `SELECT *,
+        DATE_FORMAT(purchases.creation_date, "%Y-%m-%d") AS creation_date
+      FROM ?? WHERE ?`,
+      ["purchases", { id_purchase }]
+    )
+  )[0];
 
   const purchase_components =
     await PurchasesComponents.getAllPurchasesComponentsByPurchase(id_purchase);
