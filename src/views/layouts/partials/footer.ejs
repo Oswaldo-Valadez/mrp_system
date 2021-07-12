@@ -27,9 +27,13 @@
         <a class="nav-link p-0" data-toggle="dropdown" href="#">
           <i class="flag-icon flag-icon-us"></i>
         </a>
-        {{% } else { %}}
+        {{% } else if (lang == "es") { %}}
         <a class="nav-link p-0" data-toggle="dropdown" href="#">
           <i class="flag-icon flag-icon-es"></i>
+        </a>
+        {{% } else { %}}
+        <a class="nav-link p-0" data-toggle="dropdown" href="#">
+          <i class="flag-icon flag-icon-fr"></i>
         </a>
         {{% } %}}
         <div class="dropdown-menu dropdown-menu-right p-0">
@@ -38,6 +42,9 @@
           </a>
           <a href="/lang/es" class="dropdown-item {{%= lang == "es" ? "active" : null %}}">
             <i class="flag-icon flag-icon-es mr-2"></i> Español
+          </a>
+          <a href="/lang/fr" class="dropdown-item {{%= lang == "fr" ? "active" : null %}}">
+            <i class="flag-icon flag-icon-fr mr-2"></i> Française
           </a>
         </div>
       </li>

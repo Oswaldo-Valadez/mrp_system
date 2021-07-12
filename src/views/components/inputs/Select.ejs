@@ -13,7 +13,7 @@
 {{% if (variant == "normal") { %}}
 <div class="form-group">
   <label for="{{%= name %}}">
-    {{%= label %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
+    {{%= __(label) %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
   </label>
   <select
     class="form-control select2 select2-primary"
@@ -36,7 +36,7 @@
 {{% } else if (variant == "with-add-button") { %}}
 <div class="form-group">
   <label for="{{%= name %}}">
-    {{%= label %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
+    {{%= __(label) %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
   </label>
   <div class="input-group">
     <span class="input-group-prepend btn-flat">
