@@ -320,3 +320,66 @@ exports.formAddPurchaseComponent = ({ components }) => [
     },
   ],
 ];
+
+exports.formSale = () => [
+  [
+    {
+      componentName: "Input",
+      options: {
+        label: "Reference Code",
+        name: "reference_code",
+        type: "text",
+        isRequired: true,
+      },
+    },
+    {
+      componentName: "Input",
+      options: {
+        label: "Creation Date",
+        name: "creation_date",
+        type: "date",
+        isRequired: true,
+      },
+    },
+  ],
+  [
+    {
+      componentName: "Textarea",
+      options: {
+        label: "Details",
+        name: "details",
+        rows: 2,
+        isRequired: true,
+      },
+    },
+  ],
+];
+
+exports.formAddSaleProduct = ({ products }) => [
+  [
+    {
+      componentName: "Select",
+      options: {
+        label: "Product",
+        name: "id_product",
+        isRequired: true,
+        variant: "with-add-button",
+        route: "/dashboard/products/new",
+        options: {
+          arr: products,
+          value: "id_product",
+          label: "name",
+        },
+      },
+    },
+    {
+      componentName: "Input",
+      options: {
+        label: "Quantity",
+        name: "quantity",
+        type: "number",
+        isRequired: true,
+      },
+    },
+  ],
+];
