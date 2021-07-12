@@ -1,6 +1,7 @@
 "use strict";
 
 const ErrorHandler = require("../utils/helpers/error-handler");
+const { formSale, formAddSaleProduct } = require("../utils/helpers/forms");
 
 const Sales = require("../models/sales.model");
 const Products = require("../models/products.model");
@@ -17,9 +18,14 @@ exports.renderSales = async (req, res, next) => {
 
 exports.renderSale = async (req, res, next) => {
   try {
-    const sale = await Sales.getOneSale(req.params.id);
+    const { sale, sale_products } = await Sales.getOneSale(req.params.id);
 
-    ErrorHandler.handleRender(req, res, "modules/sales/sale", { sale });
+    console.log(sale, sale_products)
+
+    ErrorHandler.handleRender(req, res, "modules/sales/sale", {
+      sale,
+      sale_products,
+    });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }
@@ -27,10 +33,10 @@ exports.renderSale = async (req, res, next) => {
 
 exports.createSale = async (req, res, next) => {
   try {
-    await Sales.createSale(req.body);
+    const { insertId } = await Sales.createSale(req.body);
 
     req.flash("success", "The sale has been created successfully");
-    res.redirect("back");
+    res.redirect(`sales/${insertId}`);
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }
@@ -60,9 +66,12 @@ exports.deleteSale = async (req, res, next) => {
 
 exports.renderCreateSale = async (req, res, next) => {
   try {
-    const sales = await Products.getAllProducts();
+    const products = await Products.getAllProducts();
 
-    ErrorHandler.handleRender(req, res, "modules/sales/new-sale", { sales });
+    ErrorHandler.handleRender(req, res, "modules/sales/new-sale", {
+      newSaleForm: formSale(),
+      addSaleProductForm: formAddSaleProduct({ products }),
+    });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }

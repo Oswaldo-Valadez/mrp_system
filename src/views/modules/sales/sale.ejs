@@ -1,0 +1,129 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>
+          {{%= __('Sales') %}}
+          <small class="text-muted">{{%= __('Sale') %}}</small>
+        </h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <a href="/">{{%= __('Dashboard') %}}</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="/dashboard/purchases">{{%= __('Sales') %}}</a>
+          </li>
+          <li class="breadcrumb-item active text-muted">
+            {{%= __('Sale') %}}
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-edit"></i>
+              {{%= __('Sale Info') %}}
+            </h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>
+                    {{%= __('Reference Code') %}}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{%= sale.reference_code %}}"
+                    readonly
+                  />
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                  <label>
+                    {{%= __('Creation Date') %}}
+                  </label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    value="{{%= sale.creation_date %}}"
+                    readonly
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="details">
+                    {{%= __('Details') %}}
+                  </label>
+                  <textarea
+                    class="form-control"
+                    cols="30"
+                    rows="2"
+                    readonly
+                    >{{%= sale.details %}}</textarea
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-boxes"></i>
+              {{%= __('Sale Products') %}}
+            </h3>
+          </div>
+          <div class="card-body">
+            <table
+              class="
+                table table-bordered table-striped
+                dataTable
+                dataTableConfig
+                dtr-inline
+              "
+              aria-describedby="dataTableConfig_info"
+            >
+              <thead>
+                <tr>
+                  <th>{{%= __('ID') %}}</th>
+                  <th>{{%= __('Component') %}}</th>
+                  <th>{{%= __('Quantity') %}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{% sale_products.forEach((row, i) => { %}}
+                <tr>
+                  <td>{{%= i + 1 %}}</td>
+                  <td>{{%= row.name %}}</td>
+                  <td>{{%= row.quantity %}}</td>
+                </tr>
+                {{% }) %}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

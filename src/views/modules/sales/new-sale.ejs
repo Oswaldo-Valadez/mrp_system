@@ -26,61 +26,66 @@
 
 <section class="content">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h3 class="card-title">
-              <i class="fas fa-edit"></i>
-              {{%= __('Sale Info') %}}
-            </h3>
-          </div>
-          <div class="card-body">
-            <!-- none -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-primary card-outline">
-          <div class="card-header">
-            <h3 class="card-title">
-              <i class="fas fa-desktop"></i>
-              {{%= __('Sale Products') %}}
-            </h3>
-            <div class="card-tools">
-              <a
-                href="#"
-                data-target="#modalCreateSale"
-                data-toggle="modal"
-                class="btn btn-success"
-                title="{{%= __('Add Product') %}}"
-              >
-                <i class="fas fa-plus"></i> &nbsp; {{%= __('Add Product') %}}
-              </a>
+    <form action="/dashboard/sales" method="POST">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-edit"></i>
+                {{%= __('Sale Info') %}}
+              </h3>
+            </div>
+            <div class="card-body">
+              {{%- include('../../components/Form', { form: newSaleForm}) %}}
             </div>
           </div>
-          <div class="card-body">
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Head Sale</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Row Sale</td>
-                </tr>
-              </tbody>
-            </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary card-outline">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fas fa-desktop"></i>
+                {{%= __('Sale Products') %}}
+              </h3>
+              <div class="card-tools">
+                <a
+                  href="#"
+                  data-target="#modalAddSaleProduct"
+                  data-toggle="modal"
+                  class="btn btn-success"
+                  title="{{%= __('Add Product') %}}"
+                >
+                  <i class="fas fa-plus"></i> &nbsp; {{%= __('Add Product') %}}
+                </a>
+              </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>{{%= __('ID') %}}</th>
+                    <th>{{%= __('Product') %}}</th>
+                    <th>{{%= __('Quantity') %}}</th>
+                  </tr>
+                </thead>
+                <tbody id="tb-sale-products"></tbody>
+              </table>
+            </div>
+            <div class="card-footer clearfix">
+              <button type="submit" class="btn btn-sm btn-success float-right">
+                {{%= __('Submit') %}}
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </section>
 
-{{%- include('../../components/ModalCreate', { idModal: "modalCreateSale", route:'/dashboard/sale', title: "Product", size: "modal-xl" }) %}}
-{{%- include('../../components/ModalDelete', { idModal: "modalDeleteSale", route:['/dashboard/sale/','/delete'], title: "Sale" }) %}}
-{{%- include('../../components/ModalEdit', { idModal: "modalEditSale", route: '/dashboard/sale/', title: "Product", size: "modal-xl" }) %}}
+{{%- include('../../components/ModalCreate', { idModal: "modalAddSaleProduct", route:'/dashboard/sale', title: "Product", form: addSaleProductForm, size: "modal-lg" }) %}}
+
+<script src="/public/assets/js/modules/sales/new-sale.scripts.js"></script>

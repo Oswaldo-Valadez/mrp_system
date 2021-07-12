@@ -80,7 +80,9 @@
                 {{% sales.forEach((row, i) => { %}}
                 <tr>
                   <td>{{%= i + 1 %}}</td>
-                  <td>{{%= row.reference_code %}}</td>
+                  <td>
+                    <a href="/dashboard/sales/{{%= row.id_sale %}}">{{%= row.reference_code %}}</a>
+                  </td>
                   <td>{{%= row.creation_date %}}</td>
                   <td>{{%= row.details %}}</td>
                   <td>
