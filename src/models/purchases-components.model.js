@@ -2,30 +2,6 @@
 
 const { pool } = require("../utils/database/query");
 
-exports.getPurchasesComponentsCount = async () => {
-  const count = (
-    await pool.query(`SELECT COUNT(*) AS count FROM ??`, [
-      "purchases_components",
-    ])
-  )[0].count;
-  return count;
-};
-
-exports.getAllPurchasesComponents = async () => {
-  const purchases_components = await pool.query(`SELECT * FROM ??`, [
-    "purchases_components",
-  ]);
-  return purchases_components;
-};
-
-exports.getOnePurchaseComponent = async (id_purchases_component) => {
-  const purchases_component = await pool.query(`SELECT * FROM ?? WHERE ?`, [
-    "purchases_components",
-    { id_purchases_component },
-  ])[0];
-  return purchases_component;
-};
-
 exports.createPurchaseComponent = async (values) => {
   const res = await pool.query(`INSERT INTO ?? SET ?`, [
     "purchases_components",

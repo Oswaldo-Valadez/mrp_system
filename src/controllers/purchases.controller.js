@@ -38,10 +38,10 @@ exports.renderPurchase = async (req, res, next) => {
 
 exports.createPurchase = async (req, res, next) => {
   try {
-    await Purchases.createPurchase(req.body);
+    const { insertId } = await Purchases.createPurchase(req.body);
 
     req.flash("success", "The purchase has been created successfully");
-    res.redirect("back");
+    res.redirect(`purchases/${insertId}`);
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }

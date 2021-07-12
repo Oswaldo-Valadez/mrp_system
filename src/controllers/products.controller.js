@@ -39,10 +39,10 @@ exports.renderProduct = async (req, res, next) => {
 
 exports.createProduct = async (req, res, next) => {
   try {
-    await Products.createProduct(req.body);
+    const { insertId } = await Products.createProduct(req.body);
 
     req.flash("success", "The product has been created successfully");
-    res.redirect("products");
+    res.redirect(`products/${insertId}`);
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }
