@@ -51,14 +51,14 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-info">
           <div class="inner">
-            <h3>0</h3>
+            <h3>{{%= count_sales %}}</h3>
 
             <p>{{%= __('Sales') %}}</p>
           </div>
           <div class="icon">
             <i class="ion fas fa-money-check-alt"></i>
           </div>
-          <a href="#" class="small-box-footer"
+          <a href="/dashboard/sales" class="small-box-footer"
             >{{%= __('More info') %}} <i class="fas fa-chevron-circle-right"></i
           ></a>
         </div>
@@ -73,7 +73,7 @@
           <div class="icon">
             <i class="ion fas fa-store"></i>
           </div>
-          <a href="#" class="small-box-footer"
+          <a href="/dashboard/purchases" class="small-box-footer"
             >{{%= __('More info') %}} <i class="fas fa-chevron-circle-right"></i
           ></a>
         </div>
