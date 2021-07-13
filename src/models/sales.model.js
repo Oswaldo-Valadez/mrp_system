@@ -12,7 +12,12 @@ exports.getSalesCount = async () => {
 };
 
 exports.getAllSales = async () => {
-  const sales = await pool.query(`SELECT * FROM ??`, ["sales"]);
+  const sales = await pool.query(
+    `SELECT *,
+      DATE_FORMAT(sales.creation_date, "%Y-%m-%d") AS creation_date
+    FROM ??`,
+    ["sales"]
+  );
   return sales;
 };
 
@@ -20,8 +25,8 @@ exports.getOneSale = async (id_sale) => {
   const sale = (
     await pool.query(
       `SELECT *,
-      DATE_FORMAT(sales.creation_date, "%Y-%m-%d") AS creation_date
-    FROM ?? WHERE ?`,
+        DATE_FORMAT(sales.creation_date, "%Y-%m-%d") AS creation_date
+      FROM ?? WHERE ?`,
       ["sales", { id_sale }]
     )
   )[0];

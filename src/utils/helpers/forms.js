@@ -208,6 +208,15 @@ exports.formProduct = () => [
     {
       componentName: "Input",
       options: {
+        label: "Installed Capacity",
+        name: "installed_capacity",
+        type: "number",
+        isRequired: true,
+      },
+    },
+    {
+      componentName: "Input",
+      options: {
         label: "Stock",
         name: "stock",
         type: "number",
