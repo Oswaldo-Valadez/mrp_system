@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2021 at 06:07 PM
+-- Generation Time: Jul 13, 2021 at 08:01 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -92,7 +92,8 @@ CREATE TABLE `measurement_units` (
 DROP TABLE IF EXISTS `mps`;
 CREATE TABLE `mps` (
   `id_mps` int(11) NOT NULL,
-  `initial_inventory` int(11) NOT NULL,
+  `initial_stock` int(11) NOT NULL,
+  `year` year(4) NOT NULL,
   `id_component` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -110,7 +111,7 @@ CREATE TABLE `mps_periods` (
   `availability_projection` int(11) NOT NULL,
   `net_requirements` int(11) NOT NULL,
   `planned_order_release` int(11) NOT NULL,
-  `id_last_mps_period` int(11) NOT NULL,
+  `id_last_mps_period` int(11) DEFAULT NULL,
   `id_mps` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -126,6 +127,7 @@ CREATE TABLE `products` (
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `production_time` int(11) NOT NULL,
+  `installed_capacity` int(11) NOT NULL,
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -139,7 +141,7 @@ DROP TABLE IF EXISTS `purchases`;
 CREATE TABLE `purchases` (
   `id_purchase` int(11) NOT NULL,
   `reference_code` varchar(20) NOT NULL,
-  `creation_date` datetime NOT NULL,
+  `creation_date` date NOT NULL,
   `details` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -181,7 +183,7 @@ CREATE TABLE `sales_products` (
   `id_sale` int(11) NOT NULL,
   `id_product` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `status` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -247,6 +249,7 @@ ALTER TABLE `measurement_units`
 --
 ALTER TABLE `mps`
   ADD PRIMARY KEY (`id_mps`),
+  ADD UNIQUE KEY `year_component` (`year`,`id_component`) USING BTREE,
   ADD KEY `id_component` (`id_component`);
 
 --

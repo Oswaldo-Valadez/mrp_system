@@ -13,7 +13,7 @@ exports.redirectToFirstYear = async (req, res, next) => {
 
 exports.renderMPS = async (req, res, next) => {
   try {
-    const mps = await MPS.getMPS();
+    const mps = await MPS.getAllMPS();
 
     ErrorHandler.handleRender(req, res, "modules/mps/mps", {
       mps,

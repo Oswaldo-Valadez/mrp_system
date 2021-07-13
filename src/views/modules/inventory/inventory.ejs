@@ -1,141 +1,151 @@
 <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>
-            {{%= __('Inventory') %}}
-            <small class="text-muted">{{%= __('List') %}}</small>
-          </h1>
-        </div>
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item">
-              <a href="/">{{%= __('Dashboard') %}}</a>
-            </li>
-            <li class="breadcrumb-item active">{{%= __('Inventory') %}}</li>
-          </ol>
-        </div>
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>
+          {{%= __('Inventory') %}}
+          <small class="text-muted">{{%= __('List') %}}</small>
+        </h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item">
+            <a href="/">{{%= __('Dashboard') %}}</a>
+          </li>
+          <li class="breadcrumb-item active">{{%= __('Inventory') %}}</li>
+        </ol>
       </div>
     </div>
-  </section>
-  
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-8 col-sm-4 col-md-3">
-          <div class="info-box">
-            <span class="info-box-icon bg-primary elevation-1"
-              ><i class="fas fa-boxes"></i
-            ></span>
-  
-            <div class="info-box-content">
-              <span class="info-box-text">{{%= __('Inventory') %}}</span>
-              <span class="info-box-number">
-                {{%= components.length %}}
-              </span>
-            </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-8 col-sm-4 col-md-3">
+        <div class="info-box">
+          <span class="info-box-icon bg-primary elevation-1"
+            ><i class="fas fa-boxes"></i
+          ></span>
+
+          <div class="info-box-content">
+            <span class="info-box-text">{{%= __('Inventory') %}}</span>
+            <span class="info-box-number">
+              {{%= components.length %}}
+            </span>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-              <h3 class="card-title">
-                <i class="fas fa-boxes"></i>
-                {{%= __('Inventory') %}}
-              </h3>
-              <div class="card-tools">
-                <a
-                  href="#"
-                  data-target="#modalCreate"
-                  data-toggle="modal"
-                  class="btn btn-success"
-                  title="{{%= __('New Component') %}}"
-                >
-                  <i class="fas fa-plus"></i> &nbsp; {{%= __('New Component') %}}
-                </a>
-              </div>
-            </div>
-            <div class="card-body">
-              <table
-                class="
-                  table table-bordered table-striped
-                  dataTable
-                  dataTableConfig
-                  dtr-inline
-                "
-                aria-describedby="dataTableConfig_info"
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary card-outline">
+          <div class="card-header">
+            <h3 class="card-title">
+              <i class="fas fa-boxes"></i>
+              {{%= __('Inventory') %}}
+            </h3>
+            <div class="card-tools">
+              <a
+                href="#"
+                data-target="#modalCreate"
+                data-toggle="modal"
+                class="btn btn-success"
+                title="{{%= __('New Component') %}}"
               >
-                <thead>
-                  <tr role="row">
-                    <th>#</th>
-                    <th>{{%= __('Name') %}}</th>
-                    <th>{{%= __('Description') %}}</th>
-                    <th>{{%= __('Stock') %}}</th>
-                    <th>{{%= __('Security Stock') %}}</th>
-                    <th>{{%= __('Wait Time') %}}</th>
-                    <th>{{%= __('Brand') %}}</th>
-                    <th>{{%= __('Category') %}}</th>
-                    <th>{{%= __('Measurement Unit') %}}</th>
-                    <th>{{%= __('Actions') %}}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{% components.forEach((row, i) => { %}}
-                  <tr class="odd">
-                    <td>{{%= i + 1 %}}</td>
-                    <td>{{%= row.name %}}</td>
-                    <td>{{%= row.description %}}</td>
-                    <td>{{%= row.stock %}}</td>
-                    <td>{{%= row.security_stock %}}</td>
-                    <td>{{%= row.wait_time %}}</td>
-                    <td>
-                      <span class="badge bg-info">{{%= row.brand_name %}}</span>
-                    </td>
-                    <td>
-                      <span class="badge bg-info">{{%= row.category_name %}}</span>
-                    </td>
-                    <td>
-                      <span class="badge bg-info">{{%= row.measurement_unit_name %}}</span>
-                    </td>
-                    <td>
-                      <div class="column-actions">
-                        <a
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#modalDelete"
-                          data-id="{{%= row.id_component %}}"
-                          class="btn btn-danger btn-xs"
-                        >
-                          <i class="fas fa-trash-alt"></i>
-                        </a>
-                        <a
-                          href="#"
-                          data-toggle="modal"
-                          data-target="#modalEdit"
-                          data-row="{{%= JSON.stringify(row) %}}"
-                          data-id="{{%= row.id_component %}}"
-                          class="btn btn-warning btn-xs"
-                        >
-                          <i class="fas fa-pen"></i>
-                        </a>
-                      </div>
-                    </td>
-                  </tr>
-                  {{% }) %}}
-                </tbody>
-              </table>
+                <i class="fas fa-plus"></i> &nbsp; {{%= __('New Component') %}}
+              </a>
             </div>
+          </div>
+          <div class="card-body">
+            <table
+              class="
+                table table-bordered table-striped
+                dataTable
+                dataTableConfig
+                dtr-inline
+              "
+              aria-describedby="dataTableConfig_info"
+            >
+              <thead>
+                <tr role="row">
+                  <th>#</th>
+                  <th>{{%= __('Name') %}}</th>
+                  <th>{{%= __('Description') %}}</th>
+                  <th>{{%= __('Stock') %}}</th>
+                  <th>{{%= __('Security Stock') %}}</th>
+                  <th>{{%= __('Wait Time') %}}</th>
+                  <th>{{%= __('Brand') %}}</th>
+                  <th>{{%= __('Category') %}}</th>
+                  <th>{{%= __('Measurement Unit') %}}</th>
+                  <th>{{%= __('Actions') %}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{% components.forEach((row, i) => { %}}
+                <tr class="odd">
+                  <td>{{%= i + 1 %}}</td>
+                  <td>
+                    <a
+                      href="/dashboard/inventory/{{%= row.id_component %}}/mps/{{%= new Date().getFullYear() %}}"
+                      >{{%= row.name %}}</a
+                    >
+                  </td>
+                  <td>{{%= row.description %}}</td>
+                  <td>{{%= row.stock %}}</td>
+                  <td>{{%= row.security_stock %}}</td>
+                  <td>{{%= row.wait_time %}}</td>
+                  <td>
+                    <span class="badge bg-info">{{%= row.brand_name %}}</span>
+                  </td>
+                  <td>
+                    <span
+                      class="badge bg-info"
+                      >{{%= row.category_name %}}</span
+                    >
+                  </td>
+                  <td>
+                    <span
+                      class="badge bg-info"
+                      >{{%= row.measurement_unit_name %}}</span
+                    >
+                  </td>
+                  <td>
+                    <div class="column-actions">
+                      <a
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#modalDelete"
+                        data-id="{{%= row.id_component %}}"
+                        class="btn btn-danger btn-xs"
+                      >
+                        <i class="fas fa-trash-alt"></i>
+                      </a>
+                      <a
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#modalEdit"
+                        data-row="{{%= JSON.stringify(row) %}}"
+                        data-id="{{%= row.id_component %}}"
+                        class="btn btn-warning btn-xs"
+                      >
+                        <i class="fas fa-pen"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                {{% }) %}}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  {{%- include('../../components/ModalCreate', { idModal: "modalCreate", route:'/dashboard/inventory', title: "Component", form: newComponentForm, size: "modal-lg" }) %}}
-  {{%- include('../../components/ModalDelete', { idModal: "modalDelete", route:['/dashboard/inventory/','/delete'], title: "Component" }) %}}
-  {{%- include('../../components/ModalEdit', { idModal: "modalEdit", route: '/dashboard/inventory/', title: "Component", form: editComponentForm, size: "modal-lg" }) %}}
-  
-  <script src="/public/assets/js/modules/inventory/inventory.scripts.js"></script>
-  
+  </div>
+</section>
+
+{{%- include('../../components/ModalCreate', { idModal: "modalCreate", route:'/dashboard/inventory', title: "Component", form: newComponentForm, size: "modal-lg" }) %}}
+{{%- include('../../components/ModalDelete', { idModal: "modalDelete", route:['/dashboard/inventory/','/delete'], title: "Component" }) %}}
+{{%- include('../../components/ModalEdit', { idModal: "modalEdit", route: '/dashboard/inventory/', title: "Component", form: editComponentForm, size: "modal-lg" }) %}}
+
+<script src="/public/assets/js/modules/inventory/inventory.scripts.js"></script>

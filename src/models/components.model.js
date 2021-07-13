@@ -2,6 +2,8 @@
 
 const { pool } = require("../utils/database/query");
 
+const MPS = require("./mps.model");
+
 exports.getComponentsCount = async () => {
   const count = (
     await pool.query(`SELECT COUNT(*) AS count FROM ??`, ["components"])
@@ -36,7 +38,18 @@ exports.getOneComponent = async (id_component) => {
 
 exports.createComponent = async (values) => {
   const res = await pool.query(`INSERT INTO ?? SET ?`, ["components", values]);
-  return res;
+
+  const { insertId } = res;
+
+  const mps = {
+    id_component: insertId,
+    year: new Date().getFullYear(),
+    initial_stock: values.stock,
+  };
+
+  const res_mps = await MPS.createMPS(mps);
+
+  return { res, res_mps };
 };
 
 exports.updateComponent = async (id_component, values) => {
