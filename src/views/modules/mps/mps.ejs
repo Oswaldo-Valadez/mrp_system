@@ -54,13 +54,21 @@
             </h3>
             <div class="card-tools">
               <ul class="nav nav-pills ml-auto">
-                {{% ["January","February","March","April","May","June","July","August","September","October","November","December"].forEach((row, i) => { %}}
+                {{% ["August","September","October","November","December"].forEach((row, i) => { %}}
                 <li class="nav-item">
                   <a class="nav-link {{%= row == "July" ? "active" : "" %}}" href="#tab{{%= row %}}" data-toggle="tab">
                     {{%= row %}}
                   </a>
                 </li>
                 {{% }) %}}
+                <a
+                  href="/dashboard/products/new"
+                  class="btn btn-success"
+                  title="{{%= __('New Product') %}}"
+                  style="margin-left: 0.5rem;"
+                >
+                  <i class="fas fa-plus"></i>
+                </a>
               </ul>
             </div>
           </div>
