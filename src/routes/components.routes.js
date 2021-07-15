@@ -11,12 +11,12 @@ router
   .get(componentsController.renderComponents)
   .post(componentsController.createComponent);
 
+router.use("/:id/mps", mpsRoutes);
+
 router
   .route("/:id")
   .get(componentsController.renderComponent)
   .post(componentsController.updateComponent);
-
-router.use("/:id/mps", mpsRoutes);
 
 router.route("/:id/delete").get(componentsController.deleteComponent);
 

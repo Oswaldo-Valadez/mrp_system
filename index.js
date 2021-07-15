@@ -15,9 +15,10 @@ const passport = require("passport");
 const { database } = require("./src/utils/database/keys");
 const router = require("./src/routes");
 
+const ejsHelpers = require("./src/utils/helpers/ejs-helpers");
+
 const i18n = require("i18n");
 
-// Init app
 const app = express();
 
 // Init i18n
@@ -59,6 +60,8 @@ app.use((req, res, next) => {
   app.locals.successSignin = req.flash("successSignin")[0];
 
   app.locals.user = req.user;
+
+  app.locals._ = ejsHelpers;
 
   if (app.locals.dark_mode === undefined) {
     app.locals.dark_mode = true;

@@ -34,13 +34,10 @@ exports.deleteMPSPeriod = async (id_mps_period) => {
   return res;
 };
 
-exports.getAllMPSPeriodsByMPS = async (id_component, year) => {
-  const mps_period = (
-    await pool.query(`SELECT * FROM ?? WHERE ? AND`, [
-      "mps_periods",
-      { id_component },
-      { year },
-    ])
-  )[0];
+exports.getAllMPSPeriodsByMPS = async (id_mps) => {
+  const mps_period = await pool.query(`SELECT * FROM ?? WHERE ?`, [
+    "mps_periods",
+    { id_mps },
+  ]);
   return mps_period;
 };

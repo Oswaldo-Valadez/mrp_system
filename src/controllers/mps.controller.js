@@ -13,10 +13,18 @@ exports.redirectToFirstYear = async (req, res, next) => {
 
 exports.renderMPS = async (req, res, next) => {
   try {
-    const mps = await MPS.getAllMPS();
+    const { id: id_component, year } = req.params;
+
+    const all_mps = await MPS.getAllMPSByComponent(id_component);
+
+    const { mps, mps_periods } = await MPS.getOneMPS(id_component, year);
 
     ErrorHandler.handleRender(req, res, "modules/mps/mps", {
       mps,
+      mps_periods,
+      all_mps,
+      id_component,
+      year,
     });
   } catch (error) {
     ErrorHandler.handleError(req, res, error);

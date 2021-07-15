@@ -2,6 +2,8 @@
 
 const { pool } = require("../utils/database/query");
 
+const MPSPeriods = require("./mps-periods.model");
+
 exports.getMPSCount = async () => {
   const count = (
     await pool.query(`SELECT COUNT(*) AS count FROM ??`, ["mps"])
@@ -14,11 +16,28 @@ exports.getAllMPS = async () => {
   return mps;
 };
 
-exports.getOneMPS = async (id_mps) => {
-  const mps = (
-    await pool.query(`SELECT * FROM ?? WHERE ?`, ["mps", { id_mps }])
-  )[0];
+exports.getAllMPSByComponent = async (id_component) => {
+  const mps = await pool.query(`SELECT year FROM ?? WHERE ?`, [
+    "mps",
+    { id_component },
+  ]);
   return mps;
+};
+
+exports.getOneMPS = async (id_component, year) => {
+  const mps = (
+    await pool.query(`SELECT * FROM ?? WHERE ? AND ?`, [
+      "mps",
+      { id_component },
+      { year },
+    ])
+  )[0];
+
+  const { id_mps } = mps;
+  
+  const mps_periods = await MPSPeriods.getAllMPSPeriodsByMPS(id_mps);
+  
+  return { mps, mps_periods };
 };
 
 exports.createMPS = async (values) => {

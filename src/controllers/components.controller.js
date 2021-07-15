@@ -40,6 +40,8 @@ exports.renderComponent = async (req, res, next) => {
     const component = await Components.getOneComponent(req.params.id);
 
     res.render("modules/components/component", { component });
+    
+    next();
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
   }

@@ -15,6 +15,9 @@
           <li class="breadcrumb-item">
             <a href="/">{{%= __('Dashboard') %}}</a>
           </li>
+          <li class="breadcrumb-item">
+            <a href="/dashboard/inventory">{{%= __('Inventory') %}}</a>
+          </li>
           <li class="breadcrumb-item active">{{%= __('MPS') %}}</li>
         </ol>
       </div>
@@ -28,7 +31,7 @@
       <div class="col">
         <div class="btn-group mb-3">
           <button type="button" class="btn btn-info">
-            {{%= __('Year') %}}
+            {{%= __('MPS') %}}
           </button>
           <button
             type="button"
@@ -39,7 +42,17 @@
             <span class="sr-only">{{%= __('Toggle Dropdown') %}}</span>
           </button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">{{%= new Date().getFullYear() %}}</a>
+            {{% all_mps.forEach((row, i) => { %}}
+              <a class="dropdown-item {{%= year == row.year ? "active" : null %}}" href="/dashboard/inventory/{{%= id_component %}}/mps/{{%= row.year %}}">{{%= row.year %}}</a>
+            {{% }) %}}
+            <a
+              href="/dashboard/inventory/8/mps/2021"
+              class="dropdown-item bg-success"
+              title="{{%= __('New MPS') %}}"
+              style="text-align: center;"
+            >
+              <i class="fas fa-plus"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -54,18 +67,17 @@
             </h3>
             <div class="card-tools">
               <ul class="nav nav-pills ml-auto">
-                {{% ["August","September","October","November","December"].forEach((row, i) => { %}}
+                {{% mps_periods.forEach((row, i) => { %}}
                 <li class="nav-item">
-                  <a class="nav-link {{%= row == "July" ? "active" : "" %}}" href="#tab{{%= row %}}" data-toggle="tab">
-                    {{%= row %}}
+                  <a class="nav-link {{%= row.month == new Date().getMonth() - 1 ? "active" : "" %}}" href="#tab{{%= row.month %}}" data-toggle="tab">
+                    {{%= __(_.getMonth(row.month)) %}}
                   </a>
                 </li>
                 {{% }) %}}
                 <a
                   href="/dashboard/products/new"
-                  class="btn btn-success"
-                  title="{{%= __('New Product') %}}"
-                  style="margin-left: 0.5rem;"
+                  class="btn btn-success ml-2"
+                  title="{{%= __('New Period') %}}"
                 >
                   <i class="fas fa-plus"></i>
                 </a>
@@ -74,8 +86,41 @@
           </div>
           <div class="card-body">
             <div class="tab-content p-0">
-              {{% ["January","February","March","April","May","June","July","August","September","October","November","December"].forEach((row, i) => { %}}
-                <div class="tab-pane {{%= row == "July" ? "active" : "" %}}" id="tab{{%= row %}}"><p>{{%= row %}}</p></div>
+              {{% mps_periods.forEach((row, i) => { %}}
+                <div class="tab-pane {{%= row.month == new Date().getMonth() - 1 ? "active" : "" %}}" id="tab{{%= row.month %}}">
+                  <table
+                    class="table table-bordered table-striped"
+                  >
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>{{%= __('Quantity') %}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{{%= __('Gross Requirement') %}}</td>
+                        <td>{{%= row.gross_requirement %}}</td>
+                      </tr>
+                      <tr>
+                        <td>{{%= __('Scheduled Receptions') %}}</td>
+                        <td>{{%= row.scheduled_receptions %}}</td>
+                      </tr>
+                      <tr>
+                        <td>{{%= __('Availability Projection') %}}</td>
+                        <td>{{%= row.availability_projection %}}</td>
+                      </tr>
+                      <tr>
+                        <td>{{%= __('Net Requirements') %}}</td>
+                        <td>{{%= row.net_requirements %}}</td>
+                      </tr>
+                      <tr>
+                        <td>{{%= __('Planned Order Release') %}}</td>
+                        <td>{{%= row.planned_order_release %}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               {{% }) %}}
             </div>
           </div>

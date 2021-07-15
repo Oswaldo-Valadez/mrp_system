@@ -140,5 +140,19 @@
 	"Yes": "Yes",
 	"Year": "Year",
 	"Toggle Dropdown": "Toggle Dropdown",
-	"Installed Capacity": "Installed Capacity"
+	"Installed Capacity": "Installed Capacity",
+	"May": "May",
+	"June": "June",
+	"New MPS": "New MPS",
+	"New Period": "New Period",
+	"Gross Requirement": "Gross Requirement",
+	"Scheduled Receptions": "Scheduled Receptions",
+	"Availability Projection": "Availability Projection",
+	"Net Requirements": "Net Requirements",
+	"Planned Order Release": "Planned Order Release",
+	"Week": "Week",
+	"Week 1": "Week 1",
+	"Week 2": "Week 2",
+	"Week 3": "Week 3",
+	"Week 4": "Week 4"
 }
