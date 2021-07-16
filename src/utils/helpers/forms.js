@@ -123,7 +123,8 @@ exports.formComponent = ({
       ? {
           componentName: "Input",
           options: {
-            label: "Wait Time (Weeks)",
+            label: "Wait Time",
+            note: "Weeks",
             name: "wait_time",
             type: "number",
             isRequired: true,

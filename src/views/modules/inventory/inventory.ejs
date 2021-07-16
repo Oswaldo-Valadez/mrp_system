@@ -70,11 +70,12 @@
               <thead>
                 <tr role="row">
                   <th>#</th>
+                  <th>{{%= __('Part Number') %}}</th>
                   <th>{{%= __('Name') %}}</th>
                   <th>{{%= __('Description') %}}</th>
                   <th>{{%= __('Stock') %}}</th>
                   <th>{{%= __('Security Stock') %}}</th>
-                  <th>{{%= __('Wait Time') %}}</th>
+                  <th>{{%= __('Wait Time') %}}<span class="text-muted"> ({{%= __('Weeks') %}})</span></th>
                   <th>{{%= __('Brand') %}}</th>
                   <th>{{%= __('Category') %}}</th>
                   <th>{{%= __('Measurement Unit') %}}</th>
@@ -88,9 +89,10 @@
                   <td>
                     <a
                       href="/dashboard/inventory/{{%= row.id_component %}}/mps/{{%= new Date().getFullYear() %}}"
-                      >{{%= row.name %}}</a
+                      >{{%= row.part_number %}}</a
                     >
                   </td>
+                  <td>{{%= row.name %}}</td>
                   <td>{{%= row.description %}}</td>
                   <td>{{%= row.stock %}}</td>
                   <td>{{%= row.security_stock %}}</td>

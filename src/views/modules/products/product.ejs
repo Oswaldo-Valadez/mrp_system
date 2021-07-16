@@ -35,7 +35,20 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <div class="col-12">
+              <div class="col">
+                <div class="form-group">
+                  <label>
+                    {{%= __('Serial Number') %}}
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="{{%= product.serial_number %}}"
+                    readonly
+                  />
+                </div>
+              </div>
+              <div class="col">
                 <div class="form-group">
                   <label>
                     {{%= __('Name') %}}
@@ -50,10 +63,10 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-6">
+              <div class="col">
                 <div class="form-group">
                   <label>
-                    {{%= __('Production Time') %}}
+                    {{%= __('Production Time') %}}<span class="text-muted"> ({{%= __('Weeks') %}})</span>
                   </label>
                   <input
                     type="text"
@@ -63,7 +76,19 @@
                   />
                 </div>
               </div>
-              <div class="col-6">
+              <div class="col">
+                <div class="form-group">
+                  <label>
+                    {{%= __('Installed Capacity') %}}<span class="text-muted"> ({{%= __('Monthly') %}})</span>
+                  </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    value="{{%= product.installed_capacity %}}"
+                    readonly>
+                </div>
+              </div>
+              <div class="col">
                 <div class="form-group">
                   <label>
                     {{%= __('Stock') %}}
@@ -78,7 +103,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-12">
+              <div class="col">
                 <div class="form-group">
                   <label>
                     {{%= __('Description') %}}
@@ -114,7 +139,7 @@
               <thead>
                 <tr role="row">
                   <th>#</th>
-                  <th>{{%= __('Component') %}}</th>
+                  <th><a href="/dashboard/inventory" target="_blank">{{%= __('Component') %}}</a></th>
                   <th>{{%= __('Quantity') %}}</th>
                 </tr>
               </thead>
@@ -122,7 +147,7 @@
                 {{% spreadsheet.forEach((row, i) => { %}}
                 <tr class="odd">
                   <td>{{%= i + 1 %}}</td>
-                  <td>{{%= row.name %}}</td>
+                  <td>{{%= row.part_number %}}, {{%= row.name %}}</td>
                   <td>{{%= row.quantity %}}</td>
                 </tr>
                 {{% }) %}}

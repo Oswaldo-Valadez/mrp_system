@@ -69,9 +69,10 @@
               <thead>
                 <tr role="row">
                   <th>#</th>
+                  <th>{{%= __('Serial Number') %}}</th>
                   <th>{{%= __('Name') %}}</th>
                   <th>{{%= __('Description') %}}</th>
-                  <th>{{%= __('Production Time') %}}</th>
+                  <th>{{%= __('Production Time') %}}<span class="text-muted"> ({{%= __('Weeks') %}})</span></th>
                   <th>{{%= __('Stock') %}}</th>
                   <th>{{%= __('Actions') %}}</th>
                 </tr>
@@ -83,9 +84,10 @@
                   <td>
                     <a
                       href="/dashboard/products/{{%= row.id_product %}}"
-                      >{{%= row.name %}}</a
+                      >{{%= row.serial_number %}}</a
                     >
                   </td>
+                  <td>{{%= row.name %}}</td>
                   <td>{{%= row.description %}}</td>
                   <td>{{%= row.production_time %}}</td>
                   <td>{{%= row.stock %}}</td>

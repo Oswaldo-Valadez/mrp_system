@@ -99,7 +99,7 @@
               <thead>
                 <tr>
                   <th>{{%= __('ID') %}}</th>
-                  <th>{{%= __('Component') %}}</th>
+                  <th><a href="/dashboard/inventory" target="_blank">{{%= __('Component') %}}</a></th>
                   <th>{{%= __('Quantity') %}}</th>
                 </tr>
               </thead>
@@ -107,7 +107,7 @@
                 {{% purchase_components.forEach((row, i) => { %}}
                 <tr>
                   <td>{{%= i + 1 %}}</td>
-                  <td>{{%= row.name %}}</td>
+                  <td>{{%= row.part_number %}}, {{%= row.name %}}</td>
                   <td>{{%= row.quantity %}}</td>
                 </tr>
                 {{% }) %}}

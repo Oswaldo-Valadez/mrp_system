@@ -99,7 +99,7 @@
               <thead>
                 <tr>
                   <th>{{%= __('ID') %}}</th>
-                  <th>{{%= __('Component') %}}</th>
+                  <th>{{%= __('Product') %}}</th>
                   <th>{{%= __('Quantity') %}}</th>
                 </tr>
               </thead>
@@ -107,7 +107,7 @@
                 {{% sale_products.forEach((row, i) => { %}}
                 <tr>
                   <td>{{%= i + 1 %}}</td>
-                  <td>{{%= row.name %}}</td>
+                  <td><a href="/dashboard/products/{{%= row.id_product %}}" target="_blank">{{%= row.serial_number %}}, {{%= row.name %}}</a></td>
                   <td>{{%= row.quantity %}}</td>
                 </tr>
                 {{% }) %}}
