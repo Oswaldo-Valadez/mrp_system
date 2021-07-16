@@ -320,7 +320,9 @@ exports.formPurchase = ({ reference_code }) => [
       options: {
         label: "Creation Date",
         name: "creation_date",
+        note: "dd/mm/yyyy",
         type: "date",
+        value: new Date().toISOString().substr(0, 10),
         isRequired: true,
       },
     },
@@ -385,8 +387,10 @@ exports.formSale = ({ reference_code }) => [
       componentName: "Input",
       options: {
         label: "Creation Date",
+        note: "dd/mm/yyyy",
         name: "creation_date",
         type: "date",
+        value: new Date().toISOString().substr(0, 10),
         isRequired: true,
       },
     },
