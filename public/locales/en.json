@@ -155,5 +155,12 @@
 	"Week 2": "Week 2",
 	"Week 3": "Week 3",
 	"Week 4": "Week 4",
-	"Wait Time (Weeks)": "Wait Time (Weeks)"
+	"Wait Time (Weeks)": "Wait Time (Weeks)",
+	"Serial Number": "Serial Number",
+	"Production Time (Weeks)": "Production Time (Weeks)",
+	"Installed Capacity (Monthly)": "Installed Capacity (Monthly)",
+	"Monthly": "Monthly",
+	" (Monthly) ": " (Monthly) ",
+	"Weeks": "Weeks",
+	"Part Number": "Part Number"
 }

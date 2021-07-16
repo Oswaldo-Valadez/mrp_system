@@ -17,10 +17,9 @@ exports.getAllProducts = async () => {
 };
 
 exports.getOneProduct = async (id_product) => {
-  const product = (await pool.query(`SELECT * FROM ?? WHERE ?`, [
-    "products",
-    { id_product },
-  ]))[0];
+  const product = (
+    await pool.query(`SELECT * FROM ?? WHERE ?`, ["products", { id_product }])
+  )[0];
 
   const spreadsheet = await Spreadsheet.getAllSpreadsheetByProduct(id_product);
 
@@ -29,7 +28,7 @@ exports.getOneProduct = async (id_product) => {
 
 exports.createProduct = async (values) => {
   const { name, description, id_component, quantity } = values;
-  
+
   const res = await pool.query(`INSERT INTO ?? SET ?`, [
     "products",
     { name, description },

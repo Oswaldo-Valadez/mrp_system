@@ -5,6 +5,7 @@ const {
   formPurchase,
   formAddPurchaseComponent,
 } = require("../utils/helpers/forms");
+const { codeGenerator } = require("../utils/helpers/code-gen");
 
 const Purchases = require("../models/purchases.model");
 const Components = require("../models/components.model");
@@ -73,8 +74,12 @@ exports.renderCreatePurchase = async (req, res, next) => {
   try {
     const components = await Components.getAllComponents();
 
+    const count = await Purchases.getPurchasesCountByDay();
+
+    const reference_code = await codeGenerator("PURCHASE", count, 4);
+
     ErrorHandler.handleRender(req, res, "modules/purchases/new-purchase", {
-      newPurchaseForm: formPurchase(),
+      newPurchaseForm: formPurchase({ reference_code }),
       addPurchaseComponentForm: formAddPurchaseComponent({ components }),
     });
   } catch (error) {

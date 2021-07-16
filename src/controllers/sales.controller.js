@@ -2,6 +2,7 @@
 
 const ErrorHandler = require("../utils/helpers/error-handler");
 const { formSale, formAddSaleProduct } = require("../utils/helpers/forms");
+const { codeGenerator } = require("../utils/helpers/code-gen");
 
 const Sales = require("../models/sales.model");
 const Products = require("../models/products.model");
@@ -20,7 +21,7 @@ exports.renderSale = async (req, res, next) => {
   try {
     const { sale, sale_products } = await Sales.getOneSale(req.params.id);
 
-    console.log(sale, sale_products)
+    console.log(sale, sale_products);
 
     ErrorHandler.handleRender(req, res, "modules/sales/sale", {
       sale,
@@ -68,8 +69,12 @@ exports.renderCreateSale = async (req, res, next) => {
   try {
     const products = await Products.getAllProducts();
 
-    ErrorHandler.handleRender(req, res, "modules/sales/new-sale", {
-      newSaleForm: formSale(),
+    const count = await Sales.getSalesCountByDay();
+
+    const reference_code = await codeGenerator("SALE", count, 4);
+
+    await ErrorHandler.handleRender(req, res, "modules/sales/new-sale", {
+      newSaleForm: formSale({ reference_code }),
       addSaleProductForm: formAddSaleProduct({ products }),
     });
   } catch (error) {

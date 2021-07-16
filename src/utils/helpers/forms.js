@@ -70,8 +70,20 @@ exports.formComponent = ({
   categories = [],
   measurement_units = [],
   fields = {},
+  part_number,
 }) => [
   [
+    {
+      componentName: "Input",
+      options: {
+        label: "Part Number",
+        name: "part_number",
+        type: "text",
+        isRequired: true,
+        isDisabled: true,
+        value: part_number,
+      },
+    },
     {
       componentName: "Input",
       options: {
@@ -187,8 +199,19 @@ exports.formComponent = ({
   ],
 ];
 
-exports.formProduct = () => [
+exports.formProduct = ({ serial_number }) => [
   [
+    {
+      componentName: "Input",
+      options: {
+        label: "Serial Number",
+        name: "serial_number",
+        type: "text",
+        isRequired: true,
+        isDisabled: true,
+        value: serial_number,
+      },
+    },
     {
       componentName: "Input",
       options: {
@@ -204,6 +227,7 @@ exports.formProduct = () => [
       componentName: "Input",
       options: {
         label: "Production Time",
+        note: "Weeks",
         name: "production_time",
         type: "number",
         isRequired: true,
@@ -215,10 +239,11 @@ exports.formProduct = () => [
       componentName: "Input",
       options: {
         label: "Installed Capacity",
+        note: "Monthly",
         name: "installed_capacity",
         type: "number",
         isRequired: true,
-        min: "0",
+        min: "1",
       },
     },
     {
@@ -276,7 +301,7 @@ exports.formAddProductComponent = ({ components }) => [
   ],
 ];
 
-exports.formPurchase = () => [
+exports.formPurchase = ({ reference_code }) => [
   [
     {
       componentName: "Input",
@@ -285,6 +310,8 @@ exports.formPurchase = () => [
         name: "reference_code",
         type: "text",
         isRequired: true,
+        isDisabled: true,
+        value: reference_code,
       },
     },
     {
@@ -340,7 +367,7 @@ exports.formAddPurchaseComponent = ({ components }) => [
   ],
 ];
 
-exports.formSale = () => [
+exports.formSale = ({ reference_code }) => [
   [
     {
       componentName: "Input",
@@ -349,6 +376,8 @@ exports.formSale = () => [
         name: "reference_code",
         type: "text",
         isRequired: true,
+        isDisabled: true,
+        value: reference_code,
       },
     },
     {

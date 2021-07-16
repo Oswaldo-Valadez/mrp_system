@@ -5,6 +5,7 @@ const {
   formProduct,
   formAddProductComponent,
 } = require("../utils/helpers/forms");
+const { codeGenerator } = require("../utils/helpers/code-gen");
 
 const Products = require("../models/products.model");
 
@@ -74,8 +75,12 @@ exports.renderCreateProduct = async (req, res, next) => {
   try {
     const components = await Components.getAllComponents();
 
+    const count = await Products.getProductsCount();
+
+    const serial_number = await codeGenerator("SN", count, 5);
+
     ErrorHandler.handleRender(req, res, "modules/products/new-product", {
-      newProductForm: formProduct(),
+      newProductForm: formProduct({ serial_number }),
       addProductComponentForm: formAddProductComponent({ components }),
     });
   } catch (error) {

@@ -11,6 +11,18 @@ exports.getPurchasesCount = async () => {
   return count;
 };
 
+exports.getPurchasesCountByDay = async () => {
+  const count = (
+    await pool.query(
+      `SELECT COUNT(*) AS count
+      FROM ??
+      WHERE creation_date = CURDATE()`,
+      ["purchases"]
+    )
+  )[0].count;
+  return count;
+};
+
 exports.getAllPurchases = async () => {
   const purchases = await pool.query(
     `SELECT *,

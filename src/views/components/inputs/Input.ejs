@@ -2,6 +2,7 @@
     var
         name = name || "",
         label = label || "",
+        note = note || false,
         type = type || "",
         isRequired = isRequired || false,
         isDisabled = isDisabled || false,
@@ -9,13 +10,14 @@
         max = max || false,
         maxlength = maxlength || false,
         minlength = minlength || false,
+        value = value || false,
         variant = variant || "normal";
 %}}
 
 {{% if (variant == "normal") { %}}
 <div class="form-group">
   <label for="{{%= name %}}">
-    {{%= __(label) %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}
+    {{%= __(label) %}}{{% if (isRequired) { %}}<span class="is-required">*</span>{{% } %}}{{% if (note) { %}}<span class="text-muted"> ({{%= __(note) %}}) </span>{{% } %}}
   </label>
   <input
     type="{{%= type %}}"
@@ -27,6 +29,7 @@
     {{% if (max) { %}}max="{{%= max %}}"{{% } %}}
     {{% if (maxlength) { %}}maxlength="{{%= maxlength %}}"{{% } %}}
     {{% if (minlength) { %}}minlength="{{%= minlength %}}"{{% } %}}
+    {{% if (value) { %}}value="{{%= value %}}"{{% } %}}
   />
 </div>
 {{% } %}}
