@@ -91,6 +91,7 @@ exports.formComponent = ({
             name: "stock",
             type: "number",
             isRequired: true,
+            min: "0",
           },
         }
       : null,
@@ -102,6 +103,7 @@ exports.formComponent = ({
             name: "security_stock",
             type: "number",
             isRequired: true,
+            min: "0",
           },
         }
       : null,
@@ -109,10 +111,12 @@ exports.formComponent = ({
       ? {
           componentName: "Input",
           options: {
-            label: "Wait Time",
+            label: "Wait Time (Weeks)",
             name: "wait_time",
             type: "number",
             isRequired: true,
+            min: "1",
+            max: "4",
           },
         }
       : null,
@@ -203,6 +207,8 @@ exports.formProduct = () => [
         name: "production_time",
         type: "number",
         isRequired: true,
+        min: "1",
+        max: "4",
       },
     },
     {
@@ -212,6 +218,7 @@ exports.formProduct = () => [
         name: "installed_capacity",
         type: "number",
         isRequired: true,
+        min: "0",
       },
     },
     {
@@ -221,6 +228,7 @@ exports.formProduct = () => [
         name: "stock",
         type: "number",
         isRequired: true,
+        min: "0",
       },
     },
   ],
@@ -262,6 +270,7 @@ exports.formAddProductComponent = ({ components }) => [
         name: "quantity",
         type: "number",
         isRequired: true,
+        min: "1",
       },
     },
   ],
@@ -325,6 +334,7 @@ exports.formAddPurchaseComponent = ({ components }) => [
         name: "quantity",
         type: "number",
         isRequired: true,
+        min: "1",
       },
     },
   ],
@@ -388,6 +398,7 @@ exports.formAddSaleProduct = ({ products }) => [
         name: "quantity",
         type: "number",
         isRequired: true,
+        min: "1",
       },
     },
   ],
