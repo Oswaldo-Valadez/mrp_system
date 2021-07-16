@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2021 at 08:01 PM
+-- Generation Time: Jul 16, 2021 at 07:35 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -59,6 +59,7 @@ CREATE TABLE `categories` (
 DROP TABLE IF EXISTS `components`;
 CREATE TABLE `components` (
   `id_component` int(11) NOT NULL,
+  `part_number` varchar(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `stock` int(11) NOT NULL,
@@ -124,6 +125,7 @@ CREATE TABLE `mps_periods` (
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id_product` int(11) NOT NULL,
+  `serial_number` varchar(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `production_time` int(11) NOT NULL,
@@ -167,8 +169,8 @@ CREATE TABLE `purchases_components` (
 DROP TABLE IF EXISTS `sales`;
 CREATE TABLE `sales` (
   `id_sale` int(11) NOT NULL,
-  `reference_code` varchar(20) NOT NULL,
-  `creation_date` datetime NOT NULL,
+  `reference_code` varchar(16) NOT NULL,
+  `creation_date` date NOT NULL,
   `details` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
