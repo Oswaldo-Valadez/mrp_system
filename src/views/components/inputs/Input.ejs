@@ -5,6 +5,10 @@
         type = type || "",
         isRequired = isRequired || false,
         isDisabled = isDisabled || false,
+        min = min || false,
+        max = max || false,
+        maxlength = maxlength || false,
+        minlength = minlength || false,
         variant = variant || "normal";
 %}}
 
@@ -19,6 +23,10 @@
     name="{{%= name %}}"
     {{%= isRequired ? 'required' : null %}}
     {{%= isDisabled ? 'readonly' : null %}}
+    {{% if (min) { %}}min="{{%= min %}}"{{% } %}}
+    {{% if (max) { %}}max="{{%= max %}}"{{% } %}}
+    {{% if (maxlength) { %}}maxlength="{{%= maxlength %}}"{{% } %}}
+    {{% if (minlength) { %}}minlength="{{%= minlength %}}"{{% } %}}
   />
 </div>
 {{% } %}}
