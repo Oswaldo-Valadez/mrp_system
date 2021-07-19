@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 16, 2021 at 07:35 PM
+-- Generation Time: Jul 19, 2021 at 07:34 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -107,11 +107,12 @@ CREATE TABLE `mps` (
 DROP TABLE IF EXISTS `mps_periods`;
 CREATE TABLE `mps_periods` (
   `id_mps_period` int(11) NOT NULL,
-  `gross_requirement` int(11) NOT NULL,
-  `scheduled_receptions` int(11) NOT NULL,
-  `availability_projection` int(11) NOT NULL,
-  `net_requirements` int(11) NOT NULL,
-  `planned_order_release` int(11) NOT NULL,
+  `month` int(11) NOT NULL DEFAULT 0,
+  `gross_requirement` int(11) NOT NULL DEFAULT 0,
+  `scheduled_receptions` int(11) NOT NULL DEFAULT 0,
+  `availability_projection` int(11) NOT NULL DEFAULT 0,
+  `net_requirements` int(11) NOT NULL DEFAULT 0,
+  `planned_order_release` int(11) NOT NULL DEFAULT 0,
   `id_last_mps_period` int(11) DEFAULT NULL,
   `id_mps` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
