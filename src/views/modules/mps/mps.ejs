@@ -46,7 +46,7 @@
               <a class="dropdown-item {{%= year == row.year ? "active" : null %}}" href="/dashboard/inventory/{{%= id_component %}}/mps/{{%= row.year %}}">{{%= row.year %}}</a>
             {{% }) %}}
             <a
-              href="/dashboard/inventory/8/mps/2021"
+              href="/dashboard/inventory/{{%= id_component %}}/mps/new"
               class="dropdown-item bg-success"
               title="{{%= __('New MPS') %}}"
               style="text-align: center;"
@@ -69,13 +69,13 @@
               <ul class="nav nav-pills ml-auto">
                 {{% mps_periods.forEach((row, i) => { %}}
                 <li class="nav-item">
-                  <a class="nav-link {{%= row.month == new Date().getMonth() - 1 ? "active" : "" %}}" href="#tab{{%= row.month %}}" data-toggle="tab">
+                  <a class="nav-link {{%= row.month == new Date().getMonth() ? "active" : "" %}}" href="#tab{{%= row.month %}}" data-toggle="tab">
                     {{%= __(_.getMonth(row.month)) %}}
                   </a>
                 </li>
                 {{% }) %}}
                 <a
-                  href="/dashboard/products/new"
+                  href="/dashboard/inventory/{{%= id_component %}}/mps/{{%= year %}}/new"
                   class="btn btn-success ml-2"
                   title="{{%= __('New Period') %}}"
                 >
@@ -87,7 +87,7 @@
           <div class="card-body">
             <div class="tab-content p-0">
               {{% mps_periods.forEach((row, i) => { %}}
-                <div class="tab-pane {{%= row.month == new Date().getMonth() - 1 ? "active" : "" %}}" id="tab{{%= row.month %}}">
+                <div class="tab-pane {{%= row.month == new Date().getMonth() ? "active" : "" %}}" id="tab{{%= row.month %}}">
                   <table
                     class="table table-bordered table-striped"
                   >

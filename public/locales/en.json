@@ -165,5 +165,8 @@
 	"Part Number": "Part Number",
 	"DD/MM/YYYY": "DD/MM/YYYY",
 	"dd/mm/yyyy": "dd/mm/yyyy",
-	"yyyy/mm/dd": "yyyy/mm/dd"
+	"yyyy/mm/dd": "yyyy/mm/dd",
+	"BAD REQUEST": "BAD REQUEST",
+	"January": "January",
+	"July": "July"
 }

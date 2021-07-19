@@ -34,14 +34,22 @@ exports.getOneMPS = async (id_component, year) => {
   )[0];
 
   const { id_mps } = mps;
-  
+
   const mps_periods = await MPSPeriods.getAllMPSPeriodsByMPS(id_mps);
-  
+
   return { mps, mps_periods };
 };
 
 exports.createMPS = async (values) => {
-  const res = await pool.query(`INSERT INTO ?? SET ?`, ["mps", values]);
+  const { id_component } = values;
+
+  const res = await pool.query(
+    `INSERT INTO ?? (initial_stock, year, id_component)
+    SELECT stock, YEAR(CURRENT_DATE()), id_component
+    FROM ?? WHERE ?`,
+    ["mps", "components", { id_component }]
+  );
+
   return res;
 };
 
