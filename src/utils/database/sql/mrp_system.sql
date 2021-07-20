@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 19, 2021 at 07:34 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Jul 20, 2021 at 05:46 AM
+-- Server version: 10.4.20-MariaDB
+-- PHP Version: 8.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -113,7 +113,8 @@ CREATE TABLE `mps_periods` (
   `availability_projection` int(11) NOT NULL DEFAULT 0,
   `net_requirements` int(11) NOT NULL DEFAULT 0,
   `planned_order_release` int(11) NOT NULL DEFAULT 0,
-  `id_last_mps_period` int(11) DEFAULT NULL,
+  `id_prev_mps_period` int(11) DEFAULT NULL,
+  `id_next_mps_period` int(11) DEFAULT NULL,
   `id_mps` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -260,8 +261,9 @@ ALTER TABLE `mps`
 --
 ALTER TABLE `mps_periods`
   ADD PRIMARY KEY (`id_mps_period`),
-  ADD KEY `id_last_mps` (`id_last_mps_period`),
-  ADD KEY `id_mps` (`id_mps`);
+  ADD KEY `id_last_mps` (`id_prev_mps_period`),
+  ADD KEY `id_mps` (`id_mps`),
+  ADD KEY `id_next_mps_period` (`id_next_mps_period`);
 
 --
 -- Indexes for table `products`
@@ -394,8 +396,9 @@ ALTER TABLE `mps`
 -- Constraints for table `mps_periods`
 --
 ALTER TABLE `mps_periods`
-  ADD CONSTRAINT `mps_periods_ibfk_1` FOREIGN KEY (`id_last_mps_period`) REFERENCES `mps_periods` (`id_mps_period`),
-  ADD CONSTRAINT `mps_periods_ibfk_2` FOREIGN KEY (`id_mps`) REFERENCES `mps` (`id_mps`);
+  ADD CONSTRAINT `mps_periods_ibfk_1` FOREIGN KEY (`id_prev_mps_period`) REFERENCES `mps_periods` (`id_mps_period`),
+  ADD CONSTRAINT `mps_periods_ibfk_2` FOREIGN KEY (`id_mps`) REFERENCES `mps` (`id_mps`),
+  ADD CONSTRAINT `mps_periods_ibfk_3` FOREIGN KEY (`id_next_mps_period`) REFERENCES `mps_periods` (`id_mps_period`);
 
 --
 -- Constraints for table `purchases_components`

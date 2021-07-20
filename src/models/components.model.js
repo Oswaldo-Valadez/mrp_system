@@ -39,10 +39,10 @@ exports.getOneComponent = async (id_component) => {
 exports.createComponent = async (values) => {
   const res = await pool.query(`INSERT INTO ?? SET ?`, ["components", values]);
 
-  const { insertId } = res;
+  const { insertId: id_component } = res;
 
   const mps = {
-    id_component: insertId,
+    id_component,
     year: new Date().getFullYear(),
     initial_stock: values.stock,
   };

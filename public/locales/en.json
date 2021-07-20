@@ -168,5 +168,10 @@
 	"yyyy/mm/dd": "yyyy/mm/dd",
 	"BAD REQUEST": "BAD REQUEST",
 	"January": "January",
-	"July": "July"
+	"July": "July",
+	"August": "August",
+	"September": "September",
+	"October": "October",
+	"November": "November",
+	"December": "December"
 }

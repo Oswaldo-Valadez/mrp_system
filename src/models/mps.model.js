@@ -50,7 +50,11 @@ exports.createMPS = async (values) => {
     ["mps", "components", { id_component }]
   );
 
-  return res;
+  const { insertId: id_mps } = res;
+
+  const res_mps_period = await MPSPeriods.createFirstMPSPeriod(id_mps);
+
+  return { res, res_mps_period };
 };
 
 exports.updateMPS = async (id_mps, values) => {

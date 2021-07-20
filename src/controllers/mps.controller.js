@@ -2,6 +2,7 @@
 
 const ErrorHandler = require("../utils/helpers/error-handler");
 const MPS = require("../models/mps.model");
+const MPSPeriods = require("../models/mps-periods.model");
 
 exports.redirectToFirstYear = async (req, res, next) => {
   try {
@@ -45,6 +46,14 @@ exports.createMPS = async (req, res, next) => {
 
 exports.createMPSPeriod = async (req, res, next) => {
   try {
+    const { id: id_component, year } = req.params;
+
+    const { mps } = await MPS.getOneMPS(id_component, year);
+
+    const { id_mps } = mps;
+
+    await MPSPeriods.createNextMPSPeriod(id_mps);
+
     res.redirect("back");
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
