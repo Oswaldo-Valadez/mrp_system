@@ -32,11 +32,13 @@ exports.createNextMPSPeriod = async (id_mps) => {
 
   const next_period = { id_mps, month: last_month + 1, id_prev_mps_period };
 
-  if (last_month < 12) {
-    const { insertId: id_next_mps_period } = await pool.query(
-      `INSERT INTO ?? SET ?`,
-      ["mps_periods", next_period]
-    );
+  if (last_month < 11) {
+    const res = await pool.query(`INSERT INTO ?? SET ?`, [
+      "mps_periods",
+      next_period,
+    ]);
+
+    const { insertId: id_next_mps_period } = res;
 
     const last_period = { id_next_mps_period };
 
@@ -47,9 +49,11 @@ exports.createNextMPSPeriod = async (id_mps) => {
         id_mps_period: id_prev_mps_period,
       },
     ]);
+
+    return res;
   }
 
-  return;
+  return null;
 };
 
 exports.updateMPSPeriod = async (id_mps_period, values) => {

@@ -173,5 +173,8 @@
 	"September": "September",
 	"October": "October",
 	"November": "November",
-	"December": "December"
+	"December": "December",
+	"The MPS Period has been created successfully": "The MPS Period has been created successfully",
+	"You have reached the limit of Periods per MPS": "You have reached the limit of Periods per MPS",
+	"You have reached the limit of periods per MPS": "You have reached the limit of periods per MPS"
 }

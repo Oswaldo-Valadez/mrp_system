@@ -38,6 +38,7 @@ exports.createMPS = async (req, res, next) => {
 
     await MPS.createMPS({ id_component });
 
+    req.flash("success", "The MPS has been created successfully");
     res.redirect("back");
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
@@ -52,8 +53,13 @@ exports.createMPSPeriod = async (req, res, next) => {
 
     const { id_mps } = mps;
 
-    await MPSPeriods.createNextMPSPeriod(id_mps);
+    const result = await MPSPeriods.createNextMPSPeriod(id_mps);
 
+    if (result) {
+      req.flash("success", "The MPS Period has been created successfully");
+    } else {
+      req.flash("error", "You have reached the limit of periods per MPS");
+    }
     res.redirect("back");
   } catch (error) {
     ErrorHandler.handleError(req, res, error);
