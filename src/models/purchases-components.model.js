@@ -7,6 +7,11 @@ exports.createPurchaseComponent = async (values) => {
     "purchases_components",
     values,
   ]);
+
+  await pool.query('UPDATE components SET stock = stock + ? WHERE id_component = ?', [
+    values.quantity, values.id_component
+  ]);
+
   return res;
 };
 
