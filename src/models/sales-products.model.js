@@ -1,12 +1,27 @@
 "use strict";
 
 const { pool } = require("../utils/database/query");
+const { getAllSpreadsheetByProduct } = require("./spreadsheet.model");
 
 exports.createSaleProduct = async (values) => {
   const res = await pool.query(`INSERT INTO ?? SET ?`, [
     "sales_products",
     values,
   ]);
+
+  // Restar stock del producto
+  await pool.query('UPDATE products SET stock = stock - ? WHERE Id_product = ?', [
+    values.quantity, values.id_product
+  ]);
+
+  // Restar estock de los componentes que conforman ese producto
+  const spreadsheet =  await getAllSpreadsheetByProduct(values.id_product);
+  spreadsheet.map(async (component) => {
+    await pool.query('UPDATE components set stock = stock - ? WHERE id_component = ?', [
+      component.quantity, component.id_component
+    ])
+  });
+
   return res;
 };
 
